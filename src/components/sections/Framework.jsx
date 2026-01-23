@@ -1,167 +1,161 @@
 import { motion } from 'framer-motion';
-import GlassCard from '../ui/GlassCard';
 
 const steps = [
   {
-    number: '1',
-    title: 'Visualize',
+    number: '01',
+    title: 'Import & Visualize',
+    description: 'Connect your CRM or upload a CSV. See every account plotted on an interactive map in seconds. Filter by segment, stage, or any custom field.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="2" y1="12" x2="22" y2="12"/>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
       </svg>
     ),
-    description: 'Import account or location-based data and see everything plotted on a live map. Filter, segment, save views, and share maps so everyone is looking at the same reality.',
+    color: 'green',
   },
   {
-    number: '2',
-    title: 'Plan',
+    number: '02',
+    title: 'Plan & Prioritize',
+    description: 'Draw territories, plan routes, and identify clusters. See which accounts are truly reachable together — not just in the same city.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
-        <line x1="9" y1="3" x2="9" y2="18"/>
-        <line x1="15" y1="6" x2="15" y2="21"/>
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
       </svg>
     ),
-    description: 'Turn what you see into trips, routes, timelines, and account plans. Add notes, context, and supporting materials directly where planning happens.',
+    color: 'electric',
   },
   {
-    number: '3',
-    title: 'Activate',
+    number: '03',
+    title: 'Execute & Coordinate',
+    description: 'Share maps with your team. Align field activity with marketing events. Turn strategy into coordinated, visible action.',
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    description: 'Share plans, coordinate with marketing campaigns or events, and move from strategy to execution. Planning becomes visible, reviewable, and actionable.',
+    color: 'violet',
   },
 ];
 
+const colorClasses = {
+  green: {
+    bg: 'bg-green-500',
+    light: 'bg-green-50 dark:bg-green-950/50',
+    text: 'text-green-500',
+    border: 'border-green-200 dark:border-green-800',
+    gradient: 'from-green-500 to-green-600',
+  },
+  electric: {
+    bg: 'bg-electric-500',
+    light: 'bg-electric-50 dark:bg-electric-950/50',
+    text: 'text-electric-500',
+    border: 'border-electric-200 dark:border-electric-800',
+    gradient: 'from-electric-500 to-electric-600',
+  },
+  violet: {
+    bg: 'bg-violet-500',
+    light: 'bg-violet-50 dark:bg-violet-950/50',
+    text: 'text-violet-500',
+    border: 'border-violet-200 dark:border-violet-800',
+    gradient: 'from-violet-500 to-violet-600',
+  },
+};
+
 export default function Framework() {
   return (
-    <section style={styles.section} id="how-it-works">
-      <div style={styles.container}>
+    <section className="relative py-24 lg:py-32 overflow-hidden" id="how-it-works">
+      {/* Background */}
+      <div className="absolute inset-0 bg-white dark:bg-slate-950" />
+      <div className="absolute inset-0 bg-mesh opacity-50" />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Header */}
         <motion.div
-          style={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span style={styles.badge}>How it works</span>
-          <h2 style={styles.title}>From account data to real-world action</h2>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500/10 to-violet-500/10 border border-green-500/20 text-sm font-medium text-slate-700 dark:text-slate-300 mb-6">
+            <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            How it works
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-6">
+            From data to{' '}
+            <span className="bg-gradient-to-r from-green-500 via-electric-500 to-violet-500 bg-clip-text text-transparent">
+              action
+            </span>
+          </h2>
+          <p className="text-lg text-slate-600 dark:text-slate-400">
+            Three simple steps to transform how your team plans and executes territory strategy.
+          </p>
         </motion.div>
 
-        <div style={styles.grid}>
-          {steps.map((step, i) => (
-            <GlassCard key={step.number} delay={i * 0.1}>
-              <div style={styles.cardHeader}>
-                <div style={styles.numberBadge}>
-                  <span style={styles.numberIcon}>{step.icon}</span>
-                  <span style={styles.numberText}>{step.number}</span>
-                </div>
-                <h3 style={styles.cardTitle}>{step.title}</h3>
-              </div>
-              <p style={styles.cardDescription}>{step.description}</p>
-            </GlassCard>
-          ))}
+        {/* Steps */}
+        <div className="relative">
+          {/* Connection line */}
+          <div className="hidden lg:block absolute top-24 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-green-500 via-electric-500 to-violet-500 opacity-20" />
+
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+            {steps.map((step, index) => {
+              const colors = colorClasses[step.color];
+              return (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className="relative"
+                >
+                  {/* Card */}
+                  <div className="relative p-8 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                    {/* Number badge */}
+                    <div className={`absolute -top-4 left-8 px-4 py-1 rounded-full bg-gradient-to-r ${colors.gradient} text-white text-sm font-bold shadow-lg`}>
+                      {step.number}
+                    </div>
+
+                    {/* Icon */}
+                    <div className={`w-14 h-14 rounded-2xl ${colors.light} ${colors.text} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      {step.icon}
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* Decorative gradient blob */}
+                    <div className={`absolute -bottom-2 -right-2 w-24 h-24 rounded-full bg-gradient-to-r ${colors.gradient} opacity-5 blur-2xl group-hover:opacity-10 transition-opacity duration-500`} />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+          >
+            See it in action
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
 }
-
-const styles = {
-  section: {
-    padding: '80px 0',
-    borderBottom: '1px solid var(--border-color)',
-  },
-  container: {
-    maxWidth: '1100px',
-    margin: '0 auto',
-    padding: '0 24px',
-    textAlign: 'center',
-  },
-  header: {
-    marginBottom: '48px',
-  },
-  badge: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    padding: '6px 14px',
-    borderRadius: '9999px',
-    fontSize: '12px',
-    fontWeight: 500,
-    letterSpacing: '0.04em',
-    textTransform: 'uppercase',
-    backgroundColor: 'var(--accent-secondary-light)',
-    color: 'var(--brass-dark)',
-    marginBottom: '16px',
-    border: '1px solid var(--accent-secondary)',
-  },
-  title: {
-    fontSize: '28px',
-    fontWeight: 600,
-    letterSpacing: '-0.02em',
-    lineHeight: 1.2,
-    color: 'var(--text-primary)',
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '24px',
-  },
-  cardHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    marginBottom: '16px',
-  },
-  numberBadge: {
-    position: 'relative',
-    width: '40px',
-    height: '40px',
-    background: 'var(--accent-primary)',
-    borderRadius: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    flexShrink: 0,
-    boxShadow: '0 2px 4px rgba(21, 128, 61, 0.2)',
-  },
-  numberIcon: {
-    position: 'absolute',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  numberText: {
-    position: 'absolute',
-    bottom: '-6px',
-    right: '-6px',
-    width: '20px',
-    height: '20px',
-    background: 'var(--accent-secondary)',
-    borderRadius: '50%',
-    fontSize: '11px',
-    fontWeight: 700,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0 1px 3px rgba(143, 95, 35, 0.3)',
-  },
-  cardTitle: {
-    fontSize: '18px',
-    fontWeight: 600,
-    color: 'var(--text-primary)',
-  },
-  cardDescription: {
-    fontSize: '15px',
-    color: 'var(--text-secondary)',
-    lineHeight: 1.6,
-    textAlign: 'left',
-  },
-};

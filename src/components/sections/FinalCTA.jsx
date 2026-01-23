@@ -1,149 +1,175 @@
 import { motion } from 'framer-motion';
-import Button from '../ui/Button';
 
 export default function FinalCTA() {
   return (
-    <section style={styles.section}>
-      <div style={styles.container}>
-        {/* Decorative map elements */}
-        <div style={styles.decorativeContainer}>
-          {/* Top left compass */}
-          <div style={{ ...styles.decorativeIcon, top: '10%', left: '5%' }}>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-            </svg>
-          </div>
-          {/* Top right pin */}
-          <div style={{ ...styles.decorativeIcon, top: '15%', right: '8%' }}>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          {/* Bottom left map */}
-          <div style={{ ...styles.decorativeIcon, bottom: '15%', left: '10%' }}>
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
-              <line x1="9" y1="3" x2="9" y2="18"/>
-              <line x1="15" y1="6" x2="15" y2="21"/>
-            </svg>
-          </div>
-          {/* Bottom right globe */}
-          <div style={{ ...styles.decorativeIcon, bottom: '20%', right: '5%' }}>
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
+    <section className="relative py-24 lg:py-32 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+
+      {/* Animated gradient orbs */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-green-500/20 to-electric-500/20 blur-3xl"
+        animate={{
+          x: [0, 50, 0],
+          y: [0, -30, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-violet-500/15 to-electric-500/15 blur-3xl"
+        animate={{
+          x: [0, -40, 0],
+          y: [0, 40, 0],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      {/* Grid pattern */}
+      <div className="absolute inset-0 bg-grid opacity-10" />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-8"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+            </span>
+            Start free today
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6"
+          >
+            Ready to see your{' '}
+            <span className="bg-gradient-to-r from-green-400 via-electric-400 to-violet-400 bg-clip-text text-transparent">
+              territory differently?
+            </span>
+          </motion.h2>
+
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto"
+          >
+            Join hundreds of sales teams who switched from spreadsheet planning to visual territory management.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+          >
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-200"
+            >
+              Start free trial
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </motion.a>
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white font-semibold border border-white/20 hover:bg-white/20 transition-all duration-200"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Schedule a demo
+            </motion.a>
+          </motion.div>
+
+          {/* Trust signals */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm"
+          >
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Free 14-day trial</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>No credit card required</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Setup in under 5 minutes</span>
+            </div>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={styles.content}
-        >
-          <div style={styles.badge}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-            Get started today
-          </div>
-          <h2 style={styles.title}>Plan your GTM activity around reality</h2>
-          <p style={styles.subtitle}>
-            See your accounts on a map and make better territory decisions.
-          </p>
-          <Button href="#" size="large">Start free</Button>
-          <div style={styles.microcopy}>
-            <span style={styles.microcopyItem}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-              Set up in minutes
-            </span>
-            <span style={styles.microcopyItem}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
-              No credit card required
-            </span>
-          </div>
-        </motion.div>
+        {/* Floating feature cards */}
+        <div className="hidden lg:block">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="absolute left-8 top-1/2 -translate-y-1/2"
+          >
+            <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 max-w-[180px]">
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-3">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+              </div>
+              <div className="text-white font-medium text-sm">Visual mapping</div>
+              <div className="text-slate-400 text-xs">See accounts in context</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="absolute right-8 top-1/2 -translate-y-1/2"
+          >
+            <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 max-w-[180px]">
+              <div className="w-10 h-10 rounded-xl bg-electric-500/20 text-electric-400 flex items-center justify-center mb-3">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div className="text-white font-medium text-sm">Smart routing</div>
+              <div className="text-slate-400 text-xs">Optimize field visits</div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
-
-const styles = {
-  section: {
-    padding: '100px 0',
-    textAlign: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  container: {
-    maxWidth: '1100px',
-    margin: '0 auto',
-    padding: '0 24px',
-    position: 'relative',
-  },
-  decorativeContainer: {
-    position: 'absolute',
-    inset: 0,
-    pointerEvents: 'none',
-  },
-  decorativeIcon: {
-    position: 'absolute',
-    color: 'var(--accent-secondary)',
-    opacity: 0.15,
-  },
-  content: {
-    position: 'relative',
-    zIndex: 1,
-  },
-  badge: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '6px 14px',
-    borderRadius: '9999px',
-    fontSize: '13px',
-    fontWeight: 500,
-    letterSpacing: '0.02em',
-    backgroundColor: 'var(--accent-light)',
-    color: 'var(--accent-primary)',
-    marginBottom: '20px',
-    border: '1px solid var(--green-light)',
-  },
-  title: {
-    fontSize: '36px',
-    fontWeight: 700,
-    marginBottom: '16px',
-    letterSpacing: '-0.02em',
-    lineHeight: 1.15,
-    color: 'var(--text-primary)',
-  },
-  subtitle: {
-    fontSize: '17px',
-    color: 'var(--text-secondary)',
-    marginBottom: '32px',
-    lineHeight: 1.5,
-  },
-  microcopy: {
-    marginTop: '20px',
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '24px',
-    fontSize: '13px',
-    color: 'var(--text-muted)',
-  },
-  microcopyItem: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    color: 'var(--success)',
-  },
-};
