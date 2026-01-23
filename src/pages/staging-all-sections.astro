@@ -1,0 +1,414 @@
+---
+/**
+ * STAGING PAGE - All Available Sections
+ *
+ * This page contains ALL available sections/widgets from the AstroWind theme
+ * for reference and evaluation. Access at: /staging-all-sections
+ *
+ * This page is NOT deleted - it's preserved for future reference.
+ *
+ * WIDGETS INCLUDED:
+ * - Hero, Hero2, HeroText (3 hero options)
+ * - Note (callout)
+ * - Features, Features2, Features3 (3 feature layouts)
+ * - Content (image + text sections)
+ * - Steps, Steps2 (process/how-it-works)
+ * - Stats, Testimonials, FAQs, Pricing
+ * - CallToAction (2 CTA styles)
+ * - Contact (form)
+ * - Brands (logo grid)
+ */
+
+import Layout from '~/layouts/PageLayout.astro';
+
+// Import all widgets
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from '~/components/widgets/Contact.astro';
+import Brands from '~/components/widgets/Brands.astro';
+
+const metadata = {
+  title: 'Staging - All Available Sections',
+  robots: { index: false, follow: false },
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- NAVIGATION HELPER -->
+  <div class="bg-yellow-100 dark:bg-yellow-900 p-4 text-center">
+    <p class="font-bold">STAGING PAGE - All Available Sections for Reference</p>
+    <p class="text-sm">This page shows every widget type. See also:
+      <a href="/homes/saas" class="underline">SaaS</a> |
+      <a href="/homes/startup" class="underline">Startup</a> |
+      <a href="/homes/mobile-app" class="underline">Mobile App</a> |
+      <a href="/homes/personal" class="underline">Personal</a> |
+      <a href="/pricing" class="underline">Pricing</a> |
+      <a href="/services" class="underline">Services</a> |
+      <a href="/contact" class="underline">Contact</a>
+    </p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- HERO SECTIONS - 3 variants                                   -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">HERO - Standard (image on right)</div>
+  <Hero
+    id="hero"
+    actions={[
+      { variant: 'primary', text: 'Primary Button', href: '#', icon: 'tabler:rocket' },
+      { text: 'Secondary Button', href: '#' },
+    ]}
+    image={{ src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', alt: 'Hero Image' }}
+  >
+    <Fragment slot="title">
+      Hero Title with <span class="text-accent dark:text-white">Accent</span> Text
+    </Fragment>
+    <Fragment slot="subtitle">
+      Hero subtitle text goes here. This is the standard hero with image on the right side.
+    </Fragment>
+  </Hero>
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">HERO2 - Alternative Layout</div>
+  <Hero2
+    id="hero2"
+    tagline="Tagline here"
+    actions={[
+      { variant: 'primary', text: 'Primary Button', href: '#' },
+      { text: 'Secondary Button', href: '#' },
+    ]}
+    image={{ src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', alt: 'Hero2 Image' }}
+  >
+    <Fragment slot="title">Hero2 Title <span class="text-accent dark:text-white">Style</span></Fragment>
+    <Fragment slot="subtitle">Hero2 has a different layout arrangement. Good for SaaS pages.</Fragment>
+  </Hero2>
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">HEROTEXT - Text Only (no image)</div>
+  <HeroText
+    id="herotext"
+    tagline="Tagline"
+    title="HeroText - Text Only Hero"
+    subtitle="This hero variant has no image, just centered text. Good for simple pages like pricing or contact."
+  />
+
+  <!-- ============================================================ -->
+  <!-- NOTE WIDGET                                                  -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">NOTE - Simple Callout</div>
+  <Note title="Note Title" description="Note description text. This is a simple callout/highlight widget." />
+
+  <!-- ============================================================ -->
+  <!-- FEATURES - 3 variants                                        -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">FEATURES - 6-item 3-column grid</div>
+  <Features
+    id="features"
+    tagline="Tagline"
+    title="Features - Standard Grid"
+    subtitle="6 items in a 3-column grid layout"
+    items={[
+      { title: 'Feature 1', description: 'Description for feature 1', icon: 'tabler:brand-tailwind' },
+      { title: 'Feature 2', description: 'Description for feature 2', icon: 'tabler:components' },
+      { title: 'Feature 3', description: 'Description for feature 3', icon: 'tabler:list-check' },
+      { title: 'Feature 4', description: 'Description for feature 4', icon: 'tabler:rocket' },
+      { title: 'Feature 5', description: 'Description for feature 5', icon: 'tabler:arrows-right-left' },
+      { title: 'Feature 6', description: 'Description for feature 6', icon: 'tabler:bulb' },
+    ]}
+  />
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">FEATURES - 2-column layout</div>
+  <Features
+    id="features-2col"
+    title="Features - 2 Column"
+    subtitle="4 items in a 2-column grid"
+    columns={2}
+    items={[
+      { title: 'Feature 1', description: 'Description text here', icon: 'tabler:layers-union' },
+      { title: 'Feature 2', description: 'Description text here', icon: 'tabler:artboard' },
+      { title: 'Feature 3', description: 'Description text here', icon: 'tabler:writing' },
+      { title: 'Feature 4', description: 'Description text here', icon: 'tabler:rocket' },
+    ]}
+  />
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">FEATURES2 - Icon Grid with colored icons</div>
+  <Features2
+    id="features2"
+    title="Features2 - Icon Grid"
+    subtitle="Great for showcasing features with colorful icons"
+    tagline="Components"
+    items={[
+      { title: 'Item 1', description: 'Description here', icon: 'flat-color-icons:template' },
+      { title: 'Item 2', description: 'Description here', icon: 'flat-color-icons:gallery' },
+      { title: 'Item 3', description: 'Description here', icon: 'flat-color-icons:approval' },
+      { title: 'Item 4', description: 'Description here', icon: 'flat-color-icons:document' },
+      { title: 'Item 5', description: 'Description here', icon: 'flat-color-icons:advertising' },
+      { title: 'Item 6', description: 'Description here', icon: 'flat-color-icons:database' },
+    ]}
+  >
+    <Fragment slot="bg"><div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div></Fragment>
+  </Features2>
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">FEATURES3 - With individual CTAs</div>
+  <Features3
+    id="features3"
+    title="Features3 - With Call-to-Actions"
+    subtitle="Each feature has its own action button"
+    columns={4}
+    items={[
+      { title: 'Email', icon: 'tabler:mail', callToAction: { text: 'Write to us', href: '#', variant: 'link' } },
+      { title: 'Phone', icon: 'tabler:phone', callToAction: { text: 'Call us', href: '#', variant: 'link' } },
+      { title: 'Chat', icon: 'tabler:message-circle', callToAction: { text: 'Start chat', href: '#', variant: 'link' } },
+      { title: 'Demo', icon: 'tabler:presentation', callToAction: { text: 'Book demo', href: '#', variant: 'link' } },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- CONTENT - Image + text                                       -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">CONTENT - Image Right (isReversed)</div>
+  <Content
+    id="content"
+    isReversed
+    tagline="How it works"
+    title="Content Section Title"
+    items={[
+      { title: 'Step 1', description: 'Description for step 1' },
+      { title: 'Step 2', description: 'Description for step 2' },
+      { title: 'Step 3', description: 'Description for step 3' },
+    ]}
+    image={{ src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', alt: 'Content image' }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Content slot heading</h3>
+      Additional content text here.
+    </Fragment>
+    <Fragment slot="bg"><div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div></Fragment>
+  </Content>
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">CONTENT - Image Left (isAfterContent)</div>
+  <Content
+    id="content-2"
+    isAfterContent
+    items={[
+      { title: 'Item A', description: 'Description A' },
+      { title: 'Item B', description: 'Description B' },
+      { title: 'Item C', description: 'Description C' },
+    ]}
+    image={{ src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2194&q=80', alt: 'Content image' }}
+  >
+    <Fragment slot="content">Continuation content text.</Fragment>
+    <Fragment slot="bg"><div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div></Fragment>
+  </Content>
+
+  <!-- ============================================================ -->
+  <!-- STEPS - 2 variants                                           -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">STEPS - Timeline with image</div>
+  <Steps
+    id="steps"
+    title="Steps - Process Timeline"
+    items={[
+      { title: 'Step 1: <span class="font-medium">First step</span>', description: 'Description here', icon: 'tabler:user-plus' },
+      { title: 'Step 2: <span class="font-medium">Second step</span>', description: 'Description here', icon: 'tabler:upload' },
+      { title: 'Step 3: <span class="font-medium">Third step</span>', description: 'Description here', icon: 'tabler:map' },
+      { title: 'Done!', icon: 'tabler:check' },
+    ]}
+    image={{ src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80', alt: 'Steps image' }}
+  />
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">STEPS2 - Simple contact style</div>
+  <Steps2
+    id="steps2"
+    title="Steps2 - Contact Style"
+    subtitle="Simpler layout, good for contact info"
+    callToAction={{ text: 'Contact us', href: '#' }}
+    items={[
+      { title: 'Email us', description: 'hello@example.com', icon: 'tabler:mail' },
+      { title: 'Call us', description: '+1 (555) 123-4567', icon: 'tabler:headset' },
+      { title: 'Follow us', description: '@handle', icon: 'tabler:brand-twitter' },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- STATS                                                        -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">STATS - Key metrics</div>
+  <Stats
+    id="stats"
+    title="Stats - By the Numbers"
+    subtitle="Showcase impressive metrics"
+    stats={[
+      { title: 'Users', amount: '10K+' },
+      { title: 'Projects', amount: '50K+' },
+      { title: 'Revenue', amount: '$2B+' },
+      { title: 'Rating', amount: '4.9' },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- TESTIMONIALS                                                 -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">TESTIMONIALS - Customer quotes</div>
+  <Testimonials
+    id="testimonials"
+    title="Testimonials - Customer Quotes"
+    testimonials={[
+      {
+        testimonial: 'Quote text from customer 1. This is what they said about the product.',
+        name: 'Customer Name',
+        job: 'Job Title, Company',
+        image: { src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=930&q=80', alt: 'Customer' },
+      },
+      {
+        testimonial: 'Quote text from customer 2. Another testimonial here.',
+        name: 'Another Customer',
+        job: 'Their Role',
+        image: { src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80', alt: 'Customer' },
+      },
+      {
+        testimonial: 'Quote text from customer 3.',
+        name: 'Third Customer',
+        job: 'Position',
+        image: { src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=824&q=80', alt: 'Customer' },
+      },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- PRICING                                                      -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">PRICING - Pricing table</div>
+  <Pricing
+    id="pricing"
+    title="Pricing - Plans"
+    subtitle="Choose your plan"
+    prices={[
+      {
+        title: 'Free',
+        subtitle: 'For individuals',
+        price: '0',
+        period: '/ month',
+        items: [{ description: 'Feature 1' }, { description: 'Feature 2' }],
+        callToAction: { text: 'Get Started', href: '#' },
+      },
+      {
+        title: 'Pro',
+        subtitle: 'For teams',
+        price: 29,
+        period: '/ month',
+        items: [{ description: 'Everything in Free' }, { description: 'Pro feature 1' }, { description: 'Pro feature 2' }],
+        callToAction: { text: 'Upgrade', href: '#' },
+        hasRibbon: true,
+        ribbonTitle: 'Popular',
+      },
+      {
+        title: 'Enterprise',
+        subtitle: 'For organizations',
+        price: 'Custom',
+        period: '',
+        items: [{ description: 'Everything in Pro' }, { description: 'Enterprise features' }],
+        callToAction: { text: 'Contact Sales', href: '#' },
+      },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- FAQs                                                         -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">FAQs - Accordion</div>
+  <FAQs
+    id="faq"
+    title="FAQs - Frequently Asked Questions"
+    subtitle="Common questions answered"
+    tagline="FAQs"
+    items={[
+      { title: 'Question 1?', description: 'Answer to question 1.' },
+      { title: 'Question 2?', description: 'Answer to question 2.' },
+      { title: 'Question 3?', description: 'Answer to question 3.' },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- CONTACT FORM                                                 -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">CONTACT - Form</div>
+  <Contact
+    id="contact"
+    title="Contact Form"
+    subtitle="Send us a message"
+    inputs={[
+      { type: 'text', name: 'name', label: 'Name' },
+      { type: 'email', name: 'email', label: 'Email' },
+    ]}
+    textarea={{ label: 'Message' }}
+    disclaimer={{ label: 'Privacy disclaimer text here.' }}
+    description="Response time note."
+  />
+
+  <!-- ============================================================ -->
+  <!-- BRANDS                                                       -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">BRANDS - Logo grid</div>
+  <Brands
+    id="brands"
+    title="Brands - Logo Grid"
+    subtitle="Trusted by these companies"
+    icons={[]}
+    images={[
+      { src: 'https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png', alt: 'Paypal' },
+      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png', alt: 'Visa' },
+      { src: 'https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80658_1280.png', alt: 'Microsoft' },
+      { src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png', alt: 'Google' },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- CALL TO ACTION - 2 styles                                    -->
+  <!-- ============================================================ -->
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">CALLTOACTION - Single button</div>
+  <CallToAction
+    id="cta"
+    actions={[{ variant: 'primary', text: 'Primary CTA', href: '#', icon: 'tabler:rocket' }]}
+  >
+    <Fragment slot="title">CTA Title Here</Fragment>
+    <Fragment slot="subtitle">CTA subtitle text. Encourage action.</Fragment>
+  </CallToAction>
+
+  <div class="bg-gray-100 dark:bg-gray-800 p-2 text-center font-mono text-sm">CALLTOACTION - Two buttons</div>
+  <CallToAction
+    id="cta2"
+    actions={[
+      { variant: 'primary', text: 'Primary', href: '#', icon: 'tabler:presentation' },
+      { variant: 'secondary', text: 'Secondary', href: '#' },
+    ]}
+  >
+    <Fragment slot="title">Alternative CTA Style</Fragment>
+    <Fragment slot="subtitle">With two buttons.</Fragment>
+  </CallToAction>
+
+</Layout>
