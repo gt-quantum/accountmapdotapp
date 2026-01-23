@@ -1,27 +1,24 @@
-# Dependencies
+# build output
+dist/
+.output/
+
+# dependencies
 node_modules/
 
-# Build output
-dist/
-.astro/
-
-# Environment variables
-.env
-.env.production
-.env.local
-
-# Logs
+# logs
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
 
-# macOS
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
 .DS_Store
-._*
 
-# IDE
-.idea/
-.vscode/
+pnpm-lock.yaml
 
-# Local Netlify folder
-.netlify
+.astro
