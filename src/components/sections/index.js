@@ -9,6 +9,7 @@ export { default as Testimonials } from './Testimonials';
 export { default as Contact } from './Contact';
 export { default as CTA } from './CTA';
 export { default as FAQSection } from './FAQSection';
+export { default as FeatureList } from './FeatureList';
 
 // New standard sections
 export { default as LogoCloud } from './LogoCloud';

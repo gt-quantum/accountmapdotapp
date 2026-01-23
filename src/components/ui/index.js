@@ -36,9 +36,11 @@ export { default as Pagination } from './Pagination';
 // Data Display
 export { default as Table } from './Table';
 export { default as Carousel } from './Carousel';
+export { default as List } from './List';
 
 // Layout
 export { default as Divider } from './Divider';
+export { default as SectionHeader } from './SectionHeader';
 
 // Visual
 export { default as MapPreview } from './MapPreview';

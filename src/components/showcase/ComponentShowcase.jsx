@@ -28,6 +28,8 @@ import Pagination from '../ui/Pagination';
 import Table from '../ui/Table';
 import Carousel from '../ui/Carousel';
 import Divider from '../ui/Divider';
+import List from '../ui/List';
+import SectionHeader from '../ui/SectionHeader';
 
 // Section Components
 import Features from '../sections/Features';
@@ -39,6 +41,7 @@ import Contact from '../sections/Contact';
 import HeroSection from '../sections/HeroSection';
 import CTA from '../sections/CTA';
 import FAQSection from '../sections/FAQSection';
+import FeatureList from '../sections/FeatureList';
 import LogoCloud from '../sections/LogoCloud';
 import Team from '../sections/Team';
 import Comparison from '../sections/Comparison';
@@ -84,25 +87,28 @@ export default function ComponentShowcase() {
     { id: 'pagination', label: '5.2 Pagination', category: 'Navigation' },
     { id: 'tables', label: '5.3 Tables', category: 'Data Display' },
     { id: 'dividers', label: '5.4 Dividers', category: 'Layout' },
+    { id: 'lists', label: '5.5 Lists', category: 'Layout' },
+    { id: 'section-headers', label: '5.6 Section Headers', category: 'Layout' },
     { id: 'hero-variants', label: '6.1 Hero (7 variants)', category: 'Sections' },
     { id: 'cta-variants', label: '6.2 CTA (8 variants)', category: 'Sections' },
     { id: 'faq-variants', label: '6.3 FAQ (8 variants)', category: 'Sections' },
     { id: 'features', label: '6.4 Features', category: 'Sections' },
-    { id: 'pricing', label: '6.5 Pricing', category: 'Sections' },
-    { id: 'stats', label: '6.6 Stats', category: 'Sections' },
-    { id: 'timeline', label: '6.7 Timeline', category: 'Sections' },
-    { id: 'testimonials', label: '6.8 Testimonials', category: 'Sections' },
-    { id: 'contact', label: '6.9 Contact', category: 'Sections' },
-    { id: 'logocloud', label: '6.10 Logo Cloud', category: 'Sections' },
-    { id: 'team', label: '6.11 Team', category: 'Sections' },
-    { id: 'comparison', label: '6.12 Comparison', category: 'Sections' },
-    { id: 'newsletter', label: '6.13 Newsletter', category: 'Sections' },
-    { id: 'content', label: '6.14 Content', category: 'Sections' },
-    { id: 'integrations', label: '6.15 Integrations', category: 'Sections' },
-    { id: 'video', label: '6.16 Video', category: 'Sections' },
-    { id: 'banner', label: '6.17 Banner', category: 'Sections' },
-    { id: 'gallery', label: '6.18 Gallery', category: 'Sections' },
-    { id: 'download', label: '6.19 Download', category: 'Sections' },
+    { id: 'feature-list', label: '6.5 FeatureList (6 variants)', category: 'Sections' },
+    { id: 'pricing', label: '6.6 Pricing', category: 'Sections' },
+    { id: 'stats', label: '6.7 Stats', category: 'Sections' },
+    { id: 'timeline', label: '6.8 Timeline', category: 'Sections' },
+    { id: 'testimonials', label: '6.9 Testimonials', category: 'Sections' },
+    { id: 'contact', label: '6.10 Contact', category: 'Sections' },
+    { id: 'logocloud', label: '6.11 Logo Cloud', category: 'Sections' },
+    { id: 'team', label: '6.12 Team', category: 'Sections' },
+    { id: 'comparison', label: '6.13 Comparison', category: 'Sections' },
+    { id: 'newsletter', label: '6.14 Newsletter', category: 'Sections' },
+    { id: 'content', label: '6.15 Content', category: 'Sections' },
+    { id: 'integrations', label: '6.16 Integrations', category: 'Sections' },
+    { id: 'video', label: '6.17 Video', category: 'Sections' },
+    { id: 'banner', label: '6.18 Banner', category: 'Sections' },
+    { id: 'gallery', label: '6.19 Gallery', category: 'Sections' },
+    { id: 'download', label: '6.20 Download', category: 'Sections' },
   ];
 
   const categories = [...new Set(sections.map(s => s.category))];
@@ -588,6 +594,117 @@ export default function ComponentShowcase() {
             </div>
           </ComponentSection>
 
+          <ComponentSection id="lists" title="5.5 Lists" description="List component with multiple styles and variants">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Check List (green)</p>
+                <List
+                  variant="check"
+                  items={['No credit card required', 'Free 14-day trial', 'Cancel anytime', '24/7 support']}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Bullet List (2 columns)</p>
+                <List
+                  variant="bullet"
+                  columns={2}
+                  items={['Visual territory mapping', 'CRM integration', 'Real-time collaboration', 'Custom reports', 'API access', 'Mobile app']}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Numbered List</p>
+                <List
+                  variant="numbered"
+                  items={['Sign up for an account', 'Connect your CRM', 'Import your accounts', 'Start mapping territories']}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Description List</p>
+                <List
+                  variant="description"
+                  items={[
+                    { title: 'Accounts', description: '500+ imported and mapped' },
+                    { title: 'Territories', description: '12 active regions defined' },
+                    { title: 'Team Members', description: '8 users with access' },
+                  ]}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Interactive Checklist</p>
+                <List.Checklist
+                  items={[
+                    { text: 'Set up account', checked: true },
+                    { text: 'Import data', checked: true },
+                    { text: 'Define territories', checked: false },
+                    { text: 'Invite team members', checked: false },
+                  ]}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Comparison (Pros/Cons)</p>
+                <List.Comparison
+                  pros={['Easy to use', 'Great support', 'Affordable pricing']}
+                  cons={['Learning curve', 'Limited integrations']}
+                />
+              </div>
+            </div>
+          </ComponentSection>
+
+          <ComponentSection id="section-headers" title="5.6 Section Headers" description="Reusable header component with multiple variants">
+            <div className="space-y-12">
+              <div>
+                <p className="text-sm text-stone-500 mb-4">Default (Centered with Badge)</p>
+                <SectionHeader
+                  badge="Features"
+                  title="Everything you need"
+                  subtitle="Built for modern sales teams who want to close more deals."
+                  animated={false}
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-4">With Eyebrow</p>
+                <SectionHeader.WithEyebrow
+                  eyebrow="Why choose us"
+                  title="Built for growth"
+                  subtitle="Scale your sales operations with confidence."
+                  align="left"
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-4">With Underline Accent</p>
+                <SectionHeader.Underline
+                  title="Our Process"
+                  subtitle="A simple three-step approach to territory success."
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-4">With Highlight</p>
+                <SectionHeader.Highlight
+                  title="Make every account count"
+                  highlightedText="every account"
+                  subtitle="Turn data into actionable territory insights."
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-4">With Icon</p>
+                <SectionHeader.WithIcon
+                  icon={SectionHeader.Icons.Rocket}
+                  title="Launch faster"
+                  subtitle="Get up and running in minutes, not weeks."
+                />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-4">Split Layout</p>
+                <SectionHeader.Split
+                  badge="Case Studies"
+                  title="Real results from real teams"
+                  description="See how leading sales organizations transformed their territory planning with AccountMap."
+                  cta={{ text: 'View All', href: '#' }}
+                />
+              </div>
+            </div>
+          </ComponentSection>
+
           {/* 6. Sections */}
 
           {/* 6.1 Hero Variants */}
@@ -764,7 +881,71 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="pricing" title="6.5 Pricing Section" description="Pricing tables" fullWidth>
+            <ComponentSection id="feature-list" title="6.5 FeatureList Section (6 variants)" description="Alternating features with images" fullWidth>
+              <div className="px-8 pb-4">
+                <p className="text-sm text-stone-500">Available variants: alternating, stacked, centered, timeline, cards, bento</p>
+              </div>
+              <FeatureList
+                variant="alternating"
+                badge="Why AccountMap"
+                title="Built for modern sales teams"
+                subtitle="Everything you need to visualize, plan, and optimize your territory."
+                features={[
+                  {
+                    icon: FeatureList.Icons.Map,
+                    title: 'Visual Territory Mapping',
+                    description: 'See all your accounts on an interactive map. Quickly identify coverage gaps, plan routes, and optimize your territory strategy.',
+                    image: 'https://placehold.co/600x400/22c55e/ffffff?text=Territory+Map',
+                    benefits: ['Interactive map view', 'Route optimization', 'Coverage analysis'],
+                  },
+                  {
+                    icon: FeatureList.Icons.Users,
+                    title: 'Team Collaboration',
+                    description: 'Work together in real-time. Share territories, assign accounts, and keep everyone aligned on the go-to-market strategy.',
+                    image: 'https://placehold.co/600x400/3b82f6/ffffff?text=Collaboration',
+                    benefits: ['Real-time sync', 'Role-based access', 'Activity tracking'],
+                  },
+                  {
+                    icon: FeatureList.Icons.Lightning,
+                    title: 'CRM Integration',
+                    description: 'Connect with Salesforce, HubSpot, and other popular CRMs. Keep your data in sync without manual updates.',
+                    image: 'https://placehold.co/600x400/eab308/ffffff?text=Integrations',
+                    benefits: ['One-click setup', 'Bi-directional sync', 'Custom field mapping'],
+                  },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="feature-list-cards" title="FeatureList: Cards Variant" description="Feature cards with icons" fullWidth>
+              <FeatureList
+                variant="cards"
+                badge="Platform"
+                title="Powerful features"
+                features={[
+                  {
+                    icon: FeatureList.Icons.Shield,
+                    title: 'Enterprise Security',
+                    description: 'SOC 2 compliant with SSO, audit logs, and encryption at rest.',
+                  },
+                  {
+                    icon: FeatureList.Icons.Chart,
+                    title: 'Advanced Analytics',
+                    description: 'Deep insights into territory performance and rep productivity.',
+                  },
+                  {
+                    icon: FeatureList.Icons.Globe,
+                    title: 'Global Support',
+                    description: '24/7 support across all time zones with dedicated success managers.',
+                  },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="pricing" title="6.6 Pricing Section" description="Pricing tables" fullWidth>
               <Pricing
                 badge="Pricing"
                 title="Simple, transparent pricing"
@@ -796,7 +977,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="stats" title="6.6 Stats Section" description="Animated statistics display" fullWidth>
+            <ComponentSection id="stats" title="6.7 Stats Section" description="Animated statistics display" fullWidth>
               <Stats
                 badge="By the Numbers"
                 title="Trusted by teams worldwide"
@@ -811,7 +992,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="timeline" title="6.7 Timeline Section" description="Steps and timeline displays" fullWidth>
+            <ComponentSection id="timeline" title="6.8 Timeline Section" description="Steps and timeline displays" fullWidth>
               <Timeline
                 badge="How it Works"
                 title="Get started in 3 steps"
@@ -825,7 +1006,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="testimonials" title="6.8 Testimonials Section" description="Customer testimonials" fullWidth>
+            <ComponentSection id="testimonials" title="6.9 Testimonials Section" description="Customer testimonials" fullWidth>
               <Testimonials
                 badge="Testimonials"
                 title="What our customers say"
@@ -851,7 +1032,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="contact" title="6.9 Contact Section" description="Contact forms" fullWidth>
+            <ComponentSection id="contact" title="6.10 Contact Section" description="Contact forms" fullWidth>
               <Contact
                 badge="Contact"
                 title="Get in touch"
@@ -862,7 +1043,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="logocloud" title="6.10 Logo Cloud" description="Client and partner logos" fullWidth>
+            <ComponentSection id="logocloud" title="6.11 Logo Cloud" description="Client and partner logos" fullWidth>
               <LogoCloud
                 title="Trusted by industry leaders"
                 logos={[
@@ -877,7 +1058,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="team" title="6.11 Team Section" description="Team member profiles" fullWidth>
+            <ComponentSection id="team" title="6.12 Team Section" description="Team member profiles" fullWidth>
               <Team
                 badge="Our Team"
                 title="Meet the people behind AccountMap"
@@ -918,7 +1099,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="comparison" title="6.12 Comparison Section" description="Feature comparison tables" fullWidth>
+            <ComponentSection id="comparison" title="6.13 Comparison Section" description="Feature comparison tables" fullWidth>
               <Comparison
                 badge="Compare"
                 title="How we stack up"
@@ -937,7 +1118,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="newsletter" title="6.13 Newsletter Section" description="Email signup forms" fullWidth>
+            <ComponentSection id="newsletter" title="6.14 Newsletter Section" description="Email signup forms" fullWidth>
               <Newsletter
                 badge="Stay Updated"
                 title="Subscribe to our newsletter"
@@ -948,7 +1129,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="content" title="6.14 Content Section" description="Split content with images" fullWidth>
+            <ComponentSection id="content" title="6.15 Content Section" description="Split content with images" fullWidth>
               <Content
                 badge="Why Us"
                 title="Built for sales teams that want to win"
@@ -964,7 +1145,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="integrations" title="6.15 Integrations Section" description="Integration logos and cards" fullWidth>
+            <ComponentSection id="integrations" title="6.16 Integrations Section" description="Integration logos and cards" fullWidth>
               <Integrations
                 badge="Integrations"
                 title="Works with your favorite tools"
@@ -981,7 +1162,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="video" title="6.16 Video Section" description="Embedded video with thumbnail" fullWidth>
+            <ComponentSection id="video" title="6.17 Video Section" description="Embedded video with thumbnail" fullWidth>
               <Video
                 badge="See It In Action"
                 title="Watch a quick demo"
@@ -993,7 +1174,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="banner" title="6.17 Banner Section" description="Promotional banners" fullWidth>
+            <ComponentSection id="banner" title="6.18 Banner Section" description="Promotional banners" fullWidth>
               <div className="py-8">
                 <Banner
                   text="New feature alert! Check out our latest territory insights dashboard."
@@ -1006,7 +1187,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="gallery" title="6.18 Gallery Section" description="Image gallery with lightbox" fullWidth>
+            <ComponentSection id="gallery" title="6.19 Gallery Section" description="Image gallery with lightbox" fullWidth>
               <Gallery
                 badge="Gallery"
                 title="See AccountMap in action"
@@ -1024,7 +1205,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900">
-            <ComponentSection id="download" title="6.19 Download Section" description="App download with store badges" fullWidth>
+            <ComponentSection id="download" title="6.20 Download Section" description="App download with store badges" fullWidth>
               <Download
                 badge="Get Started"
                 title="Download the app"
