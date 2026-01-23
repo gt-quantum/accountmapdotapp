@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -570,5 +571,643 @@ Features.Icons = {
   ),
 };
 
+// Tabs Features (interactive tabs)
+Features.Tabs = function FeaturesTabs({
+  badge,
+  title,
+  subtitle,
+  features = [],
+  className = '',
+}) {
+  const [activeTab, setActiveTab] = useState(0);
+
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        {/* Tab buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <button
+                key={index}
+                onClick={() => setActiveTab(index)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                  activeTab === index
+                    ? 'bg-green-main text-white'
+                    : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
+                }`}
+              >
+                {Icon && <Icon className="w-5 h-5" />}
+                <span>{feature.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tab content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid lg:grid-cols-2 gap-8 items-center"
+          >
+            {/* Content */}
+            <div>
+              <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                {features[activeTab].title}
+              </h3>
+              <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
+                {features[activeTab].description}
+              </p>
+              {features[activeTab].points && (
+                <ul className="space-y-3">
+                  {features[activeTab].points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <svg className="w-5 h-5 text-green-main shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-stone-700 dark:text-stone-300">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* Image */}
+            {features[activeTab].image && (
+              <div className="rounded-2xl overflow-hidden bg-stone-100 dark:bg-stone-800">
+                <img
+                  src={features[activeTab].image}
+                  alt={features[activeTab].title}
+                  className="w-full h-auto"
+                />
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+};
+
+// Accordion Features
+Features.Accordion = function FeaturesAccordion({
+  badge,
+  title,
+  subtitle,
+  features = [],
+  image,
+  imageAlt = '',
+  className = '',
+}) {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Accordion */}
+          <div className="space-y-4">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              const isOpen = openIndex === index;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={false}
+                  className={`rounded-xl border transition-colors ${
+                    isOpen
+                      ? 'border-green-main/50 bg-green-lightest/30 dark:bg-green-dark/10'
+                      : 'border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800/50'
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    className="w-full flex items-center gap-4 p-5 text-left"
+                  >
+                    {Icon && (
+                      <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
+                        isOpen
+                          ? 'bg-green-main text-white'
+                          : 'bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light'
+                      }`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-stone-900 dark:text-stone-100">
+                        {feature.title}
+                      </h3>
+                    </div>
+                    <motion.svg
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      className="w-5 h-5 text-stone-500 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </motion.svg>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-5 pl-19">
+                          <p className="text-stone-600 dark:text-stone-400">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Image */}
+          {image && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="sticky top-24 rounded-2xl overflow-hidden bg-stone-100 dark:bg-stone-800 lg:block hidden"
+            >
+              <img src={image} alt={imageAlt} className="w-full h-auto" />
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Timeline Features
+Features.Timeline = function FeaturesTimeline({
+  badge,
+  title,
+  subtitle,
+  features = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-stone-200 dark:bg-stone-700" />
+
+          <div className="space-y-12">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative pl-20"
+                >
+                  {/* Timeline dot/icon */}
+                  <div className="absolute left-4 w-8 h-8 rounded-full bg-green-main text-white flex items-center justify-center shadow-lg">
+                    {Icon ? (
+                      <Icon className="w-4 h-4" />
+                    ) : (
+                      <span className="text-sm font-bold">{index + 1}</span>
+                    )}
+                  </div>
+
+                  <div className="p-6 rounded-xl bg-white dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700">
+                    <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-stone-600 dark:text-stone-400">
+                      {feature.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Alternating Features (zig-zag layout)
+Features.Alternating = function FeaturesAlternating({
+  badge,
+  title,
+  subtitle,
+  features = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-24">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            const isEven = index % 2 === 0;
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${
+                  isEven ? '' : 'lg:[direction:rtl]'
+                }`}
+              >
+                {/* Content */}
+                <div className={isEven ? '' : 'lg:[direction:ltr]'}>
+                  {Icon && (
+                    <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-xl bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                  )}
+                  <h3 className="text-2xl lg:text-3xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-lg text-stone-600 dark:text-stone-400 mb-6">
+                    {feature.description}
+                  </p>
+                  {feature.points && (
+                    <ul className="space-y-3">
+                      {feature.points.map((point, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <svg className="w-5 h-5 text-green-main shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-stone-700 dark:text-stone-300">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+
+                {/* Image */}
+                {feature.image && (
+                  <div className={`rounded-2xl overflow-hidden bg-stone-100 dark:bg-stone-800 ${isEven ? '' : 'lg:[direction:ltr]'}`}>
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Showcase Features (feature points around a central image)
+Features.Showcase = function FeaturesShowcase({
+  badge,
+  title,
+  subtitle,
+  image,
+  imageAlt = '',
+  leftFeatures = [],
+  rightFeatures = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8 items-center">
+          {/* Left features */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {leftFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div key={index} className="text-right">
+                  <div className="inline-flex items-center justify-center w-10 h-10 mb-3 rounded-lg bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+                    {Icon && <Icon className="w-5 h-5" />}
+                  </div>
+                  <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-stone-600 dark:text-stone-400">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
+          </motion.div>
+
+          {/* Center image */}
+          {image && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <img src={image} alt={imageAlt} className="w-full h-auto" />
+            </motion.div>
+          )}
+
+          {/* Right features */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {rightFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div key={index}>
+                  <div className="inline-flex items-center justify-center w-10 h-10 mb-3 rounded-lg bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+                    {Icon && <Icon className="w-5 h-5" />}
+                  </div>
+                  <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-stone-600 dark:text-stone-400">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Comparison Features (before/after or vs comparison)
+Features.Comparison = function FeaturesComparison({
+  badge,
+  title,
+  subtitle,
+  before,
+  after,
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Before */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="p-8 rounded-2xl bg-stone-100 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400 text-sm font-medium">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              {before.label || 'Without'}
+            </div>
+            <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 mb-4">
+              {before.title}
+            </h3>
+            <ul className="space-y-3">
+              {before.points?.map((point, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-stone-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span className="text-stone-600 dark:text-stone-400">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* After */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="p-8 rounded-2xl bg-gradient-to-br from-green-lightest to-green-light/30 dark:from-green-dark/20 dark:to-green-dark/5 border border-green-main/20"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-green-main text-white text-sm font-medium">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              {after.label || 'With AccountMap'}
+            </div>
+            <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 mb-4">
+              {after.title}
+            </h3>
+            <ul className="space-y-3">
+              {after.points?.map((point, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-main shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-stone-700 dark:text-stone-300">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Numbered Features (step by step with large numbers)
+Features.Numbered = function FeaturesNumbered({
+  badge,
+  title,
+  subtitle,
+  features = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          {badge && (
+            <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+              {badge}
+            </span>
+          )}
+          {title && (
+            <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className="mt-4 text-lg text-stone-600 dark:text-stone-400">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="relative"
+            >
+              {/* Large number */}
+              <span className="text-8xl font-bold text-green-lightest dark:text-green-dark/20 absolute -top-4 -left-2 select-none">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <div className="relative pt-8 pl-4">
+                <h3 className="text-xl font-semibold text-stone-900 dark:text-stone-100 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-stone-600 dark:text-stone-400">
+                  {feature.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Export variant list
 Features.variants = ['cards', 'simple', 'horizontal', 'centered', 'largeIcons', 'iconList', 'bento'];
+Features.subComponents = ['Tabs', 'Accordion', 'Timeline', 'Alternating', 'Showcase', 'Comparison', 'Numbered'];

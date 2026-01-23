@@ -562,5 +562,396 @@ Stats.Icons = {
   ),
 };
 
+// Circular/Radial Stats
+Stats.Radial = function StatsRadial({
+  stats = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-8 lg:gap-16"
+        >
+          {stats.map((stat, index) => (
+            <RadialStat key={index} stat={stat} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+function RadialStat({ stat }) {
+  const { value, label, maxValue = 100, prefix = '', suffix = '', color = 'green' } = stat;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const numericValue = typeof value === 'number' ? value : parseFloat(value) || 0;
+  const percent = (numericValue / maxValue) * 100;
+
+  const colorClasses = {
+    green: 'stroke-green-main',
+    brass: 'stroke-brass-main',
+    blue: 'stroke-blue-500',
+  };
+
+  const circumference = 2 * Math.PI * 40;
+  const strokeDashoffset = circumference - (percent / 100) * circumference;
+
+  return (
+    <motion.div ref={ref} variants={itemVariants} className="text-center">
+      <div className="relative w-32 h-32 mx-auto mb-4">
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+          {/* Background circle */}
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="8"
+            className="text-stone-200 dark:text-stone-700"
+          />
+          {/* Progress circle */}
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            strokeWidth="8"
+            strokeLinecap="round"
+            className={colorClasses[color]}
+            style={{
+              strokeDasharray: circumference,
+            }}
+            initial={{ strokeDashoffset: circumference }}
+            animate={isInView ? { strokeDashoffset } : { strokeDashoffset: circumference }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+          />
+        </svg>
+        {/* Center value */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-2xl font-bold text-stone-900 dark:text-stone-100">
+            {prefix}
+            {typeof value === 'number' ? <AnimatedNumber value={value} isInView={isInView} /> : value}
+            {suffix}
+          </span>
+        </div>
+      </div>
+      <div className="text-stone-600 dark:text-stone-400 font-medium">{label}</div>
+    </motion.div>
+  );
+}
+
+// Big Number Stats (single large stat with context)
+Stats.BigNumber = function StatsBigNumber({
+  stat,
+  context,
+  cta,
+  className = '',
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const { value, label, prefix = '', suffix = '' } = stat;
+  const isNumber = typeof value === 'number';
+
+  return (
+    <section ref={ref} className={`py-24 sm:py-32 ${className}`}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="text-7xl sm:text-8xl lg:text-9xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+            {prefix}
+            {isNumber ? <AnimatedNumber value={value} isInView={isInView} /> : value}
+            {suffix}
+          </div>
+          <div className="text-xl sm:text-2xl text-stone-600 dark:text-stone-400 mb-2">
+            {label}
+          </div>
+          {context && (
+            <p className="text-stone-500 dark:text-stone-400 max-w-xl mx-auto">
+              {context}
+            </p>
+          )}
+          {cta && (
+            <div className="mt-8">
+              <a
+                href={cta.href}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-green-main hover:bg-green-dark text-white font-medium transition-colors"
+              >
+                {cta.text}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Split Stats (image on one side, stats on other)
+Stats.Split = function StatsSplit({
+  badge,
+  title,
+  subtitle,
+  stats = [],
+  image,
+  imageAlt = '',
+  imagePosition = 'right',
+  className = '',
+}) {
+  const isImageLeft = imagePosition === 'left';
+
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`grid lg:grid-cols-2 gap-12 items-center ${isImageLeft ? 'lg:[direction:rtl]' : ''}`}>
+          {/* Content */}
+          <div className={isImageLeft ? 'lg:[direction:ltr]' : ''}>
+            {badge && (
+              <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-green-lightest text-green-dark dark:bg-green-dark/20 dark:text-green-light">
+                {badge}
+              </span>
+            )}
+            {title && (
+              <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 tracking-tight mb-4">
+                {title}
+              </h2>
+            )}
+            {subtitle && (
+              <p className="text-lg text-stone-600 dark:text-stone-400 mb-8">
+                {subtitle}
+              </p>
+            )}
+
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-8"
+            >
+              {stats.map((stat, index) => {
+                const { value, label, prefix = '', suffix = '' } = stat;
+                const ref = useRef(null);
+                const isInView = useInView(ref, { once: true });
+                const isNumber = typeof value === 'number';
+
+                return (
+                  <motion.div key={index} ref={ref} variants={itemVariants}>
+                    <div className="text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100 mb-1">
+                      {prefix}
+                      {isNumber ? <AnimatedNumber value={value} isInView={isInView} /> : value}
+                      {suffix}
+                    </div>
+                    <div className="text-stone-600 dark:text-stone-400">{label}</div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+
+          {/* Image */}
+          {image && (
+            <motion.div
+              initial={{ opacity: 0, x: isImageLeft ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className={`rounded-2xl overflow-hidden bg-stone-100 dark:bg-stone-800 ${isImageLeft ? 'lg:[direction:ltr]' : ''}`}
+            >
+              <img src={image} alt={imageAlt} className="w-full h-auto" />
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Ticker/Marquee Stats
+Stats.Ticker = function StatsTicker({
+  stats = [],
+  speed = 30,
+  className = '',
+}) {
+  const duplicated = [...stats, ...stats];
+
+  return (
+    <section className={`py-8 bg-stone-900 dark:bg-stone-800 overflow-hidden ${className}`}>
+      <div
+        className="flex gap-12 whitespace-nowrap"
+        style={{
+          animation: `ticker ${speed}s linear infinite`,
+        }}
+      >
+        {duplicated.map((stat, index) => (
+          <div key={index} className="flex items-center gap-3">
+            <span className="text-2xl font-bold text-white">
+              {stat.prefix}{stat.value}{stat.suffix}
+            </span>
+            <span className="text-stone-400">{stat.label}</span>
+            <span className="text-stone-600 mx-4">|</span>
+          </div>
+        ))}
+      </div>
+      <style>{`
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+// Gradient Background Stats
+Stats.Gradient = function StatsGradient({
+  badge,
+  title,
+  subtitle,
+  stats = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 relative overflow-hidden ${className}`}>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-dark via-green-main to-green-light opacity-90" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {(badge || title || subtitle) && (
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            {badge && (
+              <span className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-white/20 text-white">
+                {badge}
+              </span>
+            )}
+            {title && (
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                {title}
+              </h2>
+            )}
+            {subtitle && (
+              <p className="mt-4 text-lg text-white/80">
+                {subtitle}
+              </p>
+            )}
+          </div>
+        )}
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {stats.map((stat, index) => {
+            const { value, label, prefix = '', suffix = '', icon: Icon } = stat;
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: true });
+            const isNumber = typeof value === 'number';
+
+            return (
+              <motion.div
+                key={index}
+                ref={ref}
+                variants={itemVariants}
+                className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-sm"
+              >
+                {Icon && (
+                  <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-xl bg-white/20 text-white">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                )}
+                <div className="text-4xl font-bold text-white mb-1">
+                  {prefix}
+                  {isNumber ? <AnimatedNumber value={value} isInView={isInView} /> : value}
+                  {suffix}
+                </div>
+                <div className="text-white/70">{label}</div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Comparison Stats (side by side comparison)
+Stats.Compare = function StatsCompare({
+  title,
+  leftLabel,
+  rightLabel,
+  stats = [],
+  className = '',
+}) {
+  return (
+    <section className={`py-16 sm:py-24 ${className}`}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {title && (
+          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100 text-center mb-12">
+            {title}
+          </h2>
+        )}
+
+        {/* Labels */}
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="text-right font-medium text-stone-500 dark:text-stone-400">
+            {leftLabel}
+          </div>
+          <div />
+          <div className="font-medium text-green-dark dark:text-green-light">
+            {rightLabel}
+          </div>
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-6"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="grid grid-cols-3 gap-4 items-center"
+            >
+              <div className="text-right">
+                <span className="text-2xl font-bold text-stone-400">
+                  {stat.leftPrefix}{stat.leftValue}{stat.leftSuffix}
+                </span>
+              </div>
+              <div className="text-center">
+                <span className="text-sm font-medium text-stone-600 dark:text-stone-400 bg-stone-100 dark:bg-stone-800 px-3 py-1 rounded-full">
+                  {stat.label}
+                </span>
+              </div>
+              <div>
+                <span className="text-2xl font-bold text-green-dark dark:text-green-light">
+                  {stat.rightPrefix}{stat.rightValue}{stat.rightSuffix}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Export variant list
 Stats.variants = ['default', 'cards', 'icons', 'trends', 'progress', 'dark', 'inline'];
+Stats.subComponents = ['Radial', 'BigNumber', 'Split', 'Ticker', 'Gradient', 'Compare'];
