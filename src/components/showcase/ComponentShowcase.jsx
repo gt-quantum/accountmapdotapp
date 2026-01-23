@@ -36,6 +36,16 @@ import Stats from '../sections/Stats';
 import Timeline from '../sections/Timeline';
 import Testimonials from '../sections/Testimonials';
 import Contact from '../sections/Contact';
+import LogoCloud from '../sections/LogoCloud';
+import Team from '../sections/Team';
+import Comparison from '../sections/Comparison';
+import Newsletter from '../sections/Newsletter';
+import Content from '../sections/Content';
+import Integrations from '../sections/Integrations';
+import Video from '../sections/Video';
+import Banner from '../sections/Banner';
+import Gallery from '../sections/Gallery';
+import Download from '../sections/Download';
 
 // Layout
 import Container from '../layout/Container';
@@ -77,6 +87,16 @@ export default function ComponentShowcase() {
     { id: 'timeline', label: '6.4 Timeline', category: 'Sections' },
     { id: 'testimonials', label: '6.5 Testimonials', category: 'Sections' },
     { id: 'contact', label: '6.6 Contact', category: 'Sections' },
+    { id: 'logocloud', label: '6.7 Logo Cloud', category: 'Sections' },
+    { id: 'team', label: '6.8 Team', category: 'Sections' },
+    { id: 'comparison', label: '6.9 Comparison', category: 'Sections' },
+    { id: 'newsletter', label: '6.10 Newsletter', category: 'Sections' },
+    { id: 'content', label: '6.11 Content', category: 'Sections' },
+    { id: 'integrations', label: '6.12 Integrations', category: 'Sections' },
+    { id: 'video', label: '6.13 Video', category: 'Sections' },
+    { id: 'banner', label: '6.14 Banner', category: 'Sections' },
+    { id: 'gallery', label: '6.15 Gallery', category: 'Sections' },
+    { id: 'download', label: '6.16 Download', category: 'Sections' },
   ];
 
   const categories = [...new Set(sections.map(s => s.category))];
@@ -666,13 +686,188 @@ export default function ComponentShowcase() {
             </ComponentSection>
           </div>
 
-          <div className="-mx-8 bg-stone-50 dark:bg-stone-900">
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
             <ComponentSection id="contact" title="6.6 Contact Section" description="Contact forms" fullWidth>
               <Contact
                 badge="Contact"
                 title="Get in touch"
                 subtitle="We'd love to hear from you"
                 variant="centered"
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="logocloud" title="6.7 Logo Cloud" description="Client and partner logos" fullWidth>
+              <LogoCloud
+                title="Trusted by industry leaders"
+                logos={[
+                  { name: 'Acme Corp', logo: 'https://placehold.co/120x40/e5e7eb/9ca3af?text=Acme' },
+                  { name: 'Globex', logo: 'https://placehold.co/120x40/e5e7eb/9ca3af?text=Globex' },
+                  { name: 'Stark Inc', logo: 'https://placehold.co/120x40/e5e7eb/9ca3af?text=Stark' },
+                  { name: 'Wayne Co', logo: 'https://placehold.co/120x40/e5e7eb/9ca3af?text=Wayne' },
+                  { name: 'Umbrella', logo: 'https://placehold.co/120x40/e5e7eb/9ca3af?text=Umbrella' },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="team" title="6.8 Team Section" description="Team member profiles" fullWidth>
+              <Team
+                badge="Our Team"
+                title="Meet the people behind AccountMap"
+                members={[
+                  {
+                    name: 'Sarah Chen',
+                    role: 'CEO & Founder',
+                    bio: 'Former VP of Sales at TechCorp',
+                    avatar: 'https://placehold.co/200x200/22c55e/ffffff?text=SC',
+                    social: {
+                      twitter: '#',
+                      linkedin: '#',
+                    },
+                  },
+                  {
+                    name: 'Michael Brown',
+                    role: 'CTO',
+                    bio: 'Engineering lead for 10+ years',
+                    avatar: 'https://placehold.co/200x200/3b82f6/ffffff?text=MB',
+                    social: {
+                      twitter: '#',
+                      linkedin: '#',
+                    },
+                  },
+                  {
+                    name: 'Emily Davis',
+                    role: 'Head of Product',
+                    bio: 'Product strategist and designer',
+                    avatar: 'https://placehold.co/200x200/eab308/ffffff?text=ED',
+                    social: {
+                      twitter: '#',
+                      linkedin: '#',
+                    },
+                  },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="comparison" title="6.9 Comparison Section" description="Feature comparison tables" fullWidth>
+              <Comparison
+                badge="Compare"
+                title="How we stack up"
+                features={[
+                  { name: 'Visual Territory Mapping', us: true, competitor: false },
+                  { name: 'CRM Integration', us: true, competitor: true },
+                  { name: 'Real-time Collaboration', us: true, competitor: false },
+                  { name: 'Custom Reports', us: true, competitor: 'Limited' },
+                  { name: 'API Access', us: true, competitor: 'Enterprise only' },
+                  { name: 'Mobile App', us: true, competitor: true },
+                ]}
+                usLabel="AccountMap"
+                competitorLabel="Others"
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="newsletter" title="6.10 Newsletter Section" description="Email signup forms" fullWidth>
+              <Newsletter
+                badge="Stay Updated"
+                title="Subscribe to our newsletter"
+                subtitle="Get the latest news and updates delivered to your inbox."
+                variant="card"
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="content" title="6.11 Content Section" description="Split content with images" fullWidth>
+              <Content
+                badge="Why Us"
+                title="Built for sales teams that want to win"
+                content="Our platform combines powerful territory mapping with intuitive collaboration tools. Visualize your accounts, plan your strategy, and execute with precision."
+                image="https://placehold.co/600x400/22c55e/ffffff?text=Territory+Map"
+                features={[
+                  'Visual account mapping',
+                  'Real-time team collaboration',
+                  'Integrated with your CRM',
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="integrations" title="6.12 Integrations Section" description="Integration logos and cards" fullWidth>
+              <Integrations
+                badge="Integrations"
+                title="Works with your favorite tools"
+                subtitle="Connect AccountMap to your existing workflow"
+                columns={4}
+                integrations={[
+                  { name: 'Salesforce', logo: 'https://placehold.co/48x48/00a1e0/ffffff?text=SF', status: 'available' },
+                  { name: 'HubSpot', logo: 'https://placehold.co/48x48/ff7a59/ffffff?text=HS', status: 'available' },
+                  { name: 'Slack', logo: 'https://placehold.co/48x48/4a154b/ffffff?text=SL', status: 'available' },
+                  { name: 'Zapier', logo: 'https://placehold.co/48x48/ff4a00/ffffff?text=ZP', status: 'coming' },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="video" title="6.13 Video Section" description="Embedded video with thumbnail" fullWidth>
+              <Video
+                badge="See It In Action"
+                title="Watch a quick demo"
+                subtitle="Learn how AccountMap can transform your sales planning in just 2 minutes."
+                videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                thumbnailUrl="https://placehold.co/800x450/22c55e/ffffff?text=Video+Thumbnail"
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="banner" title="6.14 Banner Section" description="Promotional banners" fullWidth>
+              <div className="py-8">
+                <Banner
+                  text="New feature alert! Check out our latest territory insights dashboard."
+                  cta={{ text: 'Learn more', href: '#' }}
+                  variant="gradient"
+                  dismissible={false}
+                />
+              </div>
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="gallery" title="6.15 Gallery Section" description="Image gallery with lightbox" fullWidth>
+              <Gallery
+                badge="Gallery"
+                title="See AccountMap in action"
+                columns={3}
+                images={[
+                  { src: 'https://placehold.co/400x300/22c55e/ffffff?text=Dashboard', alt: 'Dashboard', caption: 'Main Dashboard' },
+                  { src: 'https://placehold.co/400x300/3b82f6/ffffff?text=Map+View', alt: 'Map View', caption: 'Territory Map' },
+                  { src: 'https://placehold.co/400x300/eab308/ffffff?text=Reports', alt: 'Reports', caption: 'Analytics Reports' },
+                  { src: 'https://placehold.co/400x300/ef4444/ffffff?text=Team', alt: 'Team', caption: 'Team Collaboration' },
+                  { src: 'https://placehold.co/400x300/8b5cf6/ffffff?text=Mobile', alt: 'Mobile', caption: 'Mobile App' },
+                  { src: 'https://placehold.co/400x300/06b6d4/ffffff?text=Settings', alt: 'Settings', caption: 'Settings Panel' },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900">
+            <ComponentSection id="download" title="6.16 Download Section" description="App download with store badges" fullWidth>
+              <Download
+                badge="Get Started"
+                title="Download the app"
+                subtitle="Available on all platforms. Start mapping your territory today."
+                appStoreUrl="#"
+                playStoreUrl="#"
+                desktopUrl="#"
               />
             </ComponentSection>
           </div>
