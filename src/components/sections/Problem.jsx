@@ -40,31 +40,12 @@ const insights = [
 export default function Problem() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950" />
+      {/* Semi-transparent dark overlay */}
+      <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-900/90 backdrop-blur-sm" />
 
-      {/* Animated gradient orbs */}
-      <motion.div
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-green-500/10 to-emerald-500/5 blur-3xl"
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-electric-500/10 to-violet-500/10 blur-3xl"
-        animate={{
-          x: [0, -20, 0],
-          y: [0, 20, 0],
-          scale: [1, 1.15, 1],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-grid opacity-20" />
+      {/* Subtle inner glow accents */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-green-500/10 to-emerald-500/5 blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-electric-500/10 to-violet-500/10 blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}

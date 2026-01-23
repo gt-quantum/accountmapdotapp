@@ -63,9 +63,6 @@ const colorClasses = {
 export default function Framework() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" id="how-it-works">
-      {/* Subtle background that shows through glass elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-white to-slate-50/80 dark:from-slate-900/80 dark:via-slate-950 dark:to-slate-900/80" />
-      <div className="absolute inset-0 bg-grid opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}

@@ -3,36 +3,6 @@ import { motion } from 'framer-motion';
 export default function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Base background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-
-      {/* Animated map-like grid background */}
-      <div className="absolute inset-0 bg-grid opacity-60" />
-
-      {/* Subtle animated gradient accent - more on-theme, like territory regions */}
-      <motion.div
-        className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)',
-        }}
-        animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.6, 0.8, 0.6],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%)',
-        }}
-        animate={{
-          scale: [1, 1.08, 1],
-          opacity: [0.5, 0.7, 0.5],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text content in glass panel */}

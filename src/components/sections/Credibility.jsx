@@ -10,14 +10,12 @@ const stats = [
 export default function Credibility() {
   return (
     <section className="relative py-16 lg:py-20 overflow-hidden">
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-800" />
+      {/* Semi-transparent dark overlay */}
+      <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-900/90 backdrop-blur-sm" />
 
-      {/* Animated mesh overlay */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-electric-500/20 rounded-full blur-3xl" />
-      </div>
+      {/* Subtle glow accents */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-electric-500/10 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Stats grid */}
