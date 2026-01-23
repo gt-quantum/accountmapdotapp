@@ -11,14 +11,22 @@ import Select from '../ui/Select';
 import Checkbox from '../ui/Checkbox';
 import Toggle from '../ui/Toggle';
 import Radio from '../ui/Radio';
+import FileInput from '../ui/FileInput';
 import Alert from '../ui/Alert';
 import Spinner from '../ui/Spinner';
 import Skeleton from '../ui/Skeleton';
+import { ToastProvider, useToast } from '../ui/Toast';
+import Progress from '../ui/Progress';
 import Modal from '../ui/Modal';
 import Accordion from '../ui/Accordion';
 import Tabs from '../ui/Tabs';
 import Dropdown from '../ui/Dropdown';
 import Tooltip from '../ui/Tooltip';
+import Drawer from '../ui/Drawer';
+import Breadcrumbs from '../ui/Breadcrumbs';
+import Pagination from '../ui/Pagination';
+import Table from '../ui/Table';
+import Carousel from '../ui/Carousel';
 import Divider from '../ui/Divider';
 
 // Section Components
@@ -46,15 +54,23 @@ export default function ComponentShowcase() {
     { id: 'selects', label: '2.2 Selects', category: 'Form Inputs' },
     { id: 'checkboxes', label: '2.3 Checkboxes & Toggles', category: 'Form Inputs' },
     { id: 'radios', label: '2.4 Radio Buttons', category: 'Form Inputs' },
+    { id: 'fileinput', label: '2.5 File Input', category: 'Form Inputs' },
     { id: 'alerts', label: '3.1 Alerts', category: 'Feedback' },
     { id: 'spinners', label: '3.2 Spinners', category: 'Feedback' },
     { id: 'skeletons', label: '3.3 Skeletons', category: 'Feedback' },
+    { id: 'toasts', label: '3.4 Toasts', category: 'Feedback' },
+    { id: 'progress', label: '3.5 Progress', category: 'Feedback' },
     { id: 'modals', label: '4.1 Modals', category: 'Interactive' },
     { id: 'accordions', label: '4.2 Accordions', category: 'Interactive' },
     { id: 'tabs', label: '4.3 Tabs', category: 'Interactive' },
     { id: 'dropdowns', label: '4.4 Dropdowns', category: 'Interactive' },
     { id: 'tooltips', label: '4.5 Tooltips', category: 'Interactive' },
-    { id: 'dividers', label: '5.1 Dividers', category: 'Layout' },
+    { id: 'drawers', label: '4.6 Drawers', category: 'Interactive' },
+    { id: 'carousel', label: '4.7 Carousel', category: 'Interactive' },
+    { id: 'breadcrumbs', label: '5.1 Breadcrumbs', category: 'Navigation' },
+    { id: 'pagination', label: '5.2 Pagination', category: 'Navigation' },
+    { id: 'tables', label: '5.3 Tables', category: 'Data Display' },
+    { id: 'dividers', label: '5.4 Dividers', category: 'Layout' },
     { id: 'features', label: '6.1 Features', category: 'Sections' },
     { id: 'pricing', label: '6.2 Pricing', category: 'Sections' },
     { id: 'stats', label: '6.3 Stats', category: 'Sections' },
@@ -66,6 +82,7 @@ export default function ComponentShowcase() {
   const categories = [...new Set(sections.map(s => s.category))];
 
   return (
+    <ToastProvider>
     <div className="min-h-screen bg-stone-50 dark:bg-stone-900">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-700">
@@ -262,6 +279,26 @@ export default function ComponentShowcase() {
             <RadioDemo />
           </ComponentSection>
 
+          <ComponentSection id="fileinput" title="2.5 File Input" description="File upload with drag and drop">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Default Style</p>
+                <FileInput label="Upload file" accept=".pdf,.doc,.docx" />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Dropzone Style</p>
+                <FileInput
+                  variant="dropzone"
+                  label="Upload documents"
+                  accept=".pdf,.png,.jpg"
+                  multiple
+                  maxSize={5 * 1024 * 1024}
+                  hint="PDF, PNG, or JPG up to 5MB"
+                />
+              </div>
+            </div>
+          </ComponentSection>
+
           {/* 3. Feedback */}
           <ComponentSection id="alerts" title="3.1 Alerts" description="Alert messages for user feedback">
             <div className="space-y-4">
@@ -333,6 +370,43 @@ export default function ComponentShowcase() {
             </div>
           </ComponentSection>
 
+          <ComponentSection id="toasts" title="3.4 Toasts" description="Toast notifications for user feedback">
+            <ToastDemo />
+          </ComponentSection>
+
+          <ComponentSection id="progress" title="3.5 Progress" description="Progress bars and indicators">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <Progress value={25} label="Basic Progress" showValue />
+                <Progress value={50} variant="secondary" showValue />
+                <Progress value={75} variant="success" showValue />
+                <Progress value={100} variant="info" showValue />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Sizes</p>
+                <div className="space-y-3">
+                  <Progress value={60} size="xs" />
+                  <Progress value={60} size="sm" />
+                  <Progress value={60} size="md" />
+                  <Progress value={60} size="lg" />
+                </div>
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Indeterminate</p>
+                <Progress indeterminate />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Radial Progress</p>
+                <div className="flex flex-wrap gap-6">
+                  <Progress.Radial value={25} size="sm" />
+                  <Progress.Radial value={50} size="md" />
+                  <Progress.Radial value={75} size="lg" />
+                  <Progress.Radial value={100} size="lg" variant="success" />
+                </div>
+              </div>
+            </div>
+          </ComponentSection>
+
           {/* 4. Interactive */}
           <ComponentSection id="modals" title="4.1 Modals" description="Modal dialogs for focused interactions">
             <ModalDemo />
@@ -386,8 +460,92 @@ export default function ComponentShowcase() {
             </div>
           </ComponentSection>
 
-          {/* 5. Layout */}
-          <ComponentSection id="dividers" title="5.1 Dividers" description="Visual separators">
+          <ComponentSection id="drawers" title="4.6 Drawers" description="Slide-out panels for secondary content">
+            <DrawerDemo />
+          </ComponentSection>
+
+          <ComponentSection id="carousel" title="4.7 Carousel" description="Image and content carousels">
+            <div className="space-y-8">
+              <Carousel showArrows showDots className="h-64 rounded-xl overflow-hidden bg-stone-200 dark:bg-stone-700">
+                <div className="h-64 flex items-center justify-center bg-gradient-to-r from-green-light to-green-main text-white text-2xl font-bold">
+                  Slide 1
+                </div>
+                <div className="h-64 flex items-center justify-center bg-gradient-to-r from-brass-light to-brass-main text-white text-2xl font-bold">
+                  Slide 2
+                </div>
+                <div className="h-64 flex items-center justify-center bg-gradient-to-r from-blue-400 to-blue-600 text-white text-2xl font-bold">
+                  Slide 3
+                </div>
+              </Carousel>
+            </div>
+          </ComponentSection>
+
+          {/* 5. Navigation & Data */}
+          <ComponentSection id="breadcrumbs" title="5.1 Breadcrumbs" description="Navigation breadcrumb trails">
+            <div className="space-y-6">
+              <Breadcrumbs>
+                <Breadcrumbs.Item href="/" icon={Breadcrumbs.HomeIcon}>Home</Breadcrumbs.Item>
+                <Breadcrumbs.Item href="/products">Products</Breadcrumbs.Item>
+                <Breadcrumbs.Item href="/products/maps">Maps</Breadcrumbs.Item>
+                <Breadcrumbs.Item current>Territory Map</Breadcrumbs.Item>
+              </Breadcrumbs>
+            </div>
+          </ComponentSection>
+
+          <ComponentSection id="pagination" title="5.2 Pagination" description="Page navigation controls">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Full Pagination</p>
+                <PaginationDemo />
+              </div>
+              <div>
+                <p className="text-sm text-stone-500 mb-3">Simple Pagination</p>
+                <SimplePaginationDemo />
+              </div>
+            </div>
+          </ComponentSection>
+
+          <ComponentSection id="tables" title="5.3 Tables" description="Data tables with sorting">
+            <Table striped hoverable>
+              <Table.Head>
+                <Table.Row>
+                  <Table.Header>Name</Table.Header>
+                  <Table.Header>Role</Table.Header>
+                  <Table.Header>Status</Table.Header>
+                  <Table.Header align="right">Actions</Table.Header>
+                </Table.Row>
+              </Table.Head>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>John Doe</Table.Cell>
+                  <Table.Cell>Sales Rep</Table.Cell>
+                  <Table.Cell><Badge variant="success" dot>Active</Badge></Table.Cell>
+                  <Table.Cell align="right">
+                    <Button variant="secondary">Edit</Button>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Jane Smith</Table.Cell>
+                  <Table.Cell>Account Exec</Table.Cell>
+                  <Table.Cell><Badge variant="success" dot>Active</Badge></Table.Cell>
+                  <Table.Cell align="right">
+                    <Button variant="secondary">Edit</Button>
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Bob Johnson</Table.Cell>
+                  <Table.Cell>Manager</Table.Cell>
+                  <Table.Cell><Badge variant="warning" dot>Away</Badge></Table.Cell>
+                  <Table.Cell align="right">
+                    <Button variant="secondary">Edit</Button>
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
+          </ComponentSection>
+
+          {/* Layout */}
+          <ComponentSection id="dividers" title="5.4 Dividers" description="Visual separators">
             <div className="space-y-6">
               <div>
                 <p className="text-sm text-stone-500 mb-2">Solid</p>
@@ -522,6 +680,7 @@ export default function ComponentShowcase() {
         </main>
       </div>
     </div>
+    </ToastProvider>
   );
 }
 
@@ -670,4 +829,84 @@ function DropdownDemo() {
       </Dropdown.Content>
     </Dropdown>
   );
+}
+
+function ToastDemo() {
+  const { toast } = useToast();
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      <Button variant="outline" onClick={() => toast('This is a default toast')}>
+        Default Toast
+      </Button>
+      <Button variant="outline" onClick={() => toast.success('Operation completed successfully!')}>
+        Success Toast
+      </Button>
+      <Button variant="outline" onClick={() => toast.error('Something went wrong')}>
+        Error Toast
+      </Button>
+      <Button variant="outline" onClick={() => toast.warning('Please review your input')}>
+        Warning Toast
+      </Button>
+      <Button variant="outline" onClick={() => toast.info('Here is some information')}>
+        Info Toast
+      </Button>
+      <Button variant="outline" onClick={() => toast.success('Saved!', {
+        title: 'Changes Saved',
+        action: { label: 'Undo', onClick: () => alert('Undone!') }
+      })}>
+        With Action
+      </Button>
+    </div>
+  );
+}
+
+function DrawerDemo() {
+  const [open, setOpen] = useState(false);
+  const [position, setPosition] = useState('right');
+
+  return (
+    <div className="flex flex-wrap gap-3">
+      <Button variant="outline" onClick={() => { setPosition('left'); setOpen(true); }}>
+        Open Left
+      </Button>
+      <Button variant="outline" onClick={() => { setPosition('right'); setOpen(true); }}>
+        Open Right
+      </Button>
+      <Button variant="outline" onClick={() => { setPosition('bottom'); setOpen(true); }}>
+        Open Bottom
+      </Button>
+
+      <Drawer open={open} onClose={() => setOpen(false)} position={position}>
+        <Drawer.Content>
+          <Drawer.Header>Drawer Title</Drawer.Header>
+          <Drawer.Body>
+            <p className="text-stone-600 dark:text-stone-400">
+              This is the drawer content. You can put forms, navigation, or any content here.
+            </p>
+            <div className="mt-4 space-y-3">
+              <Input label="Name" placeholder="Enter name..." />
+              <Input label="Email" placeholder="Enter email..." />
+            </div>
+          </Drawer.Body>
+          <Drawer.Footer>
+            <div className="flex gap-3 justify-end">
+              <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+              <Button variant="primary" onClick={() => setOpen(false)}>Save</Button>
+            </div>
+          </Drawer.Footer>
+        </Drawer.Content>
+      </Drawer>
+    </div>
+  );
+}
+
+function PaginationDemo() {
+  const [page, setPage] = useState(5);
+  return <Pagination currentPage={page} totalPages={20} onPageChange={setPage} />;
+}
+
+function SimplePaginationDemo() {
+  const [page, setPage] = useState(3);
+  return <Pagination.Simple currentPage={page} totalPages={10} onPageChange={setPage} />;
 }
