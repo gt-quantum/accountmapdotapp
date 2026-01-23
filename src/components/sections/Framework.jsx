@@ -63,9 +63,9 @@ const colorClasses = {
 export default function Framework() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" id="how-it-works">
-      {/* Background */}
-      <div className="absolute inset-0 bg-white dark:bg-slate-950" />
-      <div className="absolute inset-0 bg-mesh opacity-50" />
+      {/* Subtle background that shows through glass elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-white to-slate-50/80 dark:from-slate-900/80 dark:via-slate-950 dark:to-slate-900/80" />
+      <div className="absolute inset-0 bg-grid opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -109,15 +109,15 @@ export default function Framework() {
                   transition={{ delay: index * 0.2 }}
                   className="relative"
                 >
-                  {/* Card */}
-                  <div className="relative p-8 rounded-3xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                    {/* Number badge */}
-                    <div className={`absolute -top-4 left-8 px-4 py-1 rounded-full bg-gradient-to-r ${colors.gradient} text-white text-sm font-bold shadow-lg`}>
+                  {/* Glow Card with shimmer border */}
+                  <div className="glow-card shimmer-border relative p-8 group">
+                    {/* Number badge with glow */}
+                    <div className={`absolute -top-4 left-8 px-4 py-1.5 rounded-full bg-gradient-to-r ${colors.gradient} text-white text-sm font-bold shadow-lg shadow-${step.color}-500/30`}>
                       {step.number}
                     </div>
 
-                    {/* Icon */}
-                    <div className={`w-14 h-14 rounded-2xl ${colors.light} ${colors.text} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {/* Icon with subtle glow */}
+                    <div className={`w-14 h-14 rounded-2xl ${colors.light} ${colors.text} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-${step.color}-500/20 transition-all duration-300`}>
                       {step.icon}
                     </div>
 
@@ -129,8 +129,8 @@ export default function Framework() {
                       {step.description}
                     </p>
 
-                    {/* Decorative gradient blob */}
-                    <div className={`absolute -bottom-2 -right-2 w-24 h-24 rounded-full bg-gradient-to-r ${colors.gradient} opacity-5 blur-2xl group-hover:opacity-10 transition-opacity duration-500`} />
+                    {/* Animated glow blob */}
+                    <div className={`absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gradient-to-r ${colors.gradient} opacity-0 blur-3xl group-hover:opacity-20 transition-all duration-700`} />
                   </div>
                 </motion.div>
               );

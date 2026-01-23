@@ -80,25 +80,29 @@ export default function FinalCTA() {
           >
             <motion.a
               href="#"
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-200"
+              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold shadow-lg shadow-green-500/40 hover:shadow-xl hover:shadow-green-500/60 transition-all duration-300 overflow-hidden"
             >
-              Start free trial
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Pulsing glow */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-green-400 to-emerald-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+              <span className="relative">Start free trial</span>
+              <svg className="w-5 h-5 relative group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </motion.a>
             <motion.a
               href="#"
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white font-semibold border border-white/20 hover:bg-white/20 transition-all duration-200"
+              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 text-white font-semibold border border-white/20 hover:border-white/40 hover:bg-white/20 transition-all duration-300 overflow-hidden"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <svg className="w-5 h-5 relative" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              Schedule a demo
+              <span className="relative">Schedule a demo</span>
             </motion.a>
           </motion.div>
 
@@ -131,17 +135,18 @@ export default function FinalCTA() {
           </motion.div>
         </div>
 
-        {/* Floating feature cards */}
+        {/* Floating feature cards with glow */}
         <div className="hidden lg:block">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.5, y: { duration: 4, repeat: Infinity, ease: 'easeInOut' } }}
             className="absolute left-8 top-1/2 -translate-y-1/2"
+            animate={{ y: [0, -8, 0] }}
           >
-            <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 max-w-[180px]">
-              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-3">
+            <div className="group p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 max-w-[180px] hover:border-green-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20">
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center mb-3 group-hover:shadow-lg group-hover:shadow-green-500/30 transition-shadow">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                 </svg>
@@ -155,11 +160,12 @@ export default function FinalCTA() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.6, y: { duration: 5, repeat: Infinity, ease: 'easeInOut' } }}
             className="absolute right-8 top-1/2 -translate-y-1/2"
+            animate={{ y: [0, 8, 0] }}
           >
-            <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 max-w-[180px]">
-              <div className="w-10 h-10 rounded-xl bg-electric-500/20 text-electric-400 flex items-center justify-center mb-3">
+            <div className="group p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 max-w-[180px] hover:border-electric-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-electric-500/20">
+              <div className="w-10 h-10 rounded-xl bg-electric-500/20 text-electric-400 flex items-center justify-center mb-3 group-hover:shadow-lg group-hover:shadow-electric-500/30 transition-shadow">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
