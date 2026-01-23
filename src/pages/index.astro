@@ -1,137 +1,341 @@
 ---
+/**
+ * Account Map App - Staging Home Page
+ *
+ * This page contains ALL available sections/widgets from the AstroWind theme
+ * so you can evaluate and select which ones to keep for the final MVP.
+ *
+ * Each section is labeled with its source and widget name.
+ * Original home page backed up at: /old-home
+ *
+ * WIDGETS INCLUDED:
+ * - Hero (main index)
+ * - Hero2 (homes/saas, homes/mobile-app)
+ * - HeroText (pricing, contact)
+ * - Note (main index)
+ * - Features (main index, homes/saas, homes/startup)
+ * - Features2 (main index, homes/startup, contact, services)
+ * - Features3 (pricing, homes/startup, homes/mobile-app)
+ * - Content (main index, services, homes/saas, homes/mobile-app)
+ * - Steps (main index, pricing)
+ * - Steps2 (homes/saas)
+ * - Stats (main index, homes/startup, homes/mobile-app)
+ * - Testimonials (services, homes/mobile-app)
+ * - FAQs (main index, homes/saas, homes/startup, pricing, homes/mobile-app)
+ * - Pricing (homes/saas, pricing)
+ * - CallToAction (main index, homes/startup, services, pricing, homes/mobile-app)
+ * - Contact (contact)
+ * - Brands (homes/startup)
+ * - BlogLatestPosts (main index, homes/saas)
+ */
+
 import Layout from '~/layouts/PageLayout.astro';
 
+// Import all widgets
 import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from '~/components/widgets/Contact.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Account Map App - Visualize Your Key Accounts',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <!-- ============================================================ -->
+  <!-- HERO SECTIONS - Choose one for your final page               -->
+  <!-- ============================================================ -->
 
+  <!-- Section from: main index - Hero Widget (image on right) -->
   <Hero
+    id="hero"
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
+        text: 'Get Started Free',
+        href: 'https://my.accountmap.app',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:rocket',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'See Demo', href: '#demo' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', alt: 'Account Map App Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      Visualize Your <span class="text-accent dark:text-white">Key Accounts</span> Like Never Before
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+        <span class="font-semibold">Account Map App</span> helps sales teams map relationships, track engagement, and close bigger deals faster.
+      </span>
+      Turn complex account structures into clear visual maps.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <!-- Section from: homes/saas - Hero2 Widget (alternative layout) -->
+  <Hero2
+    id="hero2"
+    tagline="Alternative Hero Style"
+    actions={[
+      { variant: 'primary', text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank' },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Account Map App Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Map Your Key Accounts <br /> <span class="text-accent dark:text-white">Close Bigger Deals</span>
+    </Fragment>
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Visualize stakeholder relationships and navigate complex sales cycles with confidence.
+      </span>
+      Your complete account intelligence platform.
+    </Fragment>
+  </Hero2>
 
-  <!-- Features Widget *************** -->
+  <!-- Section from: pricing/contact - HeroText Widget (text-only, no image) -->
+  <HeroText
+    id="herotext"
+    tagline="Text-Only Hero"
+    title="Simple, Powerful Account Mapping"
+    subtitle="Choose this style for a clean, text-focused hero section without images."
+  />
 
+  <!-- ============================================================ -->
+  <!-- NOTE WIDGET - Simple callout/highlight                       -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: main index - Note Widget -->
+  <Note title="Why Account Map?" description="Visualize relationships. Identify champions. Close deals faster." />
+
+  <!-- ============================================================ -->
+  <!-- FEATURES SECTIONS - Multiple layout options                  -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: main index - Features Widget (standard grid) -->
   <Features
     id="features"
     tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    title="What you get with Account Map App"
+    subtitle="Everything you need to understand and navigate complex B2B accounts."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+        title: 'Visual Account Maps',
+        description: 'Create stunning visual representations of account org charts and relationships.',
+        icon: 'tabler:sitemap',
       },
       {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+        title: 'Relationship Tracking',
+        description: 'Track champions, blockers, and influencers across every deal.',
+        icon: 'tabler:users',
       },
       {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+        title: 'Engagement Insights',
+        description: 'See who\'s engaged, who\'s gone silent, and where to focus next.',
+        icon: 'tabler:chart-dots',
       },
       {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+        title: 'CRM Integration',
+        description: 'Sync seamlessly with Salesforce, HubSpot, and other leading CRMs.',
+        icon: 'tabler:plug-connected',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+        title: 'Team Collaboration',
+        description: 'Share account maps across your team for aligned selling.',
+        icon: 'tabler:share',
       },
       {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
+        title: 'Deal Intelligence',
+        description: 'Get actionable insights to accelerate your pipeline.',
         icon: 'tabler:bulb',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+  <!-- Section from: homes/saas - Features Widget (2 columns) -->
+  <Features
+    id="features-2col"
+    title="Two-Column Features Layout"
+    subtitle="Alternative features display with 2-column grid."
+    columns={2}
     items={[
       {
-        title: 'Built on top of Astro 5.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+        title: 'Visual Relationship Mapping',
+        description: 'Build dynamic org charts that show the real power structure in your accounts.',
+        icon: 'tabler:layers-union',
       },
       {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+        title: 'Stakeholder Intelligence',
+        description: 'Track every decision-maker, influencer, and champion in one place.',
+        icon: 'tabler:artboard',
       },
       {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+        title: 'Engagement Tracking',
+        description: 'See meeting history, email engagement, and touchpoints at a glance.',
+        icon: 'tabler:writing',
+      },
+      {
+        title: 'Deal Acceleration',
+        description: 'Identify gaps in coverage and prioritize outreach for faster closes.',
+        icon: 'tabler:rocket',
+      },
+    ]}
+  />
+
+  <!-- Section from: main index - Features2 Widget (icon-heavy grid) -->
+  <Features2
+    id="features2"
+    title="Features2 - Icon Grid Style"
+    subtitle="Great for showcasing many features with icons"
+    tagline="Components"
+    items={[
+      {
+        title: 'Account Maps',
+        description: 'Visual org charts that update in real-time.',
+        icon: 'flat-color-icons:org-unit',
+      },
+      {
+        title: 'Relationship Strength',
+        description: 'Score and track the health of key relationships.',
+        icon: 'flat-color-icons:like',
+      },
+      {
+        title: 'Contact Intelligence',
+        description: 'Rich profiles for every stakeholder in your accounts.',
+        icon: 'flat-color-icons:business-contact',
+      },
+      {
+        title: 'Activity Timeline',
+        description: 'Complete history of engagement with each account.',
+        icon: 'flat-color-icons:timeline',
+      },
+      {
+        title: 'Team Collaboration',
+        description: 'Share maps and insights across your sales team.',
+        icon: 'flat-color-icons:conference-call',
+      },
+      {
+        title: 'Analytics Dashboard',
+        description: 'Track account health and engagement metrics.',
+        icon: 'flat-color-icons:combo-chart',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Section from: homes/startup - Features2 Widget (about/services style) -->
+  <Features2
+    id="features2-about"
+    title="About Account Map App"
+    subtitle="We help B2B sales teams visualize complex accounts and close bigger deals. Our platform transforms scattered contact data into actionable relationship intelligence."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Section from: pricing/homes/startup - Features3 Widget (with CTAs) -->
+  <Features3
+    id="features3"
+    title="Features3 - With Call-to-Actions"
+    subtitle="Features with individual action buttons - great for contact/support pages"
+    columns={4}
+    items={[
+      {
+        title: 'Email',
+        icon: 'tabler:mail',
+        callToAction: {
+          text: 'Write to us',
+          href: 'mailto:hello@accountmap.app',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Phone',
+        icon: 'tabler:phone',
+        callToAction: {
+          text: 'Call us',
+          href: 'tel:+1234567890',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Chat',
+        icon: 'tabler:message-circle',
+        callToAction: {
+          text: 'Start chatting',
+          href: '#',
+          variant: 'link',
+        },
+      },
+      {
+        title: 'Demo',
+        icon: 'tabler:presentation',
+        callToAction: {
+          text: 'Book a demo',
+          href: '#',
+          variant: 'link',
+        },
+      },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- CONTENT SECTIONS - Image + text layouts                      -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: main index - Content Widget (image right) -->
+  <Content
+    id="content"
+    isReversed
+    tagline="How it works"
+    title="Build Your Account Map in Minutes"
+    items={[
+      {
+        title: 'Import contacts',
+        description: 'Sync from your CRM or add contacts manually.',
+      },
+      {
+        title: 'Map relationships',
+        description: 'Drag and drop to create visual org charts.',
+      },
+      {
+        title: 'Track engagement',
+        description: 'See who\'s active and where to focus next.',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      alt: 'Account mapping in action',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Visualize relationships</h3>
+      Turn complex account structures into clear, actionable maps.
     </Fragment>
 
     <Fragment slot="bg">
@@ -139,106 +343,62 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
+  <!-- Section from: main index - Content Widget (image left, continuation) -->
   <Content
+    id="content-2"
     isAfterContent
     items={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        title: 'Identify champions',
+        description: 'Know who supports your deal and who might block it.',
       },
       {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+        title: 'Spot gaps in coverage',
+        description: 'See which stakeholders you haven\'t engaged yet.',
       },
       {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+        title: 'Align your team',
+        description: 'Everyone sees the same picture of the account.',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
+      alt: 'Team collaboration',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <Fragment slot="content">Never miss a key stakeholder again.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- ============================================================ -->
+  <!-- STEPS SECTIONS - Process/how-it-works                        -->
+  <!-- ============================================================ -->
 
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
+  <!-- Section from: main index - Steps Widget (with image) -->
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    id="steps"
+    title="Get started in 3 simple steps"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+        title: 'Step 1: <span class="font-medium">Sign up free</span>',
+        description: 'Create your account in seconds. No credit card required.',
+        icon: 'tabler:user-plus',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+        title: 'Step 2: <span class="font-medium">Import your accounts</span>',
+        description: 'Connect your CRM or upload a CSV to bring in your contacts.',
+        icon: 'tabler:upload',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+        title: 'Step 3: <span class="font-medium">Build your maps</span>',
+        description: 'Drag, drop, and visualize your account relationships.',
+        icon: 'tabler:map',
       },
       {
-        title: 'Ready!',
+        title: 'Start closing!',
         icon: 'tabler:check',
       },
     ]}
@@ -248,152 +408,325 @@ const metadata = {
     }}
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+  <!-- Section from: homes/saas - Steps2 Widget (simpler, no timeline) -->
+  <Steps2
+    id="steps2"
+    title="Steps2 - Contact/Reach Out Style"
+    subtitle="Simpler step layout, great for contact information"
+    callToAction={{
+      text: 'Contact us',
+      href: '#',
+    }}
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
+        title: 'Email us',
+        description: 'hello@accountmap.app',
+        icon: 'tabler:mail',
       },
       {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
+        title: 'Call us',
+        description: '+1 (555) 123-4567',
+        icon: 'tabler:headset',
       },
       {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        title: 'Follow us',
+        description: '@accountmapapp',
+        icon: 'tabler:brand-twitter',
       },
     ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
   />
 
-  <!-- FAQs Widget ******************* -->
+  <!-- ============================================================ -->
+  <!-- STATS SECTION - Key metrics/numbers                          -->
+  <!-- ============================================================ -->
 
+  <!-- Section from: main index/homes/startup - Stats Widget -->
+  <Stats
+    id="stats"
+    title="Account Map App by the numbers"
+    subtitle="Join thousands of sales teams closing bigger deals."
+    stats={[
+      { title: 'Active Users', amount: '10K+' },
+      { title: 'Accounts Mapped', amount: '50K+' },
+      { title: 'Deals Closed', amount: '$2B+' },
+      { title: 'Customer Rating', amount: '4.9' },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- TESTIMONIALS SECTION - Customer quotes                       -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: services/homes/mobile-app - Testimonials Widget -->
+  <Testimonials
+    id="testimonials"
+    title="What our customers say"
+    testimonials={[
+      {
+        testimonial: `Account Map App transformed how we approach enterprise deals. We can finally see the full picture of our accounts and identify champions we were missing.`,
+        name: 'Sarah Johnson',
+        job: 'VP of Sales, TechCorp',
+        image: {
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+          alt: 'Sarah Johnson Image',
+        },
+      },
+      {
+        testimonial: `The visual org charts have been a game-changer for our team. We close deals 30% faster now because we know exactly who to engage.`,
+        name: 'Michael Chen',
+        job: 'Sales Director, Enterprise Inc',
+        image: {
+          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Michael Chen Image',
+        },
+      },
+      {
+        testimonial: `Finally, a tool that shows relationship strength, not just contact lists. Account Map App is essential for any strategic sales team.`,
+        name: 'Emily Rodriguez',
+        job: 'Account Executive, SaaS Solutions',
+        image: {
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+          alt: 'Emily Rodriguez Image',
+        },
+      },
+    ]}
+    callToAction={{
+      text: 'Read more success stories',
+      href: '#',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- ============================================================ -->
+  <!-- PRICING SECTION - Pricing table                              -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: homes/saas/pricing - Pricing Widget -->
+  <Pricing
+    id="pricing"
+    title="Simple, transparent pricing"
+    subtitle="Start free and upgrade as you grow."
+    prices={[
+      {
+        title: 'Free',
+        subtitle: 'Perfect for getting started',
+        price: '0',
+        period: '/ month',
+        items: [
+          { description: 'Up to 3 account maps' },
+          { description: 'Basic relationship tracking' },
+          { description: 'CRM sync (limited)' },
+        ],
+        callToAction: {
+          text: 'Get Started Free',
+          href: 'https://my.accountmap.app',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Pro',
+        subtitle: 'For growing sales teams',
+        price: 29,
+        period: '/ user / month',
+        items: [
+          { description: 'Unlimited account maps' },
+          { description: 'Advanced analytics' },
+          { description: 'Full CRM integration' },
+          { description: 'Team collaboration' },
+        ],
+        callToAction: {
+          text: 'Start Pro Trial',
+          href: 'https://my.accountmap.app',
+          target: '_blank',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'Popular',
+      },
+      {
+        title: 'Enterprise',
+        subtitle: 'For large organizations',
+        price: 'Custom',
+        period: '',
+        items: [
+          { description: 'Everything in Pro' },
+          { description: 'SSO & advanced security' },
+          { description: 'Custom integrations' },
+          { description: 'Dedicated support' },
+        ],
+        callToAction: {
+          text: 'Contact Sales',
+          href: '#',
+        },
+      },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- FAQ SECTION - Frequently asked questions                     -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: main index - FAQs Widget -->
   <FAQs
+    id="faq"
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle="Everything you need to know about Account Map App."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+        title: 'What is Account Map App?',
+        description: 'Account Map App is a visual account mapping platform that helps B2B sales teams understand complex organizational structures, track stakeholder relationships, and close deals faster.',
       },
       {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+        title: 'How does it integrate with my CRM?',
+        description: 'We offer native integrations with Salesforce, HubSpot, and other leading CRMs. Your contact data syncs automatically, and relationship insights flow back to your CRM.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+        title: 'Is there a free trial?',
+        description: 'Yes! You can start with our free plan which includes up to 3 account maps. No credit card required. Upgrade anytime to access unlimited maps and advanced features.',
       },
       {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+        title: 'Can my whole team use it?',
+        description: 'Our Pro and Enterprise plans support team collaboration. Share account maps, leave comments, and ensure everyone has the same view of key accounts.',
       },
       {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+        title: 'Is my data secure?',
+        description: 'Security is our top priority. We use enterprise-grade encryption, SOC 2 compliance, and never share your data. Enterprise plans include SSO and advanced security features.',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+        title: 'How is this different from my CRM?',
+        description: 'CRMs store contact data; Account Map App visualizes relationships. We show you who influences whom, relationship strength, and coverage gaps - insights you can\'t get from a contact list.',
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
+  <!-- ============================================================ -->
+  <!-- CONTACT FORM SECTION                                         -->
+  <!-- ============================================================ -->
 
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+  <!-- Section from: contact - Contact Widget -->
+  <Contact
+    id="contact"
+    title="Get in touch"
+    subtitle="Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+    }}
+    disclaimer={{
+      label: 'By submitting this form, you agree to our privacy policy.',
+    }}
+    description="We typically respond within 24 hours."
+  />
+
+  <!-- ============================================================ -->
+  <!-- BRANDS/LOGOS SECTION                                         -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: homes/startup - Brands Widget -->
+  <Brands
+    id="brands"
+    title="Trusted by leading companies"
+    subtitle="Join thousands of sales teams using Account Map App"
+    icons={[]}
+    images={[
+      { src: 'https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png', alt: 'Paypal' },
+      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png', alt: 'Visa' },
+      { src: 'https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80658_1280.png', alt: 'Microsoft' },
+      { src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png', alt: 'Google' },
+      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/45/meta-6850393_1280.png', alt: 'Meta' },
     ]}
   />
 
-  <!-- CallToAction Widget *********** -->
+  <!-- ============================================================ -->
+  <!-- BLOG SECTION (hidden for MVP but showing for reference)      -->
+  <!-- ============================================================ -->
 
+  <!-- Section from: main index - BlogLatestPosts Widget -->
+  <!-- Note: This requires blog posts to be set up. Uncomment when ready. -->
+  <!--
+  <BlogLatestPosts
+    id="blog"
+    title="Latest from our blog"
+    information="Tips, strategies, and insights for account-based selling."
+  />
+  -->
+
+  <!-- ============================================================ -->
+  <!-- CALL TO ACTION SECTIONS - Final CTA banners                  -->
+  <!-- ============================================================ -->
+
+  <!-- Section from: main index - CallToAction Widget (primary) -->
   <CallToAction
+    id="cta"
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
+        text: 'Get Started Free',
+        href: 'https://my.accountmap.app',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:rocket',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Ready to close bigger deals?
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Join thousands of sales teams using Account Map App to visualize accounts and accelerate pipeline.
+      <br class="hidden md:inline" />Start free today.
     </Fragment>
   </CallToAction>
+
+  <!-- Section from: homes/startup - CallToAction Widget (alternative style) -->
+  <CallToAction
+    id="cta2"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a Demo',
+        href: '#demo',
+        icon: 'tabler:presentation',
+      },
+      {
+        variant: 'secondary',
+        text: 'Get Started Free',
+        href: 'https://my.accountmap.app',
+        target: '_blank',
+      },
+    ]}
+  >
+    <Fragment slot="title">See Account Map App in action</Fragment>
+
+    <Fragment slot="subtitle">
+      Watch a quick demo to see how Account Map App can transform your account-based selling strategy.
+    </Fragment>
+  </CallToAction>
+
+  <!-- ============================================================ -->
+  <!-- DEMO VIDEO SECTION (placeholder for anchor link)             -->
+  <!-- ============================================================ -->
+
+  <div id="demo" class="py-16 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Demo Video Placeholder</h2>
+      <p class="text-muted mb-8">This is where you can embed a demo video using the YouTube embed component or similar.</p>
+      <div class="bg-gray-200 dark:bg-slate-800 rounded-lg aspect-video flex items-center justify-center">
+        <span class="text-gray-500 dark:text-gray-400">Video embed goes here</span>
+      </div>
+    </div>
+  </div>
+
 </Layout>
