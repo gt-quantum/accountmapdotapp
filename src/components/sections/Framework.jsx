@@ -62,7 +62,7 @@ const colorClasses = {
 
 export default function Framework() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden" id="how-it-works">
+    <section className="relative py-24 lg:py-32" id="how-it-works">
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -94,7 +94,7 @@ export default function Framework() {
           {/* Connection line */}
           <div className="hidden lg:block absolute top-24 left-[16.66%] right-[16.66%] h-0.5 bg-gradient-to-r from-green-500 via-electric-500 to-violet-500 opacity-20" />
 
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 pt-6">
             {steps.map((step, index) => {
               const colors = colorClasses[step.color];
               return (
@@ -106,15 +106,15 @@ export default function Framework() {
                   transition={{ delay: index * 0.2 }}
                   className="relative"
                 >
-                  {/* Glow Card with shimmer border */}
-                  <div className="glow-card shimmer-border relative p-8 group">
-                    {/* Number badge with glow */}
-                    <div className={`absolute -top-4 left-8 px-4 py-1.5 rounded-full bg-gradient-to-r ${colors.gradient} text-white text-sm font-bold shadow-lg shadow-${step.color}-500/30`}>
+                  {/* Card container */}
+                  <div className="relative p-8 rounded-2xl bg-white/80 dark:bg-slate-800/60 backdrop-blur-sm border border-slate-200/60 dark:border-slate-700/60 shadow-sm hover:shadow-xl hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300 group">
+                    {/* Number badge - positioned outside overflow */}
+                    <div className={`absolute -top-3 left-8 px-4 py-1 rounded-full bg-gradient-to-r ${colors.gradient} text-white text-sm font-bold shadow-lg`}>
                       {step.number}
                     </div>
 
-                    {/* Icon with subtle glow */}
-                    <div className={`w-14 h-14 rounded-2xl ${colors.light} ${colors.text} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-${step.color}-500/20 transition-all duration-300`}>
+                    {/* Icon */}
+                    <div className={`w-14 h-14 rounded-2xl ${colors.light} ${colors.text} flex items-center justify-center mb-6 mt-2 group-hover:scale-110 transition-transform duration-300`}>
                       {step.icon}
                     </div>
 
@@ -125,9 +125,6 @@ export default function Framework() {
                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                       {step.description}
                     </p>
-
-                    {/* Animated glow blob */}
-                    <div className={`absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gradient-to-r ${colors.gradient} opacity-0 blur-3xl group-hover:opacity-20 transition-all duration-700`} />
                   </div>
                 </motion.div>
               );

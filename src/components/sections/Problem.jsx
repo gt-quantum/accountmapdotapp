@@ -39,13 +39,15 @@ const insights = [
 
 export default function Problem() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Semi-transparent dark overlay */}
-      <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-900/90 backdrop-blur-sm" />
+    <section className="relative py-24 lg:py-32">
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-slate-900" />
 
-      {/* Subtle inner glow accents */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-green-500/10 to-emerald-500/5 blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-electric-500/10 to-violet-500/10 blur-3xl" />
+      {/* Subtle inner glow accents - contained within section */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-green-500/8 to-emerald-500/4 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-electric-500/8 to-violet-500/8 blur-3xl" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -90,13 +92,10 @@ export default function Problem() {
               transition={{ delay: 0.1 * index }}
               className="group relative"
             >
-              {/* Card with glow effect */}
-              <div className="relative p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden">
-                {/* Hover glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${insight.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-
-                {/* Icon with glow */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${insight.gradient} text-white flex items-center justify-center mb-4 shadow-lg ${insight.glow} group-hover:scale-110 transition-all duration-300`}>
+              {/* Card */}
+              <div className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300">
+                {/* Icon */}
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${insight.gradient} text-white flex items-center justify-center mb-4 shadow-lg ${insight.glow} group-hover:scale-110 transition-transform duration-300`}>
                   {insight.icon}
                 </div>
 
@@ -106,9 +105,6 @@ export default function Problem() {
                 <p className="text-slate-400 text-sm">
                   {insight.description}
                 </p>
-
-                {/* Decorative corner gradient */}
-                <div className={`absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${insight.gradient} opacity-0 blur-2xl group-hover:opacity-30 transition-all duration-700`} />
               </div>
             </motion.div>
           ))}

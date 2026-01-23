@@ -2,13 +2,15 @@ import { motion } from 'framer-motion';
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Semi-transparent dark overlay */}
-      <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-900/90 backdrop-blur-sm" />
+    <section className="relative py-24 lg:py-32">
+      {/* Dark background */}
+      <div className="absolute inset-0 bg-slate-900" />
 
-      {/* Subtle glow accents */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-green-500/15 to-electric-500/15 blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-violet-500/10 to-electric-500/10 blur-3xl" />
+      {/* Contained glow accents */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-green-500/10 to-electric-500/10 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-violet-500/8 to-electric-500/8 blur-3xl" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
