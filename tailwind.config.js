@@ -16,7 +16,7 @@ export default {
 
         // Brand: Cartographic Green
         'brand-green': {
-          50: '#F0FDF4',
+          50: '#F7FBF4',  // Warmer, lighter green tint
           100: '#DCFCE7',
           200: '#BBF7D0',
           300: '#86EFAC',

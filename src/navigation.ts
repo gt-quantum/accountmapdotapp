@@ -9,7 +9,6 @@ const mvpHeaderData = {
   links: [
     { text: 'Features', href: '/#features' },
     { text: 'How It Works', href: '/#how-it-works' },
-    { text: 'About', href: '/#about' },
     { text: 'FAQ', href: '/#faq' },
     { text: 'Demo', href: '/#demo' },
   ],
