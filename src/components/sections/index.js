@@ -1,11 +1,14 @@
 // Landing Page Sections
 export { default as Hero } from './Hero';
+export { default as HeroSection } from './HeroSection';
 export { default as Features } from './Features';
 export { default as Pricing } from './Pricing';
 export { default as Stats } from './Stats';
 export { default as Timeline } from './Timeline';
 export { default as Testimonials } from './Testimonials';
 export { default as Contact } from './Contact';
+export { default as CTA } from './CTA';
+export { default as FAQSection } from './FAQSection';
 
 // New standard sections
 export { default as LogoCloud } from './LogoCloud';

@@ -36,6 +36,9 @@ import Stats from '../sections/Stats';
 import Timeline from '../sections/Timeline';
 import Testimonials from '../sections/Testimonials';
 import Contact from '../sections/Contact';
+import HeroSection from '../sections/HeroSection';
+import CTA from '../sections/CTA';
+import FAQSection from '../sections/FAQSection';
 import LogoCloud from '../sections/LogoCloud';
 import Team from '../sections/Team';
 import Comparison from '../sections/Comparison';
@@ -81,22 +84,25 @@ export default function ComponentShowcase() {
     { id: 'pagination', label: '5.2 Pagination', category: 'Navigation' },
     { id: 'tables', label: '5.3 Tables', category: 'Data Display' },
     { id: 'dividers', label: '5.4 Dividers', category: 'Layout' },
-    { id: 'features', label: '6.1 Features', category: 'Sections' },
-    { id: 'pricing', label: '6.2 Pricing', category: 'Sections' },
-    { id: 'stats', label: '6.3 Stats', category: 'Sections' },
-    { id: 'timeline', label: '6.4 Timeline', category: 'Sections' },
-    { id: 'testimonials', label: '6.5 Testimonials', category: 'Sections' },
-    { id: 'contact', label: '6.6 Contact', category: 'Sections' },
-    { id: 'logocloud', label: '6.7 Logo Cloud', category: 'Sections' },
-    { id: 'team', label: '6.8 Team', category: 'Sections' },
-    { id: 'comparison', label: '6.9 Comparison', category: 'Sections' },
-    { id: 'newsletter', label: '6.10 Newsletter', category: 'Sections' },
-    { id: 'content', label: '6.11 Content', category: 'Sections' },
-    { id: 'integrations', label: '6.12 Integrations', category: 'Sections' },
-    { id: 'video', label: '6.13 Video', category: 'Sections' },
-    { id: 'banner', label: '6.14 Banner', category: 'Sections' },
-    { id: 'gallery', label: '6.15 Gallery', category: 'Sections' },
-    { id: 'download', label: '6.16 Download', category: 'Sections' },
+    { id: 'hero-variants', label: '6.1 Hero (7 variants)', category: 'Sections' },
+    { id: 'cta-variants', label: '6.2 CTA (8 variants)', category: 'Sections' },
+    { id: 'faq-variants', label: '6.3 FAQ (8 variants)', category: 'Sections' },
+    { id: 'features', label: '6.4 Features', category: 'Sections' },
+    { id: 'pricing', label: '6.5 Pricing', category: 'Sections' },
+    { id: 'stats', label: '6.6 Stats', category: 'Sections' },
+    { id: 'timeline', label: '6.7 Timeline', category: 'Sections' },
+    { id: 'testimonials', label: '6.8 Testimonials', category: 'Sections' },
+    { id: 'contact', label: '6.9 Contact', category: 'Sections' },
+    { id: 'logocloud', label: '6.10 Logo Cloud', category: 'Sections' },
+    { id: 'team', label: '6.11 Team', category: 'Sections' },
+    { id: 'comparison', label: '6.12 Comparison', category: 'Sections' },
+    { id: 'newsletter', label: '6.13 Newsletter', category: 'Sections' },
+    { id: 'content', label: '6.14 Content', category: 'Sections' },
+    { id: 'integrations', label: '6.15 Integrations', category: 'Sections' },
+    { id: 'video', label: '6.16 Video', category: 'Sections' },
+    { id: 'banner', label: '6.17 Banner', category: 'Sections' },
+    { id: 'gallery', label: '6.18 Gallery', category: 'Sections' },
+    { id: 'download', label: '6.19 Download', category: 'Sections' },
   ];
 
   const categories = [...new Set(sections.map(s => s.category))];
@@ -583,8 +589,166 @@ export default function ComponentShowcase() {
           </ComponentSection>
 
           {/* 6. Sections */}
-          <div className="mt-16 -mx-8 bg-white dark:bg-stone-800 border-y border-stone-200 dark:border-stone-700">
-            <ComponentSection id="features" title="6.1 Features Section" description="Feature grids with icons" fullWidth>
+
+          {/* 6.1 Hero Variants */}
+          <div className="mt-16 -mx-8 bg-gradient-to-b from-green-lightest to-white dark:from-green-dark/10 dark:to-stone-800 border-y border-stone-200 dark:border-stone-700">
+            <ComponentSection id="hero-variants" title="6.1 Hero Section (7 variants)" description="Configurable hero with multiple layout options" fullWidth>
+              <div className="px-8 pb-8">
+                <p className="text-sm text-stone-500 mb-4">Available variants: centered, split, background, video, phone, withForm, gradient</p>
+              </div>
+              <HeroSection
+                variant="centered"
+                badge="New Release"
+                title="Build something amazing"
+                subtitle="The all-in-one platform for modern teams. Start building today with our powerful tools."
+                cta={{ text: 'Get Started', href: '#' }}
+                ctaSecondary={{ text: 'Learn More', href: '#' }}
+                features={['No credit card required', 'Free 14-day trial', 'Cancel anytime']}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="hero-split" title="Hero: Split Variant" description="Image on side with content" fullWidth>
+              <HeroSection
+                variant="split"
+                badge="Territory Planning"
+                title="See your accounts on a map"
+                subtitle="Visualize, plan, and coordinate go-to-market activity around your accounts."
+                cta={{ text: 'Start Free', href: '#' }}
+                ctaSecondary={{ text: 'Watch Demo', href: '#' }}
+                features={['Set up in minutes', 'No credit card required']}
+                image="https://placehold.co/600x400/22c55e/ffffff?text=App+Screenshot"
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="hero-gradient" title="Hero: Gradient Variant" description="Gradient background with white text" fullWidth>
+              <HeroSection
+                variant="gradient"
+                badge="Limited Time"
+                title="Transform your workflow"
+                subtitle="Join thousands of teams already using our platform to boost productivity."
+                cta={{ text: 'Start Free Trial', href: '#' }}
+                ctaSecondary={{ text: 'Contact Sales', href: '#' }}
+                features={['Enterprise ready', 'SOC 2 Compliant', '99.9% Uptime']}
+              />
+            </ComponentSection>
+          </div>
+
+          {/* 6.2 CTA Variants */}
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="cta-variants" title="6.2 CTA Section (8 variants)" description="Call-to-action sections with multiple styles" fullWidth>
+              <div className="px-8 pb-4">
+                <p className="text-sm text-stone-500 mb-4">Available variants: simple, stacked, split, background, gradient, banner, newsletter, twoColumn</p>
+              </div>
+              <CTA
+                variant="simple"
+                badge="Get Started"
+                title="Ready to dive in?"
+                subtitle="Start your free trial today. No credit card required."
+                cta={{ text: 'Start Free Trial', href: '#' }}
+                ctaSecondary={{ text: 'Contact Sales', href: '#' }}
+                features={['Free 14-day trial', 'No setup fees', 'Cancel anytime']}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="cta-stacked" title="CTA: Stacked (Dark Panel)" description="CTA on dark background panel" fullWidth>
+              <CTA
+                variant="stacked"
+                badge="Special Offer"
+                title="Start mapping your territory today"
+                subtitle="Join 10,000+ sales teams already using AccountMap."
+                cta={{ text: 'Get Started Free', href: '#' }}
+                ctaSecondary={{ text: 'Schedule Demo', href: '#' }}
+                features={['No credit card', 'Setup in 5 min', 'Free forever plan']}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="cta-gradient" title="CTA: Gradient" description="CTA with gradient background" fullWidth>
+              <CTA
+                variant="gradient"
+                badge="Limited Time"
+                title="50% off for early adopters"
+                subtitle="Lock in your discount before it's gone."
+                cta={{ text: 'Claim Discount', href: '#' }}
+                ctaSecondary={{ text: 'Learn More', href: '#' }}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="cta-banner" title="CTA: Banner" description="Minimal full-width banner" fullWidth>
+              <CTA
+                variant="banner"
+                badge="NEW"
+                title="Version 2.0 is here with powerful new features."
+                cta={{ text: 'See What\'s New', href: '#' }}
+              />
+            </ComponentSection>
+          </div>
+
+          {/* 6.3 FAQ Variants */}
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="faq-variants" title="6.3 FAQ Section (8 variants)" description="FAQ with accordion and multiple layouts" fullWidth>
+              <div className="px-8 pb-4">
+                <p className="text-sm text-stone-500">Available variants: accordion, twoColumn, offset, grid, list, categorized, searchable, sideBySide</p>
+              </div>
+              <FAQSection
+                variant="accordion"
+                badge="FAQ"
+                title="Frequently asked questions"
+                subtitle="Everything you need to know about the product."
+                items={[
+                  { question: 'How does the free trial work?', answer: 'You get full access to all features for 14 days. No credit card required.' },
+                  { question: 'Can I change my plan later?', answer: 'Yes, you can upgrade or downgrade your plan at any time from your account settings.' },
+                  { question: 'What payment methods do you accept?', answer: 'We accept all major credit cards, PayPal, and bank transfers for annual plans.' },
+                  { question: 'Is there a setup fee?', answer: 'No, there are no setup fees. You only pay for your subscription.' },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="faq-two-column" title="FAQ: Two Column" description="Intro on left, accordion on right" fullWidth>
+              <FAQSection
+                variant="twoColumn"
+                badge="Support"
+                title="Have questions? We have answers."
+                subtitle="Can't find what you're looking for? Contact our support team."
+                items={[
+                  { question: 'How do I get started?', answer: 'Sign up for a free account and follow our quick start guide.' },
+                  { question: 'Do you offer refunds?', answer: 'Yes, we offer a 30-day money-back guarantee on all plans.' },
+                  { question: 'Can I invite my team?', answer: 'Absolutely! You can invite unlimited team members on Pro and Enterprise plans.' },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
+            <ComponentSection id="faq-grid" title="FAQ: Grid (Cards)" description="Questions in card grid layout" fullWidth>
+              <FAQSection
+                variant="grid"
+                columns={2}
+                badge="Help Center"
+                title="Quick answers"
+                items={[
+                  { question: 'Is my data secure?', answer: 'Yes, we use industry-standard encryption and are SOC 2 compliant.' },
+                  { question: 'Can I export my data?', answer: 'You can export all your data anytime in CSV or JSON format.' },
+                  { question: 'Do you have an API?', answer: 'Yes, we offer a REST API with comprehensive documentation.' },
+                  { question: 'What integrations do you support?', answer: 'We integrate with Salesforce, HubSpot, Slack, and 50+ other tools.' },
+                ]}
+              />
+            </ComponentSection>
+          </div>
+
+          <div className="-mx-8 bg-white dark:bg-stone-800 border-y border-stone-200 dark:border-stone-700">
+            <ComponentSection id="features" title="6.4 Features Section" description="Feature grids with icons" fullWidth>
               <Features
                 badge="Features"
                 title="Everything you need"
@@ -600,7 +764,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="pricing" title="6.2 Pricing Section" description="Pricing tables" fullWidth>
+            <ComponentSection id="pricing" title="6.5 Pricing Section" description="Pricing tables" fullWidth>
               <Pricing
                 badge="Pricing"
                 title="Simple, transparent pricing"
@@ -632,7 +796,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="stats" title="6.3 Stats Section" description="Animated statistics display" fullWidth>
+            <ComponentSection id="stats" title="6.6 Stats Section" description="Animated statistics display" fullWidth>
               <Stats
                 badge="By the Numbers"
                 title="Trusted by teams worldwide"
@@ -647,7 +811,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="timeline" title="6.4 Timeline Section" description="Steps and timeline displays" fullWidth>
+            <ComponentSection id="timeline" title="6.7 Timeline Section" description="Steps and timeline displays" fullWidth>
               <Timeline
                 badge="How it Works"
                 title="Get started in 3 steps"
@@ -661,7 +825,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="testimonials" title="6.5 Testimonials Section" description="Customer testimonials" fullWidth>
+            <ComponentSection id="testimonials" title="6.8 Testimonials Section" description="Customer testimonials" fullWidth>
               <Testimonials
                 badge="Testimonials"
                 title="What our customers say"
@@ -687,7 +851,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="contact" title="6.6 Contact Section" description="Contact forms" fullWidth>
+            <ComponentSection id="contact" title="6.9 Contact Section" description="Contact forms" fullWidth>
               <Contact
                 badge="Contact"
                 title="Get in touch"
@@ -698,7 +862,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="logocloud" title="6.7 Logo Cloud" description="Client and partner logos" fullWidth>
+            <ComponentSection id="logocloud" title="6.10 Logo Cloud" description="Client and partner logos" fullWidth>
               <LogoCloud
                 title="Trusted by industry leaders"
                 logos={[
@@ -713,7 +877,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="team" title="6.8 Team Section" description="Team member profiles" fullWidth>
+            <ComponentSection id="team" title="6.11 Team Section" description="Team member profiles" fullWidth>
               <Team
                 badge="Our Team"
                 title="Meet the people behind AccountMap"
@@ -754,7 +918,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="comparison" title="6.9 Comparison Section" description="Feature comparison tables" fullWidth>
+            <ComponentSection id="comparison" title="6.12 Comparison Section" description="Feature comparison tables" fullWidth>
               <Comparison
                 badge="Compare"
                 title="How we stack up"
@@ -773,7 +937,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="newsletter" title="6.10 Newsletter Section" description="Email signup forms" fullWidth>
+            <ComponentSection id="newsletter" title="6.13 Newsletter Section" description="Email signup forms" fullWidth>
               <Newsletter
                 badge="Stay Updated"
                 title="Subscribe to our newsletter"
@@ -784,7 +948,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="content" title="6.11 Content Section" description="Split content with images" fullWidth>
+            <ComponentSection id="content" title="6.14 Content Section" description="Split content with images" fullWidth>
               <Content
                 badge="Why Us"
                 title="Built for sales teams that want to win"
@@ -800,7 +964,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="integrations" title="6.12 Integrations Section" description="Integration logos and cards" fullWidth>
+            <ComponentSection id="integrations" title="6.15 Integrations Section" description="Integration logos and cards" fullWidth>
               <Integrations
                 badge="Integrations"
                 title="Works with your favorite tools"
@@ -817,7 +981,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="video" title="6.13 Video Section" description="Embedded video with thumbnail" fullWidth>
+            <ComponentSection id="video" title="6.16 Video Section" description="Embedded video with thumbnail" fullWidth>
               <Video
                 badge="See It In Action"
                 title="Watch a quick demo"
@@ -829,7 +993,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="banner" title="6.14 Banner Section" description="Promotional banners" fullWidth>
+            <ComponentSection id="banner" title="6.17 Banner Section" description="Promotional banners" fullWidth>
               <div className="py-8">
                 <Banner
                   text="New feature alert! Check out our latest territory insights dashboard."
@@ -842,7 +1006,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-white dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700">
-            <ComponentSection id="gallery" title="6.15 Gallery Section" description="Image gallery with lightbox" fullWidth>
+            <ComponentSection id="gallery" title="6.18 Gallery Section" description="Image gallery with lightbox" fullWidth>
               <Gallery
                 badge="Gallery"
                 title="See AccountMap in action"
@@ -860,7 +1024,7 @@ export default function ComponentShowcase() {
           </div>
 
           <div className="-mx-8 bg-stone-50 dark:bg-stone-900">
-            <ComponentSection id="download" title="6.16 Download Section" description="App download with store badges" fullWidth>
+            <ComponentSection id="download" title="6.19 Download Section" description="App download with store badges" fullWidth>
               <Download
                 badge="Get Started"
                 title="Download the app"
