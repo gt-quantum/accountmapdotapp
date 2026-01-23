@@ -3,22 +3,23 @@
  * Account Map App - MVP Home Page
  *
  * Selected sections for the MVP single-page marketing site.
- * Original staging page with all sections backed up at: /old-home
+ * Reference page with all sections: /staging-all-sections
  *
- * SECTIONS INCLUDED:
- * - Hero (with image - provide your own)
- * - Features (6-item 3-column grid)
- * - Features2 (icon grid for components)
- * - About (Features2 style)
- * - Content (How it works)
- * - Steps (Get started)
- * - Steps2 (Contact/reach out)
- * - Stats (by the numbers)
- * - FAQs
- * - Contact form
- * - Brands (logo scroll)
- * - CallToAction
- * - Demo video placeholder
+ * SECTION ORDER:
+ * 1. Hero
+ * 2. Steps (Get started in 3 steps)
+ * 3. Brands (Trusted by leading companies)
+ * 4. Features (6-item grid)
+ * 5. CTA (middle)
+ * 6. Features2 (icon grid - components)
+ * 7. Content (How it works)
+ * 8. Steps2 (Reach out)
+ * 9. Stats (By the numbers)
+ * 10. About
+ * 11. FAQs
+ * 12. Contact form
+ * 13. CTA (bottom)
+ * 14. Demo placeholder
  */
 
 import Layout from '~/layouts/PageLayout.astro';
@@ -45,8 +46,7 @@ const metadata = {
 <Layout metadata={metadata}>
 
   <!-- ============================================================ -->
-  <!-- HERO - Main hero with text buttons and image                 -->
-  <!-- TODO: Replace image with your own                            -->
+  <!-- 1. HERO                                                      -->
   <!-- ============================================================ -->
 
   <Hero
@@ -76,7 +76,59 @@ const metadata = {
   </Hero>
 
   <!-- ============================================================ -->
-  <!-- FEATURES - 6-item 3-column grid                              -->
+  <!-- 2. STEPS - Get started in 3 simple steps                     -->
+  <!-- ============================================================ -->
+
+  <Steps
+    id="steps"
+    title="Get started in 3 simple steps"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Sign up free</span>',
+        description: 'Create your account in seconds. No credit card required.',
+        icon: 'tabler:user-plus',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Import your accounts</span>',
+        description: 'Connect your CRM or upload a CSV to bring in your contacts.',
+        icon: 'tabler:upload',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Build your maps</span>',
+        description: 'Drag, drop, and visualize your account relationships.',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Start closing!',
+        icon: 'tabler:check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+  />
+
+  <!-- ============================================================ -->
+  <!-- 3. BRANDS - Trusted by leading companies                     -->
+  <!-- ============================================================ -->
+
+  <Brands
+    id="brands"
+    title="Trusted by leading companies"
+    subtitle="Join thousands of sales teams using Account Map App"
+    icons={[]}
+    images={[
+      { src: 'https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png', alt: 'Paypal' },
+      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png', alt: 'Visa' },
+      { src: 'https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80658_1280.png', alt: 'Microsoft' },
+      { src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png', alt: 'Google' },
+      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/45/meta-6850393_1280.png', alt: 'Meta' },
+    ]}
+  />
+
+  <!-- ============================================================ -->
+  <!-- 4. FEATURES - 6-item 3-column grid                           -->
   <!-- ============================================================ -->
 
   <Features
@@ -119,7 +171,37 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- FEATURES2 - Icon grid for components                         -->
+  <!-- 5. CTA - Middle call to action                               -->
+  <!-- ============================================================ -->
+
+  <CallToAction
+    id="cta-middle"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Try It Free',
+        href: 'https://my.accountmap.app',
+        target: '_blank',
+        icon: 'tabler:rocket',
+      },
+      {
+        variant: 'secondary',
+        text: 'See Demo',
+        href: '#demo',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      See the difference visual account mapping makes
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Start mapping your key accounts today. No credit card required.
+    </Fragment>
+  </CallToAction>
+
+  <!-- ============================================================ -->
+  <!-- 6. FEATURES2 - Icon grid for components                      -->
   <!-- ============================================================ -->
 
   <Features2
@@ -166,21 +248,7 @@ const metadata = {
   </Features2>
 
   <!-- ============================================================ -->
-  <!-- ABOUT - About Account Map App                                -->
-  <!-- ============================================================ -->
-
-  <Features2
-    id="about"
-    title="About Account Map App"
-    subtitle="We help B2B sales teams visualize complex accounts and close bigger deals. Our platform transforms scattered contact data into actionable relationship intelligence."
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- ============================================================ -->
-  <!-- CONTENT - How it works                                       -->
+  <!-- 7. CONTENT - How it works                                    -->
   <!-- ============================================================ -->
 
   <Content
@@ -218,41 +286,7 @@ const metadata = {
   </Content>
 
   <!-- ============================================================ -->
-  <!-- STEPS - Get started in 3 simple steps                        -->
-  <!-- ============================================================ -->
-
-  <Steps
-    id="steps"
-    title="Get started in 3 simple steps"
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Sign up free</span>',
-        description: 'Create your account in seconds. No credit card required.',
-        icon: 'tabler:user-plus',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Import your accounts</span>',
-        description: 'Connect your CRM or upload a CSV to bring in your contacts.',
-        icon: 'tabler:upload',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Build your maps</span>',
-        description: 'Drag, drop, and visualize your account relationships.',
-        icon: 'tabler:map',
-      },
-      {
-        title: 'Start closing!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- ============================================================ -->
-  <!-- STEPS2 - Contact/Reach Out                                   -->
+  <!-- 8. STEPS2 - Contact/Reach Out                                -->
   <!-- ============================================================ -->
 
   <Steps2
@@ -283,7 +317,7 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- STATS - By the numbers                                       -->
+  <!-- 9. STATS - By the numbers                                    -->
   <!-- ============================================================ -->
 
   <Stats
@@ -299,7 +333,21 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- FAQs - Frequently Asked Questions                            -->
+  <!-- 10. ABOUT - About Account Map App                            -->
+  <!-- ============================================================ -->
+
+  <Features2
+    id="about"
+    title="About Account Map App"
+    subtitle="We help B2B sales teams visualize complex accounts and close bigger deals. Our platform transforms scattered contact data into actionable relationship intelligence."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- ============================================================ -->
+  <!-- 11. FAQs - Frequently Asked Questions                        -->
   <!-- ============================================================ -->
 
   <FAQs
@@ -337,7 +385,7 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- CONTACT FORM                                                 -->
+  <!-- 12. CONTACT FORM                                             -->
   <!-- ============================================================ -->
 
   <Contact
@@ -366,25 +414,7 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- BRANDS - Logo scroll                                         -->
-  <!-- ============================================================ -->
-
-  <Brands
-    id="brands"
-    title="Trusted by leading companies"
-    subtitle="Join thousands of sales teams using Account Map App"
-    icons={[]}
-    images={[
-      { src: 'https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png', alt: 'Paypal' },
-      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png', alt: 'Visa' },
-      { src: 'https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80658_1280.png', alt: 'Microsoft' },
-      { src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png', alt: 'Google' },
-      { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/45/meta-6850393_1280.png', alt: 'Meta' },
-    ]}
-  />
-
-  <!-- ============================================================ -->
-  <!-- CALL TO ACTION                                               -->
+  <!-- 13. CTA - Bottom call to action                              -->
   <!-- ============================================================ -->
 
   <CallToAction
@@ -410,7 +440,7 @@ const metadata = {
   </CallToAction>
 
   <!-- ============================================================ -->
-  <!-- DEMO VIDEO PLACEHOLDER                                       -->
+  <!-- 14. DEMO VIDEO PLACEHOLDER                                   -->
   <!-- ============================================================ -->
 
   <div id="demo" class="py-16 text-center">
