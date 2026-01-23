@@ -1,55 +1,40 @@
 ---
 /**
- * Account Map App - Staging Home Page
+ * Account Map App - MVP Home Page
  *
- * This page contains ALL available sections/widgets from the AstroWind theme
- * so you can evaluate and select which ones to keep for the final MVP.
+ * Selected sections for the MVP single-page marketing site.
+ * Original staging page with all sections backed up at: /old-home
  *
- * Each section is labeled with its source and widget name.
- * Original home page backed up at: /old-home
- *
- * WIDGETS INCLUDED:
- * - Hero (main index)
- * - Hero2 (homes/saas, homes/mobile-app)
- * - HeroText (pricing, contact)
- * - Note (main index)
- * - Features (main index, homes/saas, homes/startup)
- * - Features2 (main index, homes/startup, contact, services)
- * - Features3 (pricing, homes/startup, homes/mobile-app)
- * - Content (main index, services, homes/saas, homes/mobile-app)
- * - Steps (main index, pricing)
- * - Steps2 (homes/saas)
- * - Stats (main index, homes/startup, homes/mobile-app)
- * - Testimonials (services, homes/mobile-app)
- * - FAQs (main index, homes/saas, homes/startup, pricing, homes/mobile-app)
- * - Pricing (homes/saas, pricing)
- * - CallToAction (main index, homes/startup, services, pricing, homes/mobile-app)
- * - Contact (contact)
- * - Brands (homes/startup)
- * - BlogLatestPosts (main index, homes/saas)
+ * SECTIONS INCLUDED:
+ * - Hero (with image - provide your own)
+ * - Features (6-item 3-column grid)
+ * - Features2 (icon grid for components)
+ * - About (Features2 style)
+ * - Content (How it works)
+ * - Steps (Get started)
+ * - Steps2 (Contact/reach out)
+ * - Stats (by the numbers)
+ * - FAQs
+ * - Contact form
+ * - Brands (logo scroll)
+ * - CallToAction
+ * - Demo video placeholder
  */
 
 import Layout from '~/layouts/PageLayout.astro';
 
-// Import all widgets
+// Import widgets used
 import Hero from '~/components/widgets/Hero.astro';
-import Hero2 from '~/components/widgets/Hero2.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Pricing from '~/components/widgets/Pricing.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Contact from '~/components/widgets/Contact.astro';
 import Brands from '~/components/widgets/Brands.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
   title: 'Account Map App - Visualize Your Key Accounts',
@@ -58,11 +43,12 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+
   <!-- ============================================================ -->
-  <!-- HERO SECTIONS - Choose one for your final page               -->
+  <!-- HERO - Main hero with text buttons and image                 -->
+  <!-- TODO: Replace image with your own                            -->
   <!-- ============================================================ -->
 
-  <!-- Section from: main index - Hero Widget (image on right) -->
   <Hero
     id="hero"
     actions={[
@@ -89,51 +75,10 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <!-- Section from: homes/saas - Hero2 Widget (alternative layout) -->
-  <Hero2
-    id="hero2"
-    tagline="Alternative Hero Style"
-    actions={[
-      { variant: 'primary', text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank' },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Account Map App Hero Image',
-    }}
-  >
-    <Fragment slot="title">
-      Map Your Key Accounts <br /> <span class="text-accent dark:text-white">Close Bigger Deals</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        Visualize stakeholder relationships and navigate complex sales cycles with confidence.
-      </span>
-      Your complete account intelligence platform.
-    </Fragment>
-  </Hero2>
-
-  <!-- Section from: pricing/contact - HeroText Widget (text-only, no image) -->
-  <HeroText
-    id="herotext"
-    tagline="Text-Only Hero"
-    title="Simple, Powerful Account Mapping"
-    subtitle="Choose this style for a clean, text-focused hero section without images."
-  />
-
   <!-- ============================================================ -->
-  <!-- NOTE WIDGET - Simple callout/highlight                       -->
+  <!-- FEATURES - 6-item 3-column grid                              -->
   <!-- ============================================================ -->
 
-  <!-- Section from: main index - Note Widget -->
-  <Note title="Why Account Map?" description="Visualize relationships. Identify champions. Close deals faster." />
-
-  <!-- ============================================================ -->
-  <!-- FEATURES SECTIONS - Multiple layout options                  -->
-  <!-- ============================================================ -->
-
-  <!-- Section from: main index - Features Widget (standard grid) -->
   <Features
     id="features"
     tagline="Features"
@@ -173,39 +118,12 @@ const metadata = {
     ]}
   />
 
-  <!-- Section from: homes/saas - Features Widget (2 columns) -->
-  <Features
-    id="features-2col"
-    title="Two-Column Features Layout"
-    subtitle="Alternative features display with 2-column grid."
-    columns={2}
-    items={[
-      {
-        title: 'Visual Relationship Mapping',
-        description: 'Build dynamic org charts that show the real power structure in your accounts.',
-        icon: 'tabler:layers-union',
-      },
-      {
-        title: 'Stakeholder Intelligence',
-        description: 'Track every decision-maker, influencer, and champion in one place.',
-        icon: 'tabler:artboard',
-      },
-      {
-        title: 'Engagement Tracking',
-        description: 'See meeting history, email engagement, and touchpoints at a glance.',
-        icon: 'tabler:writing',
-      },
-      {
-        title: 'Deal Acceleration',
-        description: 'Identify gaps in coverage and prioritize outreach for faster closes.',
-        icon: 'tabler:rocket',
-      },
-    ]}
-  />
+  <!-- ============================================================ -->
+  <!-- FEATURES2 - Icon grid for components                         -->
+  <!-- ============================================================ -->
 
-  <!-- Section from: main index - Features2 Widget (icon-heavy grid) -->
   <Features2
-    id="features2"
+    id="components"
     title="Features2 - Icon Grid Style"
     subtitle="Great for showcasing many features with icons"
     tagline="Components"
@@ -247,9 +165,12 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- Section from: homes/startup - Features2 Widget (about/services style) -->
+  <!-- ============================================================ -->
+  <!-- ABOUT - About Account Map App                                -->
+  <!-- ============================================================ -->
+
   <Features2
-    id="features2-about"
+    id="about"
     title="About Account Map App"
     subtitle="We help B2B sales teams visualize complex accounts and close bigger deals. Our platform transforms scattered contact data into actionable relationship intelligence."
   >
@@ -258,59 +179,12 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- Section from: pricing/homes/startup - Features3 Widget (with CTAs) -->
-  <Features3
-    id="features3"
-    title="Features3 - With Call-to-Actions"
-    subtitle="Features with individual action buttons - great for contact/support pages"
-    columns={4}
-    items={[
-      {
-        title: 'Email',
-        icon: 'tabler:mail',
-        callToAction: {
-          text: 'Write to us',
-          href: 'mailto:hello@accountmap.app',
-          variant: 'link',
-        },
-      },
-      {
-        title: 'Phone',
-        icon: 'tabler:phone',
-        callToAction: {
-          text: 'Call us',
-          href: 'tel:+1234567890',
-          variant: 'link',
-        },
-      },
-      {
-        title: 'Chat',
-        icon: 'tabler:message-circle',
-        callToAction: {
-          text: 'Start chatting',
-          href: '#',
-          variant: 'link',
-        },
-      },
-      {
-        title: 'Demo',
-        icon: 'tabler:presentation',
-        callToAction: {
-          text: 'Book a demo',
-          href: '#',
-          variant: 'link',
-        },
-      },
-    ]}
-  />
-
   <!-- ============================================================ -->
-  <!-- CONTENT SECTIONS - Image + text layouts                      -->
+  <!-- CONTENT - How it works                                       -->
   <!-- ============================================================ -->
 
-  <!-- Section from: main index - Content Widget (image right) -->
   <Content
-    id="content"
+    id="how-it-works"
     isReversed
     tagline="How it works"
     title="Build Your Account Map in Minutes"
@@ -343,41 +217,10 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Section from: main index - Content Widget (image left, continuation) -->
-  <Content
-    id="content-2"
-    isAfterContent
-    items={[
-      {
-        title: 'Identify champions',
-        description: 'Know who supports your deal and who might block it.',
-      },
-      {
-        title: 'Spot gaps in coverage',
-        description: 'See which stakeholders you haven\'t engaged yet.',
-      },
-      {
-        title: 'Align your team',
-        description: 'Everyone sees the same picture of the account.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Team collaboration',
-    }}
-  >
-    <Fragment slot="content">Never miss a key stakeholder again.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
   <!-- ============================================================ -->
-  <!-- STEPS SECTIONS - Process/how-it-works                        -->
+  <!-- STEPS - Get started in 3 simple steps                        -->
   <!-- ============================================================ -->
 
-  <!-- Section from: main index - Steps Widget (with image) -->
   <Steps
     id="steps"
     title="Get started in 3 simple steps"
@@ -408,14 +251,17 @@ const metadata = {
     }}
   />
 
-  <!-- Section from: homes/saas - Steps2 Widget (simpler, no timeline) -->
+  <!-- ============================================================ -->
+  <!-- STEPS2 - Contact/Reach Out                                   -->
+  <!-- ============================================================ -->
+
   <Steps2
-    id="steps2"
-    title="Steps2 - Contact/Reach Out Style"
-    subtitle="Simpler step layout, great for contact information"
+    id="reach-out"
+    title="Reach out to us"
+    subtitle="Have questions? We're here to help!"
     callToAction={{
       text: 'Contact us',
-      href: '#',
+      href: '#contact',
     }}
     items={[
       {
@@ -437,10 +283,9 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- STATS SECTION - Key metrics/numbers                          -->
+  <!-- STATS - By the numbers                                       -->
   <!-- ============================================================ -->
 
-  <!-- Section from: main index/homes/startup - Stats Widget -->
   <Stats
     id="stats"
     title="Account Map App by the numbers"
@@ -454,118 +299,9 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- TESTIMONIALS SECTION - Customer quotes                       -->
+  <!-- FAQs - Frequently Asked Questions                            -->
   <!-- ============================================================ -->
 
-  <!-- Section from: services/homes/mobile-app - Testimonials Widget -->
-  <Testimonials
-    id="testimonials"
-    title="What our customers say"
-    testimonials={[
-      {
-        testimonial: `Account Map App transformed how we approach enterprise deals. We can finally see the full picture of our accounts and identify champions we were missing.`,
-        name: 'Sarah Johnson',
-        job: 'VP of Sales, TechCorp',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Sarah Johnson Image',
-        },
-      },
-      {
-        testimonial: `The visual org charts have been a game-changer for our team. We close deals 30% faster now because we know exactly who to engage.`,
-        name: 'Michael Chen',
-        job: 'Sales Director, Enterprise Inc',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Chen Image',
-        },
-      },
-      {
-        testimonial: `Finally, a tool that shows relationship strength, not just contact lists. Account Map App is essential for any strategic sales team.`,
-        name: 'Emily Rodriguez',
-        job: 'Account Executive, SaaS Solutions',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Emily Rodriguez Image',
-        },
-      },
-    ]}
-    callToAction={{
-      text: 'Read more success stories',
-      href: '#',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- ============================================================ -->
-  <!-- PRICING SECTION - Pricing table                              -->
-  <!-- ============================================================ -->
-
-  <!-- Section from: homes/saas/pricing - Pricing Widget -->
-  <Pricing
-    id="pricing"
-    title="Simple, transparent pricing"
-    subtitle="Start free and upgrade as you grow."
-    prices={[
-      {
-        title: 'Free',
-        subtitle: 'Perfect for getting started',
-        price: '0',
-        period: '/ month',
-        items: [
-          { description: 'Up to 3 account maps' },
-          { description: 'Basic relationship tracking' },
-          { description: 'CRM sync (limited)' },
-        ],
-        callToAction: {
-          text: 'Get Started Free',
-          href: 'https://my.accountmap.app',
-          target: '_blank',
-        },
-      },
-      {
-        title: 'Pro',
-        subtitle: 'For growing sales teams',
-        price: 29,
-        period: '/ user / month',
-        items: [
-          { description: 'Unlimited account maps' },
-          { description: 'Advanced analytics' },
-          { description: 'Full CRM integration' },
-          { description: 'Team collaboration' },
-        ],
-        callToAction: {
-          text: 'Start Pro Trial',
-          href: 'https://my.accountmap.app',
-          target: '_blank',
-        },
-        hasRibbon: true,
-        ribbonTitle: 'Popular',
-      },
-      {
-        title: 'Enterprise',
-        subtitle: 'For large organizations',
-        price: 'Custom',
-        period: '',
-        items: [
-          { description: 'Everything in Pro' },
-          { description: 'SSO & advanced security' },
-          { description: 'Custom integrations' },
-          { description: 'Dedicated support' },
-        ],
-        callToAction: {
-          text: 'Contact Sales',
-          href: '#',
-        },
-      },
-    ]}
-  />
-
-  <!-- ============================================================ -->
-  <!-- FAQ SECTION - Frequently asked questions                     -->
-  <!-- ============================================================ -->
-
-  <!-- Section from: main index - FAQs Widget -->
   <FAQs
     id="faq"
     title="Frequently Asked Questions"
@@ -601,10 +337,9 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- CONTACT FORM SECTION                                         -->
+  <!-- CONTACT FORM                                                 -->
   <!-- ============================================================ -->
 
-  <!-- Section from: contact - Contact Widget -->
   <Contact
     id="contact"
     title="Get in touch"
@@ -631,10 +366,9 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- BRANDS/LOGOS SECTION                                         -->
+  <!-- BRANDS - Logo scroll                                         -->
   <!-- ============================================================ -->
 
-  <!-- Section from: homes/startup - Brands Widget -->
   <Brands
     id="brands"
     title="Trusted by leading companies"
@@ -650,24 +384,9 @@ const metadata = {
   />
 
   <!-- ============================================================ -->
-  <!-- BLOG SECTION (hidden for MVP but showing for reference)      -->
+  <!-- CALL TO ACTION                                               -->
   <!-- ============================================================ -->
 
-  <!-- Section from: main index - BlogLatestPosts Widget -->
-  <!-- Note: This requires blog posts to be set up. Uncomment when ready. -->
-  <!--
-  <BlogLatestPosts
-    id="blog"
-    title="Latest from our blog"
-    information="Tips, strategies, and insights for account-based selling."
-  />
-  -->
-
-  <!-- ============================================================ -->
-  <!-- CALL TO ACTION SECTIONS - Final CTA banners                  -->
-  <!-- ============================================================ -->
-
-  <!-- Section from: main index - CallToAction Widget (primary) -->
   <CallToAction
     id="cta"
     actions={[
@@ -690,33 +409,8 @@ const metadata = {
     </Fragment>
   </CallToAction>
 
-  <!-- Section from: homes/startup - CallToAction Widget (alternative style) -->
-  <CallToAction
-    id="cta2"
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Book a Demo',
-        href: '#demo',
-        icon: 'tabler:presentation',
-      },
-      {
-        variant: 'secondary',
-        text: 'Get Started Free',
-        href: 'https://my.accountmap.app',
-        target: '_blank',
-      },
-    ]}
-  >
-    <Fragment slot="title">See Account Map App in action</Fragment>
-
-    <Fragment slot="subtitle">
-      Watch a quick demo to see how Account Map App can transform your account-based selling strategy.
-    </Fragment>
-  </CallToAction>
-
   <!-- ============================================================ -->
-  <!-- DEMO VIDEO SECTION (placeholder for anchor link)             -->
+  <!-- DEMO VIDEO PLACEHOLDER                                       -->
   <!-- ============================================================ -->
 
   <div id="demo" class="py-16 text-center">
