@@ -1,63 +1,77 @@
 ---
 import '@fontsource-variable/inter';
 
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+// Account Map App Brand Styles
+// Primary: Cartographic Green
+// Secondary: Compass Brass/Gold
+// Neutrals: Warm Stone (not cool grays)
 ---
 
 <style is:inline>
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    /* Typography */
+    --aw-font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+    --aw-font-serif: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+    --aw-font-heading: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Primary - Cartographic Green */
+    --aw-color-primary: #15803D;
+    --aw-color-secondary: #16A34A;
+    --aw-color-accent: #D4953A;
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    /* Text - Warm Stone */
+    --aw-color-text-heading: #1C1917;
+    --aw-color-text-default: #44403C;
+    --aw-color-text-muted: #78716C;
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
+    /* Background - Warm Stone Light */
+    --aw-color-bg-page: #FAFAF9;
+    --aw-color-bg-page-dark: #1C1917;
+
+    /* Additional brand tokens */
+    --aw-color-border: #E7E5E4;
+    --aw-color-card: #FFFFFF;
+    --aw-color-success: #10B981;
+    --aw-color-warning: #C17817;
+    --aw-color-error: #EF4444;
+    --aw-color-info: #5B9BD5;
 
     ::selection {
-      background-color: lavender;
+      background-color: #DCFCE7;
+      color: #15803D;
     }
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    /* Typography */
+    --aw-font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+    --aw-font-serif: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+    --aw-font-heading: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    /* Primary - Brighter green for dark mode */
+    --aw-color-primary: #22C55E;
+    --aw-color-secondary: #16A34A;
+    --aw-color-accent: #D4953A;
 
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
+    /* Text - Warm Stone Dark */
+    --aw-color-text-heading: #FAFAF9;
+    --aw-color-text-default: #FAFAF9;
+    --aw-color-text-muted: #A8A29E;
+
+    /* Background - Warm Stone Dark */
+    --aw-color-bg-page: #1C1917;
+
+    /* Additional brand tokens */
+    --aw-color-border: #44403C;
+    --aw-color-card: #292524;
+    --aw-color-success: #10B981;
+    --aw-color-warning: #C17817;
+    --aw-color-error: #EF4444;
+    --aw-color-info: #5B9BD5;
 
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: #15803D;
+      color: #FAFAF9;
     }
   }
 </style>

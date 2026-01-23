@@ -1,4 +1,4 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="900" height="200">
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 200" width="1050" height="200">
 	<defs>
 		<!-- Back layer gradient (darkest) -->
 		<linearGradient id="gradientBack" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -86,9 +86,10 @@
 		/>
 	</g>
 
-	<!-- Text: Account Map (vertically centered) -->
-	<text x="160" y="100" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="80" font-weight="600" fill="#111827" dominant-baseline="middle">
-		<tspan>Account</tspan>
+	<!-- Text: Account Map App (positioned slightly lower, closer to icon) -->
+	<text x="150" y="115" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="80" font-weight="600" fill="#111827" dominant-baseline="middle">
+		<tspan>ccount</tspan>
 		<tspan fill="#22C55E">Map</tspan>
+		<tspan> App</tspan>
 	</text>
 </svg>
