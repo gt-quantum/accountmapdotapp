@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Map App - Account Mapping & Territory Planning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light mode colors - warm editorial */
+            --bg-primary: #F3EEE7;
+            --bg-secondary: #EBE6DE;
+            --bg-tertiary: #E3DED5;
+            --text-primary: #2C2824;
+            --text-secondary: #6B6560;
+            --text-muted: #8A857F;
+            --accent-primary: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border-color: #D5CFC6;
+            --card-bg: rgba(255, 255, 255, 0.25);
+            --card-border: rgba(255, 255, 255, 0.3);
+            --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1A1714;
+            --bg-secondary: #211E1A;
+            --bg-tertiary: #2A2622;
+            --text-primary: #E3E0DB;
+            --text-secondary: #A8A49E;
+            --text-muted: #7A766F;
+            --accent-primary: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border-color: #3D3833;
+            --card-bg: rgba(45, 42, 38, 0.2);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-large {
+            padding: 14px 28px;
+            font-size: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .hero-microcopy {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .hero-microcopy span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-microcopy span::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .map-preview {
+            width: 100%;
+            height: 380px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .map-preview {
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
+        }
+
+        .map-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px),
+                linear-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.2;
+        }
+
+        .map-pin {
+            position: absolute;
+            width: 28px;
+            height: 35px;
+            background: var(--accent-primary);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .map-pin::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        /* Credibility Section */
+        .credibility {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .section-center {
+            text-align: center;
+        }
+
+        .section-center .section-subtitle {
+            margin: 0 auto 48px;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--bg-secondary);
+        }
+
+        .problem-content {
+            max-width: 720px;
+        }
+
+        .problem-content .section-title {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .problem-body {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .problem-questions {
+            margin: 24px 0;
+            padding-left: 0;
+        }
+
+        .problem-questions li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            list-style: none;
+        }
+
+        .problem-questions li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        .problem-callout {
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin: 32px 0;
+            font-style: italic;
+        }
+
+        .contrast-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .contrast-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contrast-card.highlight {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+
+        .contrast-card span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Framework Section */
+        .framework-section {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .framework-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .framework-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .framework-number {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .framework-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Aha Section */
+        .aha-section {
+            background: var(--bg-secondary);
+        }
+
+        .aha-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .aha-text .section-title {
+            margin-bottom: 20px;
+        }
+
+        .aha-body {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .aha-list {
+            margin: 24px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .aha-list li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .aha-list li::before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .aha-quote {
+            font-size: 17px;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        /* Use Cases Section */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .use-case-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .use-case-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .use-case-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Workflows Section */
+        .workflows-section {
+            background: var(--bg-secondary);
+        }
+
+        .workflows-content {
+            max-width: 720px;
+        }
+
+        .workflows-points {
+            margin: 32px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .workflows-points li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .workflows-points li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .workflows-quote {
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-top: 32px;
+            font-style: italic;
+        }
+
+        /* Conversion Section */
+        .conversion-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .conversion-content {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .conversion-content .section-title {
+            margin-bottom: 16px;
+        }
+
+        .conversion-body {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .conversion-microcopy {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-secondary);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .faq-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .final-cta .section-title {
+            font-size: 36px;
+            margin-bottom: 32px;
+        }
+
+        .final-cta-microcopy {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 32px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-content a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-content a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .aha-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons,
+            .hero-microcopy {
+                justify-content: center;
+            }
+
+            .framework-grid,
+            .use-cases-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contrast-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">📍</div>
+                Account Map App
+            </a>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How it works</a></li>
+                <li><a href="#use-cases">Use cases</a></li>
+                <li><a href="#workflows">Workflows</a></li>
+                <li><a href="#faq">FAQs</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <a href="#" class="btn btn-primary">Start free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Account Mapping<br>& Territory Planning</h1>
+                    <p class="hero-subtitle">Visualize, plan, and coordinate go-to-market activity around your accounts — on a map.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary btn-large">Start free</a>
+                        <a href="#" class="btn btn-secondary">View example map →</a>
+                    </div>
+                    <div class="hero-microcopy">
+                        <span>No credit card required</span>
+                        <span>Set up in minutes</span>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="map-preview">
+                        <div class="map-pin" style="top: 22%; left: 28%;"></div>
+                        <div class="map-pin" style="top: 38%; left: 52%; background: #10b981;"></div>
+                        <div class="map-pin" style="top: 28%; left: 68%; background: #f59e0b;"></div>
+                        <div class="map-pin" style="top: 55%; left: 35%;"></div>
+                        <div class="map-pin" style="top: 48%; left: 75%; background: #8b5cf6;"></div>
+                        <div class="map-pin" style="top: 65%; left: 55%; background: #10b981;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Section -->
+    <section class="credibility">
+        <div class="container">
+            Used by sales reps and go-to-market teams to plan territory coverage, trips, and account strategies more intentionally.
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem-section">
+        <div class="container">
+            <div class="problem-content">
+                <h2 class="section-title">Lists are good for storage.<br>They're terrible for planning.</h2>
+                <p class="problem-body">Most GTM planning happens in spreadsheets, CRM filters, and static lists.</p>
+                <p class="problem-body">Those tools are fine for storing data — but they don't help you answer practical questions like:</p>
+                <ul class="problem-questions">
+                    <li>Which accounts are actually close to each other?</li>
+                    <li>What's reachable in a single trip or day?</li>
+                    <li>How do events, customers, and prospects overlap geographically?</li>
+                </ul>
+                <p class="problem-body">Filtering by city, region, or territory hides reality.</p>
+                <p class="problem-callout">Geography is continuous.<br>Lists are not.</p>
+            </div>
+            <div class="contrast-cards">
+                <div class="contrast-card">
+                    <span>Lists show rows</span>
+                </div>
+                <div class="contrast-card">
+                    <span>Maps show relationships</span>
+                </div>
+                <div class="contrast-card highlight">
+                    <span>Planning requires seeing both</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section class="section framework-section" id="how-it-works">
+        <div class="container section-center">
+            <h2 class="section-title">From account data to real-world action</h2>
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <h3><span class="framework-number">1</span> Visualize</h3>
+                    <p>Import account or location-based data and see everything plotted on a live map. Filter, segment, save views, and share maps so everyone is looking at the same reality.</p>
+                </div>
+                <div class="framework-card">
+                    <h3><span class="framework-number">2</span> Plan</h3>
+                    <p>Turn what you see into trips, routes, timelines, and account plans. Add notes, context, and supporting materials directly where planning happens.</p>
+                </div>
+                <div class="framework-card">
+                    <h3><span class="framework-number">3</span> Activate</h3>
+                    <p>Share plans, coordinate with marketing campaigns or events, and move from strategy to execution. Planning becomes visible, reviewable, and actionable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aha Moment Section -->
+    <section class="section aha-section">
+        <div class="container">
+            <div class="aha-content">
+                <div class="aha-text">
+                    <h2 class="section-title">Seeing your accounts on a map changes how you plan</h2>
+                    <p class="aha-body">The first time users upload a target account list and see it mapped, priorities shift immediately.</p>
+                    <p class="aha-body">Suddenly it's obvious:</p>
+                    <ul class="aha-list">
+                        <li>Where accounts cluster</li>
+                        <li>What's realistic in a trip</li>
+                        <li>Which plans make sense — and which don't</li>
+                    </ul>
+                    <p class="aha-body">From there, planning feels natural instead of forced.</p>
+                    <p class="aha-quote">You're no longer guessing.<br>You're reacting to reality.</p>
+                </div>
+                <div class="aha-map">
+                    <div class="map-preview" style="height: 320px;">
+                        <div class="map-pin" style="top: 25%; left: 30%;"></div>
+                        <div class="map-pin" style="top: 32%; left: 38%; background: #10b981;"></div>
+                        <div class="map-pin" style="top: 28%; left: 45%;"></div>
+                        <div class="map-pin" style="top: 55%; left: 60%; background: #f59e0b;"></div>
+                        <div class="map-pin" style="top: 62%; left: 52%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="section" id="use-cases">
+        <div class="container section-center">
+            <h2 class="section-title">Built for real go-to-market work</h2>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <h3>Sales Reps</h3>
+                    <p>Plan territory coverage, trips, and account strategies without guessing or over-filtering spreadsheets. Know where to go, who to visit, and why — before you're on the road.</p>
+                </div>
+                <div class="use-case-card">
+                    <h3>Marketing & ABM</h3>
+                    <p>Overlay target accounts with campaigns, events, and regions to coordinate plays with sales. See how geography impacts execution, not just targeting.</p>
+                </div>
+                <div class="use-case-card">
+                    <h3>Sales Leaders</h3>
+                    <p>Review plans, understand coverage, and approve trips or initiatives with full context. Better visibility. Better decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflows Section -->
+    <section class="section workflows-section" id="workflows">
+        <div class="container">
+            <div class="workflows-content">
+                <h2 class="section-title">Additive, not disruptive</h2>
+                <p class="problem-body">Account Map App doesn't replace your CRM, spreadsheets, or planning docs.</p>
+                <p class="problem-body">It sits between data and execution — turning lists into plans you can actually act on.</p>
+                <ul class="workflows-points">
+                    <li>Import from CSV or Google Sheets</li>
+                    <li>Two-way Sheets sync coming soon</li>
+                    <li>Securely share map views with teammates or stakeholders</li>
+                    <li>Use alongside Salesforce, HubSpot, and marketing calendars</li>
+                </ul>
+                <p class="workflows-quote">No migration.<br>No re-platforming.<br>Just better planning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conversion Section -->
+    <section class="section conversion-section">
+        <div class="container">
+            <div class="conversion-content">
+                <h2 class="section-title">Start free. See if it clicks.</h2>
+                <p class="conversion-body">Most users understand the value within minutes of uploading their first account list.</p>
+                <p class="conversion-body">That's why getting started is free.</p>
+                <p class="conversion-body">Explore the map. Build a plan. Upgrade only if it's genuinely useful.</p>
+                <a href="#" class="btn btn-primary btn-large">Start free</a>
+                <p class="conversion-microcopy">No credit card required</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <div class="container section-center">
+            <h2 class="section-title">Common questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Is this a replacement for Salesforce or HubSpot?</h4>
+                    <p>No. It complements your CRM by making account data usable for planning.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I share maps with people outside my team?</h4>
+                    <p>Yes. You can generate secure, view-only map links.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is this only for sales teams?</h4>
+                    <p>No. Sales, marketing, and GTM teams all use it — often together.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How accurate is the geocoding?</h4>
+                    <p>Addresses are automatically geocoded and can be adjusted if needed.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I plan trips and routes?</h4>
+                    <p>Yes. Trip and route planning are core to the product.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="section-title">Plan your GTM activity around reality</h2>
+            <a href="#" class="btn btn-primary btn-large">Start free</a>
+            <div class="final-cta-microcopy">
+                <span>Set up in minutes</span>
+                <span>No credit card required</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const themeIcon = document.querySelector('.theme-icon');
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            const themeIcon = document.querySelector('.theme-icon');
+            themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

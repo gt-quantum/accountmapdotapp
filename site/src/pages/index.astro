@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.jsx';
+import Credibility from '../components/sections/Credibility.jsx';
+import Problem from '../components/sections/Problem.jsx';
+import Framework from '../components/sections/Framework.jsx';
+import AhaMoment from '../components/sections/AhaMoment.jsx';
+import UseCases from '../components/sections/UseCases.jsx';
+import Workflows from '../components/sections/Workflows.jsx';
+import Conversion from '../components/sections/Conversion.jsx';
+import FAQ from '../components/sections/FAQ.jsx';
+import FinalCTA from '../components/sections/FinalCTA.jsx';
+---
+
+<BaseLayout title="Account Map App - Account Mapping & Territory Planning">
+  <Hero client:load />
+  <Credibility client:load />
+  <Problem client:load />
+  <Framework client:load />
+  <AhaMoment client:load />
+  <UseCases client:load />
+  <Workflows client:load />
+  <Conversion client:load />
+  <FAQ client:load />
+  <FinalCTA client:load />
+</BaseLayout>
+
+<style is:global>
+  /* Responsive grid overrides */
+  @media (max-width: 1024px) {
+    section > div > div[style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    section > div > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section > div > div[style*="grid-template-columns: repeat(2, 1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
