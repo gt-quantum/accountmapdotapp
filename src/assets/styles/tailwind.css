@@ -9,7 +9,8 @@
   }
 
   .dark body {
-    background: radial-gradient(ellipse at 25% 25%, #1C1917 0%, #1A1816 30%, #191715 60%, #171514 100%);
+    /* Cool slate background (blue-grey tint) */
+    background: radial-gradient(ellipse at 25% 25%, #0f172a 0%, #1e293b 30%, #1e293b 60%, #0f172a 100%);
   }
 }
 
@@ -33,7 +34,7 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-stone-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-green-500 focus:ring-offset-green-200 focus:ring-2 focus:ring-offset-2 hover:bg-stone-100 hover:border-stone-600 dark:text-stone-300 dark:border-stone-500 dark:hover:bg-stone-800 dark:hover:border-stone-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-xl border-stone-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-green-500 focus:ring-offset-green-200 focus:ring-2 focus:ring-offset-2 hover:bg-stone-100 hover:border-stone-600 dark:text-stone-300 dark:border-stone-500 dark:hover:bg-stone-800 dark:hover:border-stone-800 cursor-pointer;
   }
 
   .btn-primary {
@@ -56,8 +57,8 @@
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-stone-900/90 border-b border-stone-500/20;
-  box-shadow: 0 0.375rem 1.5rem 0 rgba(28, 25, 23, 0.3);
+  @apply md:bg-slate-900/90 md:backdrop-blur-md border-b border-slate-700/30;
+  box-shadow: 0 0.375rem 1.5rem 0 rgba(15, 23, 42, 0.4);
 }
 
 #header.expanded nav {
