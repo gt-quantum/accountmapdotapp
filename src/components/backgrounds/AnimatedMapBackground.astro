@@ -45,16 +45,16 @@
       { baseY: 0.18, amplitude: 32, frequency: 0.0035, speed: 0.065, phase: 5.6, color: 'rgba(107, 116, 85, 0.05)' },
     ];
 
-    // Dark mode terrain layers - all using bright teal-green, fading opacity toward top
+    // Dark mode terrain layers - warm earth tones: greens and browns
     const darkTerrainLayers = [
-      { baseY: 0.92, amplitude: 90, frequency: 0.0018, speed: 0.035, phase: 0, color: 'rgba(45, 212, 191, 0.12)' },   // teal-400
-      { baseY: 0.82, amplitude: 75, frequency: 0.002, speed: 0.04, phase: 0.8, color: 'rgba(45, 212, 191, 0.10)' },   // teal-400
-      { baseY: 0.72, amplitude: 65, frequency: 0.0025, speed: 0.05, phase: 1.6, color: 'rgba(45, 212, 191, 0.08)' },  // teal-400
-      { baseY: 0.60, amplitude: 55, frequency: 0.003, speed: 0.055, phase: 2.4, color: 'rgba(45, 212, 191, 0.07)' },  // teal-400
-      { baseY: 0.48, amplitude: 48, frequency: 0.0028, speed: 0.05, phase: 3.2, color: 'rgba(45, 212, 191, 0.06)' },  // teal-400
-      { baseY: 0.38, amplitude: 42, frequency: 0.0022, speed: 0.045, phase: 4.0, color: 'rgba(45, 212, 191, 0.05)' }, // teal-400
-      { baseY: 0.28, amplitude: 38, frequency: 0.0032, speed: 0.06, phase: 4.8, color: 'rgba(45, 212, 191, 0.04)' },  // teal-400
-      { baseY: 0.18, amplitude: 32, frequency: 0.0035, speed: 0.065, phase: 5.6, color: 'rgba(45, 212, 191, 0.03)' }, // teal-400
+      { baseY: 0.92, amplitude: 90, frequency: 0.0018, speed: 0.035, phase: 0, color: 'rgba(74, 222, 128, 0.12)' },   // Light green glow
+      { baseY: 0.82, amplitude: 75, frequency: 0.002, speed: 0.04, phase: 0.8, color: 'rgba(52, 211, 107, 0.10)' },   // Bright map green
+      { baseY: 0.72, amplitude: 65, frequency: 0.0025, speed: 0.05, phase: 1.6, color: 'rgba(34, 197, 94, 0.09)' },   // Map green
+      { baseY: 0.60, amplitude: 55, frequency: 0.003, speed: 0.055, phase: 2.4, color: 'rgba(22, 163, 74, 0.08)' },   // Forest green
+      { baseY: 0.48, amplitude: 48, frequency: 0.0028, speed: 0.05, phase: 3.2, color: 'rgba(21, 128, 61, 0.07)' },   // Deep green
+      { baseY: 0.38, amplitude: 42, frequency: 0.0022, speed: 0.045, phase: 4.0, color: 'rgba(120, 110, 95, 0.065)' }, // Warm brown
+      { baseY: 0.28, amplitude: 38, frequency: 0.0032, speed: 0.06, phase: 4.8, color: 'rgba(100, 95, 80, 0.055)' },   // Deep brown
+      { baseY: 0.18, amplitude: 32, frequency: 0.0035, speed: 0.065, phase: 5.6, color: 'rgba(107, 116, 85, 0.05)' },  // Terrain olive
     ];
 
     // Contour lines config
@@ -125,9 +125,9 @@
       }
 
       // Different contour colors for light/dark mode
-      // Dark: teal to complement slate, Light: warm brown
+      // Dark: green-tinted to complement warm stone, Light: warm brown
       ctx.strokeStyle = dark
-        ? `rgba(20, 184, 166, ${opacity})`  // teal-500 - cool blue-green
+        ? `rgba(134, 239, 172, ${opacity})`  // green-300 - warm green
         : `rgba(130, 120, 110, ${opacity})`;
       ctx.lineWidth = 0.9;
       ctx.stroke();
@@ -138,8 +138,8 @@
       const height = window.innerHeight;
       const gridSize = 100;
 
-      // Teal grid for dark mode, warm for light
-      ctx.strokeStyle = dark ? 'rgba(20, 184, 166, 0.03)' : 'rgba(140, 130, 120, 0.04)';
+      // Green grid for dark mode, warm for light
+      ctx.strokeStyle = dark ? 'rgba(134, 239, 172, 0.035)' : 'rgba(140, 130, 120, 0.04)';
       ctx.lineWidth = 0.6;
 
       for (let x = 0; x < width; x += gridSize) {
@@ -174,11 +174,11 @@
       );
 
       if (dark) {
-        // Using Tailwind slate (cool blue-grey) for dark mode
-        bgGradient.addColorStop(0, '#0f172a');   // slate-900
-        bgGradient.addColorStop(0.3, '#1e293b'); // slate-800
-        bgGradient.addColorStop(0.6, '#1e293b'); // slate-800
-        bgGradient.addColorStop(1, '#0f172a');   // slate-900
+        // Using warm stone for dark mode
+        bgGradient.addColorStop(0, '#1C1917');   // stone-900
+        bgGradient.addColorStop(0.3, '#1A1816');
+        bgGradient.addColorStop(0.6, '#191715');
+        bgGradient.addColorStop(1, '#171514');
       } else {
         bgGradient.addColorStop(0, '#FAFAF9');
         bgGradient.addColorStop(0.25, '#F8F7F5');

@@ -32,6 +32,7 @@ import BrowserMockup from '~/components/ui/BrowserMockup.astro';
 import Features from '~/components/widgets/Features.astro';
 
 // Import product images
+import imgCombinedTripView from '~/assets/images/product/combined-trip-view.png';
 import imgMapTripView from '~/assets/images/product/map-trip-view.png';
 import imgMapView from '~/assets/images/product/map-view.png';
 import imgPlanView from '~/assets/images/product/plan-view.png';
@@ -85,8 +86,8 @@ const metadata = {
 
     <Fragment slot="image">
       <BrowserMockup
-        src={imgMapTripView}
-        alt="Account Map App - Map and Trip View"
+        src={imgCombinedTripView}
+        alt="Account Map App - Trip Plan and Map View"
         class="max-w-5xl mx-auto"
       />
     </Fragment>
