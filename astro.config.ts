@@ -53,18 +53,19 @@ export default defineConfig({
       })
     ),
 
-    compress({
-      CSS: true,
-      HTML: {
-        'html-minifier-terser': {
-          removeAttributeQuotes: false,
-        },
-      },
-      Image: false,
-      JavaScript: true,
-      SVG: false,
-      Logger: 1,
-    }),
+    // Disabled compress - causing OOM on Cloudflare builds
+    // compress({
+    //   CSS: true,
+    //   HTML: {
+    //     'html-minifier-terser': {
+    //       removeAttributeQuotes: false,
+    //     },
+    //   },
+    //   Image: false,
+    //   JavaScript: true,
+    //   SVG: false,
+    //   Logger: 1,
+    // }),
 
     astrowind({
       config: './src/config.yaml',
