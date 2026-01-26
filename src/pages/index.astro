@@ -31,83 +31,88 @@ const metadata = {
 
 const features = [
   {
-    title: 'Visual Account Maps',
-    description: 'Create stunning visual representations of account org charts and relationships.',
-    icon: 'tabler:sitemap',
-  },
-  {
-    title: 'Relationship Tracking',
-    description: 'Track champions, blockers, and influencers across every deal.',
-    icon: 'tabler:users',
-  },
-  {
-    title: 'Engagement Insights',
-    description: "See who's engaged, who's gone silent, and where to focus next.",
-    icon: 'tabler:chart-dots',
-  },
-  {
-    title: 'CRM Integration',
-    description: 'Sync seamlessly with Salesforce, HubSpot, and other leading CRMs.',
+    title: 'Works With Your Tools',
+    description: 'Upload CSVs, connect Google Sheets, integrate with HubSpot CRM, and export to Google/Apple Maps and Calendar.',
     icon: 'tabler:plug-connected',
   },
   {
-    title: 'Team Collaboration',
-    description: 'Share account maps across your team for aligned selling.',
-    icon: 'tabler:share',
+    title: 'Interactive Maps & Address Enrichment',
+    description: 'Get verified, geocoded coordinates for every address. Build interactive maps with clustering and filters, then save and share views across your team.',
+    icon: 'tabler:map',
   },
   {
-    title: 'Deal Intelligence',
-    description: 'Get actionable insights to accelerate your pipeline.',
-    icon: 'tabler:bulb',
+    title: 'Trip & Route Planning',
+    description: 'Build multi-stop trips directly from your map. Automatic route optimization shows efficient travel order, drive times, and total distance.',
+    icon: 'tabler:route',
+  },
+  {
+    title: 'Connected Planning Docs',
+    description: 'Build planning documents with embedded maps and linked trips. Share territory strategies, account plans, or quarterly reviews with full geographic context.',
+    icon: 'tabler:file-text',
+  },
+  {
+    title: 'Custom Object Support',
+    description: 'Map any object with an address. Accounts, contacts, events, partners, locations, or custom objects you define. No limitations.',
+    icon: 'tabler:database',
+  },
+  {
+    title: 'Built for Teams',
+    description: 'Built for team collaboration. Share saved views, coordinate on trip plans, collaborate on documents, and maintain visibility across territories.',
+    icon: 'tabler:users-group',
   },
 ];
 
-const features2 = [
-  { title: 'Account Maps', description: 'Visual org charts that update in real-time.', icon: 'tabler:layout-grid' },
-  { title: 'Relationship Strength', description: 'Score and track the health of key relationships.', icon: 'tabler:heart-handshake' },
-  { title: 'Contact Intelligence', description: 'Rich profiles for every stakeholder in your accounts.', icon: 'tabler:address-book' },
-  { title: 'Activity Timeline', description: 'Complete history of engagement with each account.', icon: 'tabler:timeline' },
-  { title: 'Team Collaboration', description: 'Share maps and insights across your sales team.', icon: 'tabler:users-group' },
-  { title: 'Analytics Dashboard', description: 'Track account health and engagement metrics.', icon: 'tabler:chart-bar' },
+const useCases = [
+  { title: 'Sales Reps', description: 'Visualize your book of business, plan multi-account trips, create territory strategies for QBRs, and see how prospects cluster near customers or upcoming events.', icon: 'tabler:briefcase' },
+  { title: 'Sales Managers', description: 'See your entire team\'s territories on one map, identify coverage gaps, and plan coordinated plays in key markets.', icon: 'tabler:users' },
+  { title: 'Customer Success', description: 'Visualize customer health by geography, plan proactive check-in trips, spot expansion opportunities in key markets, and align in-person visits with renewal timelines.', icon: 'tabler:heart-handshake' },
+  { title: 'Marketing Teams', description: 'See target accounts on a map, plan regional campaigns where density is highest, coordinate event strategy with sales territories, and identify gaps in marketing coverage.', icon: 'tabler:speakerphone' },
+  { title: 'Partner/Channel Teams', description: 'Map partner locations against prospect density, identify white space opportunities, plan joint territory strategies, and coordinate channel plays where partners have local presence.', icon: 'tabler:arrows-exchange' },
+  { title: 'Coordinated GTM', description: 'Visualize accounts, prospects, partners, and activities together, plan coordinated regional strategies, align team efforts geographically, and eliminate conflicts or gaps in coverage.', icon: 'tabler:target' },
 ];
 
 const steps = [
-  { title: 'Sign up free', description: 'Create your account in seconds. No credit card required.', icon: 'tabler:user-plus' },
-  { title: 'Import your accounts', description: 'Connect your CRM or upload a CSV to bring in your contacts.', icon: 'tabler:upload' },
-  { title: 'Build your maps', description: 'Drag, drop, and visualize your account relationships.', icon: 'tabler:map' },
+  { title: 'Upload Your Data', description: 'Bring in your target accounts, contacts, or any data with an address! It\'s fully customizable!', icon: 'tabler:upload' },
+  { title: 'Map It Out', description: 'Automatically visualize all your data on maps! Save and share views, build lists, and organize however you need!', icon: 'tabler:map' },
+  { title: 'Build Your Plans', description: 'Build trips & custom routes, create planning documents, and coordinate all your territory activities in one place!', icon: 'tabler:file-text' },
+  { title: 'Execute', description: 'Share plans, sync trips to your calendar, and open routes directly in your favorite apps. Turn planning into action.', icon: 'tabler:rocket' },
 ];
 
 const stats = [
-  { label: 'Active Users', value: '10K+' },
-  { label: 'Accounts Mapped', value: '50K+' },
-  { label: 'Deals Closed', value: '$2B+' },
-  { label: 'Customer Rating', value: '4.9' },
+  { label: 'Active Users', value: '200+' },
+  { label: 'Accounts Mapped', value: '10K+' },
+  { label: 'Trips Planned', value: '1000+' },
+  { label: 'Sales Teams', value: '50+' },
 ];
 
 const faqs = [
   {
     question: 'What is Account Map App?',
-    answer: 'Account Map App is a visual account mapping platform that helps B2B sales teams understand complex organizational structures, track stakeholder relationships, and close deals faster.',
+    answer: 'A visual account planning platform for sales, CS, marketing, and GTM teams. Upload your data, see it on maps, plan efficient trips, and build executable strategies, all with geographic context your spreadsheets and CRM can\'t provide.',
   },
   {
-    question: 'How does it integrate with my CRM?',
-    answer: 'We offer native integrations with Salesforce, HubSpot, and other leading CRMs. Your contact data syncs automatically, and relationship insights flow back to your CRM.',
+    question: 'What kind of data can I upload?',
+    answer: 'Anything with an address! Upload standard CRM objects like accounts and contacts, or create custom objects for events, ABM targets, partner locations, campaign data, venues, whatever you need. CSV imports and Google Sheets integration make it easy.',
   },
   {
-    question: 'Is there a free trial?',
-    answer: 'Yes! You can start with our free plan which includes up to 3 account maps. No credit card required. Upgrade anytime to access unlimited maps and advanced features.',
+    question: 'How does geocoding work?',
+    answer: 'Account Map App automatically geocodes addresses using verification services. Your addresses are enriched with verified coordinates, accuracy ratings, and standardized formatting for reliable mapping. If nothing matches or there is an issue, we\'ll let you know what to go look at!',
   },
   {
-    question: 'Can my whole team use it?',
-    answer: 'Our Pro and Enterprise plans support team collaboration. Share account maps, leave comments, and ensure everyone has the same view of key accounts.',
+    question: 'Can I share maps with my team?',
+    answer: 'Yes! Save custom map views and share them with your team. Everyone can access shared views, lists, and planning documents within your workspace for full visibility and collaboration.',
   },
   {
-    question: 'Is my data secure?',
-    answer: 'Security is our top priority. We use enterprise-grade encryption, SOC 2 compliance, and never share your data. Enterprise plans include SSO and advanced security features.',
+    question: 'Is there a free trial/free plan?',
+    answer: 'Yes! We offer a free plan with limited records to get started. Upgrade anytime to unlock unlimited records, advanced features, and team collaboration. No credit card required to start.',
   },
   {
     question: 'How is this different from my CRM?',
-    answer: "CRMs store contact data; Account Map App visualizes relationships. We show you who influences whom, relationship strength, and coverage gaps - insights you can't get from a contact list.",
+    answer: 'Your CRM stores contact data in lists and tables. Account Map App adds the geographic layer, showing you WHERE your accounts are, not just WHO they are. We complement your CRM by adding visual territory planning, route optimization, and location-based strategy.',
+  },
+  {
+    question: 'How is this different from Salesforce Maps / other tools?',
+    answer: 'Price, for starters. Salesforce Maps runs $100+ per user per month. We\'re designed for individuals and teams who need visual account planning without enterprise budgets. Plus, we focus on practical workflows, connect to where you already work (Google Sheets, Calendar, Maps) and actually plan what to do with your data, not just visualize it.',
   },
 ];
 ---
@@ -126,15 +131,13 @@ const faqs = [
     <div class="py-12 md:py-20 lg:py-12 xl:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 relative">
         <div class="text-center max-w-5xl mx-auto pb-10 md:pb-16 lg:pb-10 xl:pb-16 animate-fade-in-up">
-          <h1 class="text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-stone-200">
-            Visualize Your
-            <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent"> Key Accounts </span>
-            Like Never Before
+          <h1 class="text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tighter mb-4 font-heading dark:text-stone-200">
+            <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">Account Mapping</span>
+            <span class="italic">(literally)</span> for Go-To-Market Teams
           </h1>
 
           <p class="text-xl text-muted dark:text-stone-300 mb-6 max-w-3xl mx-auto">
-          <span class="font-semibold text-gray-900 dark:text-white">Account Map App</span> helps sales teams map relationships, track engagement, and close bigger deals faster.
-          <span class="block mt-2">Turn complex account structures into clear visual maps.</span>
+          Geographic context that turns your account data into territory strategy, not just another report.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -163,7 +166,7 @@ const faqs = [
 
       <!-- Hero Image with Browser Mockup -->
       <div class="relative animate-fade-in-up delay-300">
-        <div class="scroll-animate relative mx-auto max-w-6xl lg:max-w-4xl xl:max-w-6xl">
+        <div class="relative mx-auto max-w-6xl lg:max-w-4xl xl:max-w-6xl">
           <!-- Browser chrome -->
           <div class="bg-gray-100 dark:bg-stone-800 rounded-t-2xl px-4 py-3 flex items-center gap-2 border border-gray-200 dark:border-stone-700 border-b-0">
             <div class="flex gap-1.5">
@@ -254,10 +257,10 @@ const faqs = [
   </section>
 
   <!-- ============================================================ -->
-  <!-- 2. BRANDS                                                    -->
+  <!-- 2. BRANDS (Hidden for now - uncomment when ready)            -->
   <!-- ============================================================ -->
+  <!--
   <section class="relative py-16 border-y border-gray-100 dark:border-stone-800 bg-gray-50/50 dark:bg-transparent">
-    <!-- Semi-transparent overlay for dark mode -->
     <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
       <p class="text-center text-sm font-medium text-gray-500 dark:text-stone-300 mb-8 uppercase tracking-wider">
@@ -272,48 +275,39 @@ const faqs = [
       </div>
     </div>
   </section>
+  -->
 
   <!-- ============================================================ -->
   <!-- 3. STEPS                                                     -->
   <!-- ============================================================ -->
-  <section class="py-24 md:py-32 lg:py-20 xl:py-32 2xl:py-24 relative overflow-hidden">
+  <section class="py-16 md:py-20 lg:py-12 xl:py-16 2xl:py-14 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-stone-900 dark:via-stone-800/50 dark:to-stone-900"></div>
 
     <div class="max-w-7xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
-      <div class="text-center mb-16 lg:mb-10 xl:mb-16 scroll-animate">
-        <h2 class="text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
-          Get started in <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">3 simple steps</span>
+      <div class="text-center mb-10 lg:mb-6 xl:mb-10 scroll-animate">
+        <h2 class="text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-3xl font-bold tracking-tight mb-2">
+          <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">How It Works</span>
         </h2>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-12 items-center">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-6 xl:gap-8 items-center">
         <!-- Steps list -->
-        <div class="space-y-8 lg:space-y-4 xl:space-y-8">
+        <div class="space-y-4 lg:space-y-2 xl:space-y-4">
           {steps.map((step, index) => (
-            <div class="scroll-animate group flex gap-6 lg:gap-4 xl:gap-6 p-6 lg:p-4 xl:p-6 bg-white dark:bg-stone-800 rounded-2xl shadow-lg ring-1 ring-gray-100 dark:ring-stone-700 hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+            <div class="scroll-animate group flex gap-4 lg:gap-3 xl:gap-4 p-4 lg:p-3 xl:p-4 bg-white dark:bg-stone-800 rounded-xl shadow-lg ring-1 ring-gray-100 dark:ring-stone-700 hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
               <div class="flex-shrink-0">
-                <div class="w-14 h-14 lg:w-11 lg:h-11 xl:w-14 xl:h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl lg:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/25 group-hover:scale-110 transition-transform duration-300">
-                  <Icon name={step.icon} class="w-7 h-7 lg:w-5 lg:h-5 xl:w-7 xl:h-7 text-white" />
+                <div class="w-10 h-10 lg:w-9 lg:h-9 xl:w-10 xl:h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl lg:rounded-lg xl:rounded-xl flex items-center justify-center shadow-lg shadow-green-500/25 group-hover:scale-110 transition-transform duration-300">
+                  <Icon name={step.icon} class="w-5 h-5 lg:w-4 lg:h-4 xl:w-5 xl:h-5 text-white" />
                 </div>
               </div>
               <div>
-                <h3 class="text-xl lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white mb-2 lg:mb-1 xl:mb-2">
+                <h3 class="text-base lg:text-sm xl:text-base font-bold text-gray-900 dark:text-white mb-1">
                   Step {index + 1}: {step.title}
                 </h3>
-                <p class="text-gray-600 dark:text-stone-300 lg:text-sm xl:text-base">{step.description}</p>
+                <p class="text-gray-600 dark:text-stone-300 text-sm lg:text-xs xl:text-sm">{step.description}</p>
               </div>
             </div>
           ))}
-
-          <!-- Final step -->
-          <div class="scroll-animate flex items-center gap-4 pl-6 lg:pl-4 xl:pl-6">
-            <div class="w-14 h-14 lg:w-11 lg:h-11 xl:w-14 xl:h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl lg:rounded-xl xl:rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/25">
-              <Icon name="tabler:check" class="w-7 h-7 lg:w-5 lg:h-5 xl:w-7 xl:h-7 text-white" />
-            </div>
-            <span class="text-2xl lg:text-xl xl:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-              Start closing!
-            </span>
-          </div>
         </div>
 
         <!-- Image -->
@@ -334,43 +328,104 @@ const faqs = [
   </section>
 
   <!-- ============================================================ -->
-  <!-- 4. FEATURES                                                  -->
+  <!-- 4. PRODUCT WORKFLOW SHOWCASE                                 -->
   <!-- ============================================================ -->
-  <section class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
-    <!-- Semi-transparent overlay for dark mode -->
-    <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-4">
-          Features
-        </span>
-        <h2 class="text-4xl md:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
-          What you get with <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">Account Map App</span>
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-stone-300 max-w-2xl mx-auto">
-          Everything you need to understand and navigate complex B2B accounts.
-        </p>
-      </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map((feature, index) => (
-          <div
-            class="scroll-animate group p-8 bg-white dark:bg-stone-800/90 rounded-2xl shadow-xl dark:shadow-[0_0_20px_rgba(255,255,255,0.08)] ring-1 ring-gray-200/50 dark:ring-white/10 hover:shadow-2xl dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:scale-[1.02] transition-all duration-300"
-            style={`animation-delay: ${index * 100}ms`}
-          >
-            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-              <Icon name={feature.icon} class="w-7 h-7 text-green-600 dark:text-green-400" />
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
-            <p class="text-gray-600 dark:text-stone-300 leading-relaxed">{feature.description}</p>
+  <!-- Content Block 1 -->
+  <section class="py-12 md:py-16 2xl:py-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-green-50/50 via-white to-emerald-50/50 dark:from-stone-900 dark:via-stone-900 dark:to-stone-800"></div>
+
+    <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="scroll-animate order-2 lg:order-1">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-4xl font-bold tracking-tight mb-6">
+            <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">From Data to Strategy</span> in Seconds
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-stone-300 mb-8">
+            Direct integrations with Google Sheets and CRMs mean your account data flows automatically to visual maps with verified Geocoding to enrich your addresses.
+          </p>
+        </div>
+
+        <div class="scroll-animate order-1 lg:order-2 relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-3xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700 hover:shadow-3xl transition-shadow duration-500">
+            <Image
+              src={imgMapView}
+              alt="Account Map App - Map View"
+              class="w-full"
+              widths={[400, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
-        ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Block 2 -->
+  <section class="py-12 md:py-16 2xl:py-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-bl from-purple-50/50 via-white to-pink-50/50 dark:from-stone-900 dark:via-stone-900 dark:to-stone-800"></div>
+
+    <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="scroll-animate relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700">
+            <Image
+              src={imgTripDetails}
+              alt="Account Map App - Trip Details"
+              class="w-full"
+              widths={[400, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+
+        <div class="scroll-animate">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-4xl font-bold tracking-tight mb-6">
+            Turn Maps into <span class="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Multi-Stop Routes</span>
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-stone-300 mb-8">
+            Turn clusters of accounts into efficient trip routes. Automatic optimization, calendar integration, and one-click navigation to get you there.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Block 3 -->
+  <section class="py-12 md:py-16 2xl:py-12 relative overflow-visible">
+    <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-white to-amber-50/50 dark:from-stone-900 dark:via-stone-900 dark:to-stone-900"></div>
+
+    <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="scroll-animate order-2 lg:order-1">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-4xl font-bold tracking-tight mb-6">
+            Plans That <span class="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Link to Everything</span>
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-stone-300 mb-8">
+            Build strategy docs with embedded maps, linked trip plans, and connected lists. Your entire territory plan in one living document.
+          </p>
+        </div>
+
+        <div class="scroll-animate order-1 lg:order-2 relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-3xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700">
+            <Image
+              src={imgTripPlan}
+              alt="Account Map App - Trip Plan"
+              class="w-full"
+              widths={[400, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- 5. CTA Middle                                                -->
+  <!-- 5. CTA MIDDLE                                                -->
   <!-- ============================================================ -->
   <section class="py-24 md:py-32 2xl:py-24 relative overflow-hidden">
     <!-- Animated gradient background -->
@@ -415,7 +470,7 @@ const faqs = [
   </section>
 
   <!-- ============================================================ -->
-  <!-- 6. FEATURES2 - Components Grid                               -->
+  <!-- 6. USE CASES                                                 -->
   <!-- ============================================================ -->
   <section class="py-24 md:py-32 2xl:py-24 relative">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-green-50/30 to-white dark:from-stone-900 dark:via-stone-800 dark:to-stone-900"></div>
@@ -423,29 +478,26 @@ const faqs = [
     <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
       <div class="text-center mb-16 scroll-animate">
         <span class="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-semibold mb-4">
-          Components
+          Use Cases
         </span>
         <h2 class="text-4xl md:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
-          Everything you need, <span class="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">built-in</span>
+          Built for Every <span class="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Go-To-Market Role</span>
         </h2>
-        <p class="text-xl text-gray-600 dark:text-stone-300 max-w-2xl mx-auto">
-          Powerful features designed to help your team close more deals.
-        </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features2.map((feature, index) => (
+        {useCases.map((useCase, index) => (
           <div
             class="scroll-animate group relative p-6 bg-white/80 dark:bg-stone-800/80 backdrop-blur-sm rounded-2xl ring-1 ring-gray-200/50 dark:ring-stone-700/50 hover:ring-purple-300 dark:hover:ring-purple-700 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300"
             style={`animation-delay: ${index * 100}ms`}
           >
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <Icon name={feature.icon} class="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                <Icon name={useCase.icon} class="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
               <div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">{feature.title}</h3>
-                <p class="text-gray-600 dark:text-stone-300 text-sm">{feature.description}</p>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">{useCase.title}</h3>
+                <p class="text-gray-600 dark:text-stone-300 text-sm">{useCase.description}</p>
               </div>
             </div>
           </div>
@@ -455,155 +507,82 @@ const faqs = [
   </section>
 
   <!-- ============================================================ -->
-  <!-- 7. CONTENT - How it works                                    -->
+  <!-- 6.5 CTA MIDDLE #2                                            -->
   <!-- ============================================================ -->
-
-  <!-- Content Block 1 -->
   <section class="py-24 md:py-32 2xl:py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-green-50/50 via-white to-emerald-50/50 dark:from-stone-900 dark:via-stone-900 dark:to-stone-800"></div>
+    <!-- Animated gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"></div>
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
 
-    <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div class="scroll-animate order-2 lg:order-1">
-          <span class="inline-block px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-6">
-            How it works
-          </span>
-          <h2 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-4xl font-bold tracking-tight mb-6">
-            <span class="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-stone-300 bg-clip-text text-transparent">Visualize relationships</span>
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-stone-300 mb-8">
-            Turn complex account structures into clear, actionable maps.
-          </p>
+    <!-- Floating orbs -->
+    <div class="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
 
-          <div class="space-y-4">
-            {[
-              { title: 'Import contacts', desc: 'Sync from your CRM or add contacts manually.' },
-              { title: 'Map relationships', desc: 'Drag and drop to create visual org charts.' },
-              { title: 'Track engagement', desc: "See who's active and where to focus next." },
-            ].map((item) => (
-              <div class="flex items-start gap-4 p-4 bg-white dark:bg-stone-800 rounded-xl shadow-sm ring-1 ring-gray-100 dark:ring-stone-700 hover:shadow-md transition-shadow duration-300">
-                <div class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
-                  <Icon name="tabler:check" class="w-5 h-5 text-green-600" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">{item.title}</h4>
-                  <p class="text-sm text-gray-600 dark:text-stone-400">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative text-center">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl 2xl:text-5xl font-bold text-white mb-6 tracking-tight scroll-animate">
+        See Account Map App in action
+      </h2>
+      <p class="text-xl md:text-2xl text-purple-100 mb-10 scroll-animate">
+        Watch a quick demo. No signup required.
+      </p>
 
-        <div class="scroll-animate order-1 lg:order-2 relative">
-          <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-3xl blur-3xl"></div>
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700 hover:shadow-3xl transition-shadow duration-500">
-            <Image
-              src={imgMapView}
-              alt="Account Map App - Map View"
-              class="w-full"
-              widths={[400, 800]}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-        </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-animate">
+        <a
+          href="#demo"
+          class="glow-effect glow-effect--white group inline-flex items-center justify-center gap-3 lg:gap-3.5 px-6 sm:px-7 lg:px-8 py-2.5 lg:py-3 text-sm sm:text-base lg:text-base font-semibold text-purple-700 bg-white rounded-lg lg:rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+        >
+          <Icon name="tabler:player-play" class="w-5 h-5" />
+          Watch Demo
+          <svg class="glow-container">
+            <rect pathLength="100" stroke-linecap="round" class="glow-blur"></rect>
+            <rect pathLength="100" stroke-linecap="round" class="glow-line"></rect>
+          </svg>
+        </a>
+
+        <a
+          href="https://my.accountmap.app"
+          target="_blank"
+          class="inline-flex items-center justify-center gap-3 px-6 sm:px-7 lg:px-8 py-2.5 lg:py-3 text-sm sm:text-base lg:text-base font-semibold text-white border-2 border-white/30 rounded-lg lg:rounded-xl hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-all duration-300"
+        >
+          <Icon name="tabler:rocket" class="w-5 h-5" />
+          Try It Free
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Content Block 2 -->
-  <section class="py-24 md:py-32 2xl:py-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-bl from-purple-50/50 via-white to-pink-50/50 dark:from-stone-900 dark:via-stone-900 dark:to-stone-800"></div>
-
-    <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div class="scroll-animate relative">
-          <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl"></div>
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700">
-            <Image
-              src={imgTripDetails}
-              alt="Account Map App - Trip Details"
-              class="w-full"
-              widths={[400, 800]}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-        </div>
-
-        <div class="scroll-animate">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-4xl font-bold tracking-tight mb-6">
-            <span class="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Never miss</span> a key stakeholder
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-stone-300 mb-8">
-            Surface the relationships that matter most to your deals.
-          </p>
-
-          <div class="space-y-4">
-            {[
-              { title: 'Identify champions', desc: 'Know who supports your deal and who might block it.' },
-              { title: 'Spot gaps in coverage', desc: "See which stakeholders you haven't engaged yet." },
-              { title: 'Align your team', desc: 'Everyone sees the same picture of the account.' },
-            ].map((item) => (
-              <div class="flex items-start gap-4 p-4 bg-white dark:bg-stone-800 rounded-xl shadow-sm ring-1 ring-gray-100 dark:ring-stone-700 hover:shadow-md transition-shadow duration-300">
-                <div class="flex-shrink-0 w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                  <Icon name="tabler:check" class="w-5 h-5 text-purple-600" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">{item.title}</h4>
-                  <p class="text-sm text-gray-600 dark:text-stone-400">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+  <!-- ============================================================ -->
+  <!-- 7. FEATURES                                                  -->
+  <!-- ============================================================ -->
+  <section class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
+    <!-- Semi-transparent overlay for dark mode -->
+    <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 scroll-animate">
+        <span class="inline-block px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-4">
+          Features
+        </span>
+        <h2 class="text-4xl md:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
+          <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">Features</span>
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-stone-300 max-w-2xl mx-auto">
+          Everything you need to understand and navigate complex B2B accounts.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Content Block 3 -->
-  <section class="py-24 md:py-32 2xl:py-24 relative overflow-visible">
-    <div class="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-white to-amber-50/50 dark:from-stone-900 dark:via-stone-900 dark:to-stone-900"></div>
-
-    <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div class="scroll-animate order-2 lg:order-1">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-4xl font-bold tracking-tight mb-6">
-            <span class="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Close deals</span> faster
-          </h2>
-          <p class="text-lg text-gray-600 dark:text-stone-300 mb-8">
-            Turn relationship intelligence into revenue.
-          </p>
-
-          <div class="space-y-4">
-            {[
-              { title: 'Real-time updates', desc: 'Changes sync instantly across your team.' },
-              { title: 'Historical tracking', desc: 'See how relationships evolve over time.' },
-              { title: 'Smart insights', desc: 'Get AI-powered recommendations for next best actions.' },
-            ].map((item) => (
-              <div class="flex items-start gap-4 p-4 bg-white dark:bg-stone-800 rounded-xl shadow-sm ring-1 ring-gray-100 dark:ring-stone-700 hover:shadow-md transition-shadow duration-300">
-                <div class="flex-shrink-0 w-8 h-8 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
-                  <Icon name="tabler:check" class="w-5 h-5 text-orange-600" />
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">{item.title}</h4>
-                  <p class="text-sm text-gray-600 dark:text-stone-400">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <div
+            class="scroll-animate group p-8 bg-white dark:bg-stone-800/90 rounded-2xl shadow-xl dark:shadow-[0_0_20px_rgba(255,255,255,0.08)] ring-1 ring-gray-200/50 dark:ring-white/10 hover:shadow-2xl dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:scale-[1.02] transition-all duration-300"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+              <Icon name={feature.icon} class="w-7 h-7 text-green-600 dark:text-green-400" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
+            <p class="text-gray-600 dark:text-stone-300 leading-relaxed">{feature.description}</p>
           </div>
-        </div>
-
-        <div class="scroll-animate order-1 lg:order-2 relative">
-          <div class="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-3xl blur-3xl"></div>
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700">
-            <Image
-              src={imgTripPlan}
-              alt="Account Map App - Trip Plan"
-              class="w-full"
-              widths={[400, 800]}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -625,7 +604,7 @@ const faqs = [
           Account Map App <span class="bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent">by the numbers</span>
         </h2>
         <p class="text-xl text-gray-400">
-          Join thousands of sales teams closing bigger deals.
+          Hundreds of sellers already planning more efficiently.
         </p>
       </div>
 
@@ -647,45 +626,7 @@ const faqs = [
   </section>
 
   <!-- ============================================================ -->
-  <!-- 9. FAQs                                                      -->
-  <!-- ============================================================ -->
-  <section class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
-    <!-- Semi-transparent overlay for dark mode -->
-    <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16 scroll-animate">
-        <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-4">
-          FAQs
-        </span>
-        <h2 class="text-4xl md:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
-          Frequently Asked <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Questions</span>
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-stone-300">
-          Everything you need to know about Account Map App.
-        </p>
-      </div>
-
-      <div class="space-y-4">
-        {faqs.map((faq, index) => (
-          <details
-            class="scroll-animate group p-6 bg-white dark:bg-stone-800/90 rounded-2xl shadow-lg dark:shadow-[0_0_18px_rgba(255,255,255,0.08)] ring-1 ring-gray-200/50 dark:ring-white/10 hover:shadow-xl dark:hover:shadow-[0_0_22px_rgba(255,255,255,0.12)] transition-all duration-300"
-            style={`animation-delay: ${index * 50}ms`}
-          >
-            <summary class="flex items-center justify-between cursor-pointer list-none">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white pr-4">{faq.question}</h3>
-              <div class="flex-shrink-0 w-8 h-8 bg-gray-100 dark:bg-stone-700 rounded-lg flex items-center justify-center group-open:rotate-45 transition-transform duration-300">
-                <Icon name="tabler:plus" class="w-5 h-5 text-gray-600 dark:text-stone-300" />
-              </div>
-            </summary>
-            <p class="mt-4 text-gray-600 dark:text-stone-300 leading-relaxed">{faq.answer}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 10. DEMO VIDEO PLACEHOLDER                                   -->
+  <!-- 9. VIDEO                                                     -->
   <!-- ============================================================ -->
   <section id="demo" class="py-24 md:py-32 lg:py-20 xl:py-32 2xl:py-24 relative">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white dark:from-stone-900 dark:via-stone-800 dark:to-stone-900"></div>
@@ -693,10 +634,10 @@ const faqs = [
     <div class="max-w-5xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 relative">
       <div class="text-center mb-12 lg:mb-8 xl:mb-12 scroll-animate">
         <h2 class="text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
-          See it in <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">action</span>
+          See the app in <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">40 seconds</span>
         </h2>
         <p class="text-xl lg:text-lg xl:text-xl text-gray-600 dark:text-stone-300">
-          Watch how Account Map App transforms your sales workflow.
+          A quick walkthrough of mapping data, planning trips, and executing strategy.
         </p>
       </div>
 
@@ -731,7 +672,7 @@ const faqs = [
   </section>
 
   <!-- ============================================================ -->
-  <!-- 11. CTA Bottom                                               -->
+  <!-- 10. FINAL CTA                                                -->
   <!-- ============================================================ -->
   <section class="py-24 md:py-32 2xl:py-24 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-green-900 to-emerald-900"></div>
@@ -744,11 +685,11 @@ const faqs = [
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 relative text-center">
       <h2 class="text-4xl md:text-5xl lg:text-6xl 2xl:text-5xl font-bold text-white mb-6 tracking-tight scroll-animate">
-        Ready to close <span class="bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent">bigger deals</span>?
+        Start mapping your <span class="bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent">accounts today</span>
       </h2>
       <p class="text-xl md:text-2xl text-gray-300 mb-10 scroll-animate">
-        Join thousands of sales teams using Account Map App to visualize accounts and accelerate pipeline.
-        <span class="block mt-2 text-green-400 font-semibold">Start free today.</span>
+        Turn location data into actionable plans.
+        <span class="block mt-2 text-green-400 font-semibold">Start with our free plan, no credit card required.</span>
       </p>
 
       <div class="scroll-animate">
@@ -767,6 +708,146 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <!-- ============================================================ -->
+  <!-- 11. FAQs                                                     -->
+  <!-- ============================================================ -->
+  <section class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
+    <!-- Semi-transparent overlay for dark mode -->
+    <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16 scroll-animate">
+        <span class="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-4">
+          FAQs
+        </span>
+        <h2 class="text-4xl md:text-5xl 2xl:text-4xl font-bold tracking-tight mb-4">
+          Frequently Asked <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Questions</span>
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-stone-300">
+          Everything you need to know about Account Map App.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <details
+            class="scroll-animate group p-6 bg-white dark:bg-stone-800/90 rounded-2xl shadow-lg dark:shadow-[0_0_18px_rgba(255,255,255,0.08)] ring-1 ring-gray-200/50 dark:ring-white/10 hover:shadow-xl dark:hover:shadow-[0_0_22px_rgba(255,255,255,0.12)] transition-all duration-300"
+            style={`animation-delay: ${index * 50}ms`}
+          >
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white pr-4">{faq.question}</h3>
+              <div class="flex-shrink-0 w-8 h-8 bg-gray-100 dark:bg-stone-700 rounded-lg flex items-center justify-center group-open:rotate-45 transition-transform duration-300">
+                <Icon name="tabler:plus" class="w-5 h-5 text-gray-600 dark:text-stone-300" />
+              </div>
+            </summary>
+            <p class="mt-4 text-gray-600 dark:text-stone-300 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="text-center mt-12 scroll-animate">
+        <p class="text-gray-600 dark:text-stone-400">
+          Have a question not answered here?
+          <a href="#contact" class="contact-trigger text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium hover:underline transition-colors">
+            Contact us
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT POPUP MODAL                                          -->
+  <!-- ============================================================ -->
+  <div id="contact-modal" class="contact-modal fixed inset-0 z-50 hidden">
+    <!-- Backdrop -->
+    <div class="contact-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+    <!-- Modal -->
+    <div class="relative flex items-center justify-center min-h-screen p-4">
+      <div class="contact-content relative bg-white dark:bg-stone-800 rounded-2xl shadow-2xl w-full max-w-md p-8 transform scale-95 opacity-0 transition-all duration-300">
+        <!-- Close button -->
+        <button class="contact-close absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-stone-700 transition-colors">
+          <Icon name="tabler:x" class="w-5 h-5 text-gray-500 dark:text-stone-400" />
+        </button>
+
+        <!-- Header -->
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Contact Us</h3>
+          <p class="text-gray-600 dark:text-stone-400">We'd love to hear from you. Send us a message!</p>
+        </div>
+
+        <!-- Form -->
+        <form id="contact-form" class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="first-name" class="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-1">First Name</label>
+              <input
+                type="text"
+                id="first-name"
+                name="firstName"
+                required
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-stone-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                placeholder="John"
+              />
+            </div>
+            <div>
+              <label for="last-name" class="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-1">Last Name</label>
+              <input
+                type="text"
+                id="last-name"
+                name="lastName"
+                required
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-stone-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                placeholder="Doe"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-1">Business Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-stone-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+              placeholder="john@company.com"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-stone-300 mb-1">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-stone-600 bg-white dark:bg-stone-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-stone-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none"
+              placeholder="How can we help you?"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 px-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg hover:scale-[1.02] hover:shadow-lg transition-all duration-300"
+          >
+            Send Message
+          </button>
+        </form>
+
+        <!-- Success message (hidden by default) -->
+        <div id="contact-success" class="hidden text-center py-8">
+          <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Icon name="tabler:check" class="w-8 h-8 text-green-600 dark:text-green-400" />
+          </div>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h4>
+          <p class="text-gray-600 dark:text-stone-400">We'll get back to you as soon as possible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
 
 <style>
@@ -886,8 +967,8 @@ const faqs = [
   /* Scroll animations */
   .scroll-animate {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
   }
 
   .scroll-animate.visible {
@@ -900,6 +981,25 @@ const faqs = [
   .scroll-animate.delay-200 { transition-delay: 200ms; }
   .scroll-animate.delay-300 { transition-delay: 300ms; }
   .scroll-animate.delay-500 { transition-delay: 500ms; }
+
+  /* Contact Modal */
+  .contact-modal.open {
+    display: block;
+  }
+
+  .contact-modal.open .contact-content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .contact-modal.open .contact-backdrop {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
   /* Custom animations */
   @keyframes float {
@@ -1065,5 +1165,107 @@ const faqs = [
     });
   })();
 
+  // Contact Modal
+  (function initContactModal() {
+    const modal = document.getElementById('contact-modal');
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('contact-success');
+    const closeBtn = modal?.querySelector('.contact-close');
+    const backdrop = modal?.querySelector('.contact-backdrop');
+
+    // Open modal function
+    function openModal() {
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Close modal function
+    function closeModal() {
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        // Reset form after closing
+        setTimeout(() => {
+          if (form) form.reset();
+          if (form) form.classList.remove('hidden');
+          if (successMsg) successMsg.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    // Trigger buttons/links (including footer links)
+    document.querySelectorAll('a[href="#contact"], .contact-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Close button
+    closeBtn?.addEventListener('click', closeModal);
+
+    // Click outside to close
+    backdrop?.addEventListener('click', closeModal);
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    // Form submission
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = submitBtn?.textContent || 'Send Message';
+
+      // Show loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      const formData = new FormData(form);
+      const data = {
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+      };
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to send message');
+        }
+
+        // Show success message
+        form.classList.add('hidden');
+        successMsg?.classList.remove('hidden');
+
+        // Auto-close after 3 seconds
+        setTimeout(closeModal, 3000);
+
+      } catch (error) {
+        console.error('Contact form error:', error);
+        alert('Sorry, there was an error sending your message. Please try again.');
+      } finally {
+        // Reset button state
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
+    });
+  })();
 
 </script>

@@ -92,23 +92,20 @@ export const footerData = {
       links: [
         { text: 'Get Started', href: 'https://my.accountmap.app' },
         { text: 'FAQ', href: '#faq' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { text: 'About', href: '#about' },
+        { text: 'Contact Us', href: '#contact' },
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Terms', href: 'https://my.accountmap.app/terms' },
+    { text: 'Privacy Policy', href: 'https://my.accountmap.app/privacy' },
   ],
-  socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
-  ],
+  // Social links - uncomment when ready
+  // socialLinks: [
+  //   { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+  //   { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
+  // ],
+  socialLinks: [],
   footNote: `
     &copy; ${new Date().getFullYear()} Account Map App. All rights reserved.
   `,
