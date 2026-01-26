@@ -664,8 +664,9 @@ const faqs = [
           <rect pathLength="100" rx="16" class="demo-glow-stroke demo-glow-bottom" filter="url(#glow-filter)" />
         </svg>
 
-        <div class="relative rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700 overflow-hidden hover:ring-green-300 dark:hover:ring-green-700 transition-all duration-300">
+        <div class="relative rounded-2xl shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700 overflow-hidden hover:ring-green-300 dark:hover:ring-green-700 transition-all duration-300 group/video">
           <video
+            id="demo-video"
             controls
             preload="metadata"
             playsinline
@@ -675,6 +676,12 @@ const faqs = [
           >
             Your browser does not support the video tag.
           </video>
+          <!-- Play button overlay -->
+          <div id="video-play-overlay" class="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/20 transition-opacity duration-300">
+            <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-xl shadow-green-500/30 group-hover/video:scale-110 transition-transform duration-300">
+              <Icon name="tabler:player-play-filled" class="w-8 h-8 text-white ml-1" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1342,6 +1349,36 @@ const faqs = [
           submitBtn.textContent = originalText;
         }
       }
+    });
+  })();
+
+  // Video play button overlay
+  (function initVideoPlayer() {
+    const video = document.getElementById('demo-video') as HTMLVideoElement;
+    const overlay = document.getElementById('video-play-overlay');
+
+    if (!video || !overlay) return;
+
+    // Click overlay to play
+    overlay.addEventListener('click', () => {
+      video.play();
+    });
+
+    // Hide overlay when playing
+    video.addEventListener('play', () => {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+    });
+
+    // Show overlay when paused or ended
+    video.addEventListener('pause', () => {
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
+    });
+
+    video.addEventListener('ended', () => {
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
     });
   })();
 
