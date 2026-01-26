@@ -73,9 +73,9 @@ const useCases = [
 ];
 
 const steps = [
-  { title: 'Upload Your Data', description: 'Bring in your target accounts, contacts, or any data with an address! It\'s fully customizable!', icon: 'tabler:upload' },
-  { title: 'Map It Out', description: 'Automatically visualize all your data on maps! Save and share views, build lists, and organize however you need!', icon: 'tabler:map' },
-  { title: 'Build Your Plans', description: 'Build trips & custom routes, create planning documents, and coordinate all your territory activities in one place!', icon: 'tabler:file-text' },
+  { title: 'Upload Your Data', description: 'Bring in your target accounts, contacts, or any data with an address. It\'s fully customizable.', icon: 'tabler:upload' },
+  { title: 'Map It Out', description: 'Automatically visualize all your data on maps. Save and share views, build lists, and organize however you need.', icon: 'tabler:map' },
+  { title: 'Build Your Plans', description: 'Build trips & custom routes, create planning documents, and coordinate all your territory activities in one place.', icon: 'tabler:file-text' },
   { title: 'Execute', description: 'Share plans, sync trips to your calendar, and open routes directly in your favorite apps. Turn planning into action.', icon: 'tabler:rocket' },
 ];
 
@@ -283,7 +283,7 @@ const faqs = [
   <!-- ============================================================ -->
   <!-- 3. STEPS                                                     -->
   <!-- ============================================================ -->
-  <section class="py-16 md:py-20 lg:py-12 xl:py-16 2xl:py-14 relative overflow-hidden">
+  <section id="how-it-works" class="py-16 md:py-20 lg:py-12 xl:py-16 2xl:py-14 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-stone-900 dark:via-stone-800/50 dark:to-stone-900"></div>
 
     <div class="max-w-7xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
@@ -477,7 +477,7 @@ const faqs = [
   <!-- ============================================================ -->
   <!-- 6. USE CASES                                                 -->
   <!-- ============================================================ -->
-  <section class="py-24 md:py-32 2xl:py-24 relative">
+  <section id="use-cases" class="py-24 md:py-32 2xl:py-24 relative">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-green-50/30 to-white dark:from-stone-900 dark:via-stone-800 dark:to-stone-900"></div>
 
     <div class="max-w-7xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 relative">
@@ -560,7 +560,7 @@ const faqs = [
   <!-- ============================================================ -->
   <!-- 7. FEATURES                                                  -->
   <!-- ============================================================ -->
-  <section class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
+  <section id="features" class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
     <!-- Semi-transparent overlay for dark mode -->
     <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -664,14 +664,16 @@ const faqs = [
           <rect pathLength="100" rx="16" class="demo-glow-stroke demo-glow-bottom" filter="url(#glow-filter)" />
         </svg>
 
-        <div class="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-stone-800 dark:to-stone-700 rounded-2xl aspect-video flex items-center justify-center shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700 overflow-hidden group cursor-pointer hover:ring-green-300 dark:hover:ring-green-700 transition-all duration-300">
-          <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-300"></div>
-          <div class="relative flex flex-col items-center gap-4">
-            <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-xl shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
-              <Icon name="tabler:player-play-filled" class="w-8 h-8 text-white ml-1" />
-            </div>
-            <span class="text-gray-600 dark:text-stone-300 font-medium">Video coming soon</span>
-          </div>
+        <div class="relative rounded-2xl aspect-video shadow-2xl ring-1 ring-gray-200 dark:ring-stone-700 overflow-hidden hover:ring-green-300 dark:hover:ring-green-700 transition-all duration-300">
+          <iframe
+            src="https://www.youtube.com/embed/hBCXVdd8FZ0"
+            title="Account Map App Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="absolute inset-0 w-full h-full"
+          ></iframe>
         </div>
       </div>
     </div>
@@ -719,7 +721,7 @@ const faqs = [
   <!-- ============================================================ -->
   <!-- 11. FAQs                                                     -->
   <!-- ============================================================ -->
-  <section class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
+  <section id="faq" class="relative py-24 md:py-32 2xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-transparent dark:to-transparent">
     <!-- Semi-transparent overlay for dark mode -->
     <div class="absolute inset-0 bg-transparent dark:bg-[#1C1917]/40 pointer-events-none"></div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
@@ -858,9 +860,9 @@ const faqs = [
 </Layout>
 
 <style>
-  /* Fix horizontal overflow on mobile */
-  :global(html), :global(body) {
-    overflow-x: hidden;
+  /* Fix horizontal overflow on mobile - using clip instead of hidden to preserve sticky */
+  :global(body) {
+    overflow-x: clip;
     max-width: 100vw;
   }
 
