@@ -75,7 +75,7 @@
 
 /* Actions container in expanded mobile menu */
 #header.expanded > div > div:last-child {
-  @apply flex py-4 px-2 border-t border-gray-200 dark:border-stone-700 mt-auto;
+  @apply flex py-4 px-2 border-t border-gray-200 dark:border-stone-700;
 }
 
 .dropdown:focus .dropdown-menu,
