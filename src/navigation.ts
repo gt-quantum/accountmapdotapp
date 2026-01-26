@@ -7,10 +7,11 @@ import { MVP_MODE } from './pages.config';
  */
 const mvpHeaderData = {
   links: [
-    { text: 'Features', href: '/#features' },
     { text: 'How It Works', href: '/#how-it-works' },
-    { text: 'FAQ', href: '/#faq' },
+    { text: 'Use Cases', href: '/#use-cases' },
+    { text: 'Features', href: '/#features' },
     { text: 'Demo', href: '/#demo' },
+    { text: 'FAQ', href: '/#faq' },
   ],
   actions: [{ text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank' }],
 };
@@ -82,8 +83,9 @@ export const footerData = {
     {
       title: 'Product',
       links: [
-        { text: 'Features', href: '#features' },
         { text: 'How It Works', href: '#how-it-works' },
+        { text: 'Use Cases', href: '#use-cases' },
+        { text: 'Features', href: '#features' },
         { text: 'Demo', href: '#demo' },
       ],
     },
