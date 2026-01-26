@@ -1,14 +1,22 @@
 /**
- * Cloudflare Pages Function - Contact Form Handler
- * Sends form submissions to Slack via Incoming Webhook
+ * Cloudflare Pages Function - Contact Form & Event Tracking Handler
+ * Sends form submissions and button click events to Slack via Incoming Webhook
  */
 
 interface ContactFormData {
+  type: 'contact';
   firstName: string;
   lastName: string;
   email: string;
   message: string;
 }
+
+interface TrackingEventData {
+  type: 'track';
+  event: string;
+}
+
+type RequestData = ContactFormData | TrackingEventData;
 
 interface Env {
   SLACK_WEBHOOK_URL: string;
@@ -25,24 +33,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   };
 
   try {
-    const data: ContactFormData = await request.json();
-
-    // Validate required fields
-    if (!data.firstName || !data.lastName || !data.email || !data.message) {
-      return new Response(
-        JSON.stringify({ error: 'All fields are required' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      );
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid email format' }),
-        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
-      );
-    }
+    const data: RequestData = await request.json();
 
     // Get Slack webhook URL from environment variable
     const slackWebhookUrl = env.SLACK_WEBHOOK_URL;
@@ -55,49 +46,111 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
-    // Format Slack message
-    const slackMessage = {
-      text: 'Contact Us Form - Account Map App Website',
-      blocks: [
-        {
-          type: 'header',
-          text: {
-            type: 'plain_text',
-            text: '📬 Contact Us Form - Account Map App Website',
-            emoji: true,
+    let slackMessage;
+
+    // Handle tracking events (button clicks)
+    if (data.type === 'track') {
+      const eventData = data as TrackingEventData;
+
+      const eventEmojis: Record<string, string> = {
+        'demo_button': '🎬',
+        'get_started_button': '🚀',
+      };
+
+      const eventLabels: Record<string, string> = {
+        'demo_button': 'Demo Button Clicked',
+        'get_started_button': 'Get Started Button Clicked',
+      };
+
+      const emoji = eventEmojis[eventData.event] || '📊';
+      const label = eventLabels[eventData.event] || eventData.event;
+
+      slackMessage = {
+        text: `${label} - Account Map App Website`,
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: `${emoji} *${label}* - Account Map App Website`,
+            },
           },
-        },
-        {
-          type: 'section',
-          fields: [
-            {
-              type: 'mrkdwn',
-              text: `*Name:*\n${data.firstName} ${data.lastName}`,
-            },
-            {
-              type: 'mrkdwn',
-              text: `*Email:*\n${data.email}`,
-            },
-          ],
-        },
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: `*Message:*\n${data.message}`,
+          {
+            type: 'context',
+            elements: [
+              {
+                type: 'mrkdwn',
+                text: `Event: \`${eventData.event}\` | ${new Date().toISOString()}`,
+              },
+            ],
           },
-        },
-        {
-          type: 'context',
-          elements: [
-            {
-              type: 'mrkdwn',
-              text: `Submitted at ${new Date().toISOString()}`,
+        ],
+      };
+    }
+    // Handle contact form submissions
+    else {
+      const formData = data as ContactFormData;
+
+      // Validate required fields
+      if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+        return new Response(
+          JSON.stringify({ error: 'All fields are required' }),
+          { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+        );
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        return new Response(
+          JSON.stringify({ error: 'Invalid email format' }),
+          { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+        );
+      }
+
+      slackMessage = {
+        text: 'Contact Us Form - Account Map App Website',
+        blocks: [
+          {
+            type: 'header',
+            text: {
+              type: 'plain_text',
+              text: '📬 Contact Us Form - Account Map App Website',
+              emoji: true,
             },
-          ],
-        },
-      ],
-    };
+          },
+          {
+            type: 'section',
+            fields: [
+              {
+                type: 'mrkdwn',
+                text: `*Name:*\n${formData.firstName} ${formData.lastName}`,
+              },
+              {
+                type: 'mrkdwn',
+                text: `*Email:*\n${formData.email}`,
+              },
+            ],
+          },
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: `*Message:*\n${formData.message}`,
+            },
+          },
+          {
+            type: 'context',
+            elements: [
+              {
+                type: 'mrkdwn',
+                text: `Submitted at ${new Date().toISOString()}`,
+              },
+            ],
+          },
+        ],
+      };
+    }
 
     // Send to Slack
     const slackResponse = await fetch(slackWebhookUrl, {
