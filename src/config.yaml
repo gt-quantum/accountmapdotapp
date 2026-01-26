@@ -16,7 +16,7 @@ metadata:
   openGraph:
     site_name: Account Map App
     images:
-      - url: '~/assets/images/product/map-view.png'
+      - url: '~/assets/images/product/combined-trip-view.png'
         width: 1200
         height: 628
     type: website
