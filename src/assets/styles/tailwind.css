@@ -61,13 +61,21 @@
   box-shadow: 0 0.375rem 1.5rem 0 rgba(28, 25, 23, 0.4);
 }
 
+#header.expanded {
+  @apply flex flex-col;
+}
+
+#header.expanded > div {
+  @apply flex flex-col flex-1;
+}
+
 #header.expanded nav {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  bottom: 70px !important;
-  padding: 0 5px;
+  @apply block py-4 px-2;
+}
+
+/* Actions container in expanded mobile menu */
+#header.expanded > div > div:last-child {
+  @apply flex py-4 px-2 border-t border-gray-200 dark:border-stone-700 mt-auto;
 }
 
 .dropdown:focus .dropdown-menu,

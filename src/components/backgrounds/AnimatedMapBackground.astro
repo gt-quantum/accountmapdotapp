@@ -13,6 +13,14 @@
     const canvas = document.getElementById('map-bg-canvas') as HTMLCanvasElement;
     if (!canvas) return;
 
+    // Disable animation on mobile for performance
+    const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      // Hide canvas on mobile - use CSS background instead
+      canvas.style.display = 'none';
+      return;
+    }
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
