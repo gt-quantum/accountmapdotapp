@@ -1122,30 +1122,46 @@ const faqs = [
 </style>
 
 <script>
-  // Check if mobile for performance optimizations
-  const isMobile = window.innerWidth < 768;
+  function initScrollAnimations() {
+    // Check if mobile for performance optimizations
+    const isMobile = window.innerWidth < 768;
 
-  // Intersection Observer for scroll animations (only on desktop)
-  if (!isMobile) {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50px 0px -50px 0px',
-      threshold: 0.2
-    };
+    // Intersection Observer for scroll animations (only on desktop)
+    if (!isMobile) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-50px 0px -50px 0px',
+        threshold: 0.2
+      };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all scroll-animate elements
+      document.querySelectorAll('.scroll-animate').forEach(el => {
+        // Check if element is already in view and add visible class immediately
+        const rect = el.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight - 50 && rect.bottom > 50;
+        if (isInView) {
+          el.classList.add('visible');
         }
+        observer.observe(el);
       });
-    }, observerOptions);
-
-    // Observe all scroll-animate elements
-    document.querySelectorAll('.scroll-animate').forEach(el => {
-      observer.observe(el);
-    });
+    } else {
+      // On mobile, ensure all elements are visible (no animation)
+      document.querySelectorAll('.scroll-animate').forEach(el => {
+        el.classList.add('visible');
+      });
+    }
   }
+
+  // Use astro:page-load which fires on initial load AND after View Transitions
+  document.addEventListener('astro:page-load', initScrollAnimations);
 
   // Count-up animation for stats
   function animateCountUp(element: Element, targetValue: string, duration: number = 2000) {
