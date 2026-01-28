@@ -13,7 +13,7 @@ const mvpHeaderData = {
     { text: 'Demo', href: '/#demo' },
     { text: 'FAQ', href: '/#faq' },
   ],
-  actions: [{ text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank' }],
+  actions: [{ text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank', 'data-track': 'get_started_button' }],
 };
 
 /**
@@ -66,7 +66,7 @@ const fullHeaderData = {
     },
     { text: 'Widgets', href: '#' },
   ],
-  actions: [{ text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank' }],
+  actions: [{ text: 'Get Started Free', href: 'https://my.accountmap.app', target: '_blank', 'data-track': 'get_started_button' }],
 };
 
 /**

@@ -1251,8 +1251,12 @@ const faqs = [
   })();
 
   // Button Click Tracking
-  (function initClickTracking() {
+  function initClickTracking() {
     document.querySelectorAll('[data-track]').forEach(el => {
+      // Avoid adding duplicate listeners
+      if (el.dataset.trackInitialized) return;
+      el.dataset.trackInitialized = 'true';
+
       el.addEventListener('click', () => {
         const event = el.getAttribute('data-track');
         // Fire and forget - don't block navigation
@@ -1263,7 +1267,10 @@ const faqs = [
         }).catch(() => {}); // Silently ignore errors
       });
     });
-  })();
+  }
+  // Run on initial load and after View Transitions navigation
+  initClickTracking();
+  document.addEventListener('astro:page-load', initClickTracking);
 
   // Contact Modal
   (function initContactModal() {
