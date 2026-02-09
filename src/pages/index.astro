@@ -1158,10 +1158,10 @@ const faqs = [
         el.classList.add('visible');
       });
     }
-  }
 
-  // Use astro:page-load which fires on initial load AND after View Transitions
-  document.addEventListener('astro:page-load', initScrollAnimations);
+    // Init stats count-up (needs isMobile in scope)
+    initStatsCountUp(isMobile);
+  }
 
   // Count-up animation for stats
   function animateCountUp(element: Element, targetValue: string, duration: number = 2000) {
@@ -1210,33 +1210,37 @@ const faqs = [
     requestAnimationFrame(update);
   }
 
-  // Observer for stats section
-  let statsAnimated = false;
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !statsAnimated) {
-        statsAnimated = true;
-        const statElements = document.querySelectorAll('.stat-number');
-        statElements.forEach((el, index) => {
-          const targetValue = el.getAttribute('data-value') || '0';
-          if (isMobile) {
-            // On mobile, just show the value immediately without animation
-            el.textContent = targetValue;
-          } else {
-            // On desktop, stagger the animations
-            setTimeout(() => {
-              animateCountUp(el, targetValue, 2000);
-            }, index * 100);
-          }
-        });
-      }
-    });
-  }, { threshold: 0.3 });
+  function initStatsCountUp(isMobile: boolean) {
+    let statsAnimated = false;
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          const statElements = document.querySelectorAll('.stat-number');
+          statElements.forEach((el, index) => {
+            const targetValue = el.getAttribute('data-value') || '0';
+            if (isMobile) {
+              // On mobile, just show the value immediately without animation
+              el.textContent = targetValue;
+            } else {
+              // On desktop, stagger the animations
+              setTimeout(() => {
+                animateCountUp(el, targetValue, 2000);
+              }, index * 100);
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
 
-  const statsGrid = document.getElementById('stats-grid');
-  if (statsGrid) {
-    statsObserver.observe(statsGrid);
+    const statsGrid = document.getElementById('stats-grid');
+    if (statsGrid) {
+      statsObserver.observe(statsGrid);
+    }
   }
+
+  // Use astro:page-load which fires on initial load AND after View Transitions
+  document.addEventListener('astro:page-load', initScrollAnimations);
 
   // Set border-radius on glow effect SVG rects
   (function setGlowEffectRx() {
