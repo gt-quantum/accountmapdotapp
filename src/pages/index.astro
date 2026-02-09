@@ -1243,7 +1243,7 @@ const faqs = [
   document.addEventListener('astro:page-load', initScrollAnimations);
 
   // Set border-radius on glow effect SVG rects
-  (function setGlowEffectRx() {
+  function initGlowEffects() {
     const glowEffects = document.querySelectorAll('.glow-effect');
     glowEffects.forEach((glowEffect) => {
       const glowLines = glowEffect.querySelectorAll('rect');
@@ -1252,7 +1252,8 @@ const faqs = [
         line.setAttribute('rx', rx);
       });
     });
-  })();
+  }
+  document.addEventListener('astro:page-load', initGlowEffects);
 
   // Button Click Tracking
   function initClickTracking() {
@@ -1277,9 +1278,9 @@ const faqs = [
   document.addEventListener('astro:page-load', initClickTracking);
 
   // Contact Modal
-  (function initContactModal() {
+  function initContactModal() {
     const modal = document.getElementById('contact-modal');
-    const form = document.getElementById('contact-form');
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const successMsg = document.getElementById('contact-success');
     const closeBtn = modal?.querySelector('.contact-close');
     const backdrop = modal?.querySelector('.contact-backdrop');
@@ -1377,10 +1378,11 @@ const faqs = [
         }
       }
     });
-  })();
+  }
+  document.addEventListener('astro:page-load', initContactModal);
 
   // Video play button overlay
-  (function initVideoPlayer() {
+  function initVideoPlayer() {
     const video = document.getElementById('demo-video') as HTMLVideoElement;
     const overlay = document.getElementById('video-play-overlay');
 
@@ -1407,6 +1409,7 @@ const faqs = [
       overlay.style.opacity = '1';
       overlay.style.pointerEvents = 'auto';
     });
-  })();
+  }
+  document.addEventListener('astro:page-load', initVideoPlayer);
 
 </script>
